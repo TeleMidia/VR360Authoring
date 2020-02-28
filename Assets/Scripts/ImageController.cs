@@ -8,18 +8,20 @@ public class ImageController : MonoBehaviour
     // Start is called before the first frame update
     public float start_time, duration;
 
-    public void LoadImage(string file_path, float width, float height)
+    public void LoadImage(string file_path)
     {
+        float width, height;
         GetComponent<MeshRenderer>().enabled = false;
         Texture2D texture = new Texture2D(2, 2);
         Material material = new Material(Shader.Find("Unlit/Texture"));
 
         byte[] fileData = File.ReadAllBytes(file_path);
         texture.LoadImage(fileData);
+        width = 10;
+        height = width * texture.height / texture.width;
         material.mainTexture = texture;
         GetComponent<MeshRenderer>().material = material;
         this.transform.localScale = new Vector3(width, height, 1);
-        
     }
     public void Play()
     {

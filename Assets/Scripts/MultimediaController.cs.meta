@@ -3,7 +3,10 @@ guid: 9e8fad6e33ec2e04298433d48b0709d8
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - video360: {instanceID: 0}
+  - imagePrefab: {fileID: 2458419030772916761, guid: a13964ebd9658c246b6a107488d48cb3,
+      type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
