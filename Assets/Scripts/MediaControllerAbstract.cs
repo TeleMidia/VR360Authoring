@@ -9,6 +9,7 @@ public abstract class MediaControllerAbstract: MonoBehaviour
 {
     public float start_time, duration, volume;
     public string file_path;
+    public bool loop;
 
     private void InvokePlayStop()
     {
@@ -20,12 +21,13 @@ public abstract class MediaControllerAbstract: MonoBehaviour
         Invoke("InvokePlayStop", start_time);
     }
 
-    public virtual void Configure(float start_time, float duration, string file_path, float r, float theta, float phi, float volume)
+    public virtual void Configure(float start_time, float duration, string file_path, float r, float theta, float phi, float volume, bool loop)
     {
         this.start_time = start_time;
         this.duration = duration;
         this.volume = volume;
         this.file_path = file_path;
+        this.loop = loop;
 
         Vector3 origin = new Vector3(0, 0, r);
 
