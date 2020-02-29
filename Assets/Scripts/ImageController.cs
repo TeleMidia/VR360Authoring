@@ -3,19 +3,15 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-public class ImageController : MonoBehaviour
+public class ImageController : MediaControllerAbstract
 {
-    // Start is called before the first frame update
-    public float start_time, duration;
-
-    public void LoadImage(string file_path)
+    public override void Load()
     {
         float width, height;
-        GetComponent<MeshRenderer>().enabled = false;
         Texture2D texture = new Texture2D(2, 2);
         Material material = new Material(Shader.Find("Unlit/Texture"));
 
-        byte[] fileData = File.ReadAllBytes(file_path);
+        byte[] fileData = File.ReadAllBytes(this.file_path);
         texture.LoadImage(fileData);
         width = 10;
         height = width * texture.height / texture.width;
@@ -23,16 +19,12 @@ public class ImageController : MonoBehaviour
         GetComponent<MeshRenderer>().material = material;
         this.transform.localScale = new Vector3(width, height, 1);
     }
-    public void Play()
+    
+    public override void PlayMedia()
     {
-        Invoke("ActiveRenderer", start_time);
+        GetComponent<MeshRenderer>().enabled = true;        
     }
-    void ActiveRenderer()
-    {
-        GetComponent<MeshRenderer>().enabled = true;
-        Invoke("DeactiveRenderer", duration);
-    }
-    void DeactiveRenderer()
+    public override void StopMedia()
     {
         GetComponent<MeshRenderer>().enabled = false;
     }

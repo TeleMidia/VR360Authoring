@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AudioScript : MonoBehaviour
+public class AudioController : MonoBehaviour
 {
     // Start is called before the first frame update
 
