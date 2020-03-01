@@ -10,7 +10,7 @@ public class MultimediaController : MonoBehaviour
     public VideoPlayer video360;
 
     [Header("Common Media")]
-    public GameObject imagePrefab, audioPrefab;
+    public GameObject imagePrefab, audioPrefab, videoPrefab;
 
     private List<GameObject> other_media;
     void Start()
@@ -22,13 +22,22 @@ public class MultimediaController : MonoBehaviour
         AddMedia(imagePrefab, 
             start_time:0f, duration:3, file_path:@"C:\Users\paulo\Pictures\WebMedia\31-10-2019-505.jpg", 
             r:15f, theta:0f, phi:0f);
+
         AddMedia(imagePrefab,
             start_time: 3f, duration: 2, file_path: @"C:\Users\paulo\Pictures\Saved Pictures\vapor-wave.png",
             r: 15f, theta: -30f, phi: 0f);
 
         AddMedia(audioPrefab,
-            start_time: 3f, duration: 2, file_path: "C:/Users/paulo/Downloads/sample.wav",
+            start_time: 3f, duration: 8, file_path: "C:/Users/paulo/Downloads/sample.wav",
             r: 15f, theta: -30f, phi: 0f, volume:1, loop:false);
+
+        AddMedia(videoPrefab,
+           start_time: 8f, duration: 10, file_path: "C:/Users/paulo/Downloads/videoplayback.mp4",
+           r: 15f, theta: 0f, phi: 45f, volume: 1, loop: false);
+
+        StartOtherMedia(video360);
+
+
     }
 
     // Update is called once per frame
