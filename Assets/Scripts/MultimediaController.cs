@@ -24,18 +24,38 @@ public class MultimediaController : MonoBehaviour
             r:15f, theta:0f, phi:0f);
 
         AddMedia(imagePrefab,
-            start_time: 3f, duration: 2, file_path: @"C:\Users\paulo\Pictures\Saved Pictures\vapor-wave.png",
+            start_time: 3f, duration: 5, file_path: @"C:\Users\paulo\Pictures\Saved Pictures\vapor-wave.png",
             r: 15f, theta: -30f, phi: 0f);
 
         AddMedia(audioPrefab,
-            start_time: 3f, duration: 8, file_path: "C:/Users/paulo/Downloads/sample.wav",
+            start_time: 3f, duration: 5, file_path: "C:/Users/paulo/Downloads/sample.wav",
             r: 15f, theta: -30f, phi: 0f, volume:1, loop:false);
 
         AddMedia(videoPrefab,
            start_time: 8f, duration: 10, file_path: "C:/Users/paulo/Downloads/videoplayback.mp4",
-           r: 15f, theta: 0f, phi: 45f, volume: 1, loop: false);
+           r: 15f, theta: 0f, phi: 60f, volume: 1, loop: false);
 
-        StartOtherMedia(video360);
+        AddMedia(videoPrefab,
+           start_time: 18f, duration: 10, file_path: "C:/Users/paulo/Downloads/videoplayback.mp4",
+           r: 15f, theta: 0f, phi: 0f, volume: 1, loop: false);
+
+        AddMedia(videoPrefab,
+           start_time: 28f, duration: 10, file_path: "C:/Users/paulo/Downloads/videoplayback.mp4",
+           r: 15f, theta: 0f, phi: -60f, volume: 1, loop: false);
+
+        AddMedia(videoPrefab,
+           start_time: 38f, duration: 10, file_path: "C:/Users/paulo/Downloads/videoplayback.mp4",
+           r: 15f, theta: 0f, phi: 60f, volume: 1, loop: false);
+
+        AddMedia(videoPrefab,
+           start_time: 38f, duration: 10, file_path: "C:/Users/paulo/Downloads/videoplayback.mp4",
+           r: 15f, theta: 0f, phi: 0f, volume: 1, loop: false);
+
+        AddMedia(videoPrefab,
+           start_time: 38f, duration: 10, file_path: "C:/Users/paulo/Downloads/videoplayback.mp4",
+           r: 15f, theta: 0f, phi: -60f, volume: 1, loop: false);
+
+        //StartOtherMedia(video360);
 
 
     }
@@ -43,10 +63,10 @@ public class MultimediaController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {        
-        if (Input.GetMouseButtonDown(0))
+        if (!video360.isPlaying && Input.GetMouseButtonDown(0))
         {
             video360.Play();
-        }
+        }        
     }
     void StartOtherMedia(VideoPlayer source)
     {
