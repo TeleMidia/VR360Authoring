@@ -20,8 +20,8 @@ public class MultimediaController : MonoBehaviour
         video360.loopPointReached += StopOtherMedia;
 
         AddMedia(imagePrefab, 
-            start_time:0f, duration:3, file_path:@"C:\Users\paulo\Pictures\WebMedia\31-10-2019-505.jpg", 
-            r:15f, theta:0f, phi:0f);
+            start_time:0f, duration:15, file_path:@"C:\Users\paulo\Pictures\WebMedia\31-10-2019-505.jpg", 
+            r:15f, theta:0f, phi:0f, follow_camera: true);
 
         AddMedia(imagePrefab,
             start_time: 3f, duration: 5, file_path: @"C:\Users\paulo\Pictures\Saved Pictures\vapor-wave.png",
@@ -33,29 +33,27 @@ public class MultimediaController : MonoBehaviour
 
         AddMedia(videoPrefab,
            start_time: 8f, duration: 10, file_path: "C:/Users/paulo/Downloads/videoplayback.mp4",
-           r: 15f, theta: 0f, phi: 60f, volume: 1, loop: false);
+           r: 30f, theta: 0f, phi: 60f, volume: 1, loop: false);
 
         AddMedia(videoPrefab,
            start_time: 18f, duration: 10, file_path: "C:/Users/paulo/Downloads/videoplayback.mp4",
-           r: 15f, theta: 0f, phi: 0f, volume: 1, loop: false);
+           r: 30f, theta: 0f, phi: 0f, volume: 1, loop: false);
 
         AddMedia(videoPrefab,
            start_time: 28f, duration: 10, file_path: "C:/Users/paulo/Downloads/videoplayback.mp4",
-           r: 15f, theta: 0f, phi: -60f, volume: 1, loop: false);
+           r: 30f, theta: 0f, phi: -60f, volume: 1, loop: false);
 
-        AddMedia(videoPrefab,
-           start_time: 38f, duration: 10, file_path: "C:/Users/paulo/Downloads/videoplayback.mp4",
-           r: 15f, theta: 0f, phi: 60f, volume: 1, loop: false);
+        float step = 30;
+        for(int i = 0; i < 360/step; i++)
+        {
+            float v = (i*30)%90;
+            v = Mathf.Max(1,v);
+            AddMedia(videoPrefab,
+               start_time: 38f, duration: 30, file_path: "C:/Users/paulo/Downloads/videoplayback.mp4",
+               r: 30f, theta: 0f, phi: i*step, volume: v, loop: true);
+        }
 
-        AddMedia(videoPrefab,
-           start_time: 38f, duration: 10, file_path: "C:/Users/paulo/Downloads/videoplayback.mp4",
-           r: 15f, theta: 0f, phi: 0f, volume: 1, loop: false);
-
-        AddMedia(videoPrefab,
-           start_time: 38f, duration: 10, file_path: "C:/Users/paulo/Downloads/videoplayback.mp4",
-           r: 15f, theta: 0f, phi: -60f, volume: 1, loop: false);
-
-        //StartOtherMedia(video360);
+        StartOtherMedia(video360);
 
 
     }
@@ -65,7 +63,7 @@ public class MultimediaController : MonoBehaviour
     {        
         if (!video360.isPlaying && Input.GetMouseButtonDown(0))
         {
-            video360.Play();
+            //video360.Play();
         }        
     }
     void StartOtherMedia(VideoPlayer source)
@@ -85,10 +83,10 @@ public class MultimediaController : MonoBehaviour
             media.GetComponent<MediaControllerAbstract>().PrepareAnchors();
         }
     }
-    void AddMedia(GameObject mediaPrefab, float start_time, string file_path, float r, float theta, float phi, float volume = 0, bool loop = false, float duration = float.MaxValue)
+    void AddMedia(GameObject mediaPrefab, float start_time, string file_path, float r, float theta, float phi, float volume = 0, bool loop = false, float duration = float.MaxValue, bool follow_camera = false)
     {
         GameObject newMedia = Instantiate(mediaPrefab);
-        newMedia.GetComponent<MediaControllerAbstract>().Configure(start_time, duration, file_path, r, theta, phi, volume, loop);        
+        newMedia.GetComponent<MediaControllerAbstract>().Configure(start_time, duration, file_path, r, theta, phi, volume, loop, follow_camera);        
         other_media.Add(newMedia);        
     }    
 }

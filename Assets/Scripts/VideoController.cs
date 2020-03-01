@@ -12,6 +12,7 @@ public class VideoController : MediaControllerAbstract
     {
         videoPlayer = GetComponent<VideoPlayer>();
         videoPlayer.started += PlayAfter;
+        videoPlayer.loopPointReached += Ended;
         audioSource = GetComponent<AudioSource>();
 
         videoPlayer.url = "file:///" + this.file_path;
@@ -42,5 +43,13 @@ public class VideoController : MediaControllerAbstract
     private void PlayAfter(VideoPlayer source)
     {
         GetComponent<MeshRenderer>().enabled = true;
+    }
+
+    private void Ended(VideoPlayer source)
+    {
+        if (this.loop == false)
+        {
+            GetComponent<MeshRenderer>().enabled = false;
+        }
     }
 }
