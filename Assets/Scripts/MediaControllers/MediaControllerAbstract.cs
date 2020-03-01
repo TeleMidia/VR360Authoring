@@ -8,7 +8,7 @@ using UnityEngine;
 public abstract class MediaControllerAbstract: MonoBehaviour
 {
     public float start_time, duration, volume;
-    public string file_path;
+    public string file_path, text;
     public bool loop, follow_camera;
     public GameObject mainCamera;
 
@@ -22,7 +22,7 @@ public abstract class MediaControllerAbstract: MonoBehaviour
         Invoke("InvokePlayStop", start_time);        
     }
 
-    public virtual void Configure(float start_time, float duration, string file_path, float r, float theta, float phi, float volume, bool loop, bool follow_camera)
+    public virtual void Configure(float start_time, float duration, string file_path, float r, float theta, float phi, float volume, bool loop, bool follow_camera, string text)
     {
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         this.start_time = start_time;
@@ -31,6 +31,7 @@ public abstract class MediaControllerAbstract: MonoBehaviour
         this.file_path = file_path;
         this.loop = loop;
         this.follow_camera = follow_camera;
+        this.text = text;
 
         if (this.follow_camera)
         {

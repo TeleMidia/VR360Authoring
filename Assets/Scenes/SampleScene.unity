@@ -197,7 +197,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!328 &374114122
 VideoPlayer:
   m_ObjectHideFlags: 0
@@ -281,6 +281,8 @@ MonoBehaviour:
   audioPrefab: {fileID: 2108939953433365681, guid: 1c52a48a70cc4834b8b0dd8674858ae3,
     type: 3}
   videoPrefab: {fileID: 7489877019352574184, guid: 01f8226d73c712f4ebe3287925549293,
+    type: 3}
+  textPrefab: {fileID: 6104533548485137576, guid: fd07b29c665488a45a073e639a72066c,
     type: 3}
 --- !u!4 &427496597
 Transform:
