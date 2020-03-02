@@ -18,7 +18,7 @@ public class VideoController : MediaControllerAbstract
         videoPlayer.url = "file:///" + this.file_path;
         videoPlayer.isLooping = this.loop;
         audioSource.volume = this.volume;
-
+        videoPlayer.Prepare();
         videoPlayer.prepareCompleted += LoadVideo;        
     }
 

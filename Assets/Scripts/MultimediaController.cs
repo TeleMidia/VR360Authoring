@@ -16,15 +16,14 @@ public class MultimediaController : MonoBehaviour
     void Start()
     {
         other_media = new List<GameObject>();
+        video360.Prepare();
         video360.started += StartOtherMedia;
         video360.loopPointReached += StopOtherMedia;
 
 
         AddMedia(textPrefab, start_time: 0, duration: 3, r: 5, theta: 25, phi: 0, text:"Imagem seguindo camera", follow_camera:true);
         AddMedia(textPrefab, start_time: 3, duration: 5, r: 5, theta: 25, phi: 0, text: "Imagem com som", follow_camera: true);
-        AddMedia(textPrefab, start_time: 8, duration: 10, r: 5, theta: 25, phi: 0, text: "Ameno Dorime Direita", follow_camera: true);
-        AddMedia(textPrefab, start_time: 18, duration: 10, r: 5, theta: 25, phi: 0, text: "Ameno Dorime Meio", follow_camera: true);
-        AddMedia(textPrefab, start_time: 28, duration: 10, r: 5, theta: 25, phi: 0, text: "Ameno Dorime Esquerda", follow_camera: true);
+        AddMedia(textPrefab, start_time: 38, duration: 20, r: 5, theta: 25, phi: 0, text: "Ameno Dorime all around you", follow_camera: true);
 
         AddMedia(imagePrefab, 
             start_time:0f, duration:3, file_path:@"C:\Users\paulo\Pictures\WebMedia\31-10-2019-505.jpg", 
@@ -33,29 +32,40 @@ public class MultimediaController : MonoBehaviour
         
 
         AddMedia(imagePrefab,
-            start_time: 3f, duration: 5, file_path: @"C:\Users\paulo\Pictures\Saved Pictures\vapor-wave.png",
-            r: 15f, theta: -30f, phi: 0f);
+            start_time: 3f, duration: 10, file_path: @"C:\Users\paulo\Pictures\Saved Pictures\vapor-wave.png",
+            r: 15f, theta: -30f, phi: 0f, movement: new LinearMovement(r: 15, theta: 0f, phi: 0, duration:6f));
 
         AddMedia(audioPrefab,
-            start_time: 3f, duration: 5, file_path: "C:/Users/paulo/Downloads/sample.wav",
-            r: 5f, theta: -30f, phi: 0f, volume:1, loop:false);
+            start_time: 3f, duration: 10, file_path: "C:/Users/paulo/Downloads/sample.wav",
+            r: 5f, theta: -30f, phi: 0f, volume:1, loop:false, movement: new LinearMovement(r: 15, theta: 0f, phi: 0, duration:6f));
 
 
         AddMedia(videoPrefab,
-           start_time: 8f, duration: 10, file_path: "C:/Users/paulo/Downloads/videoplayback.mp4",
+           start_time: 10f, duration: 5, file_path: "C:/Users/paulo/Downloads/videoplayback.mp4",
            r: 30f, theta: 0f, phi: 60f, volume: 1, loop: false);
 
 
         AddMedia(videoPrefab,
-           start_time: 18f, duration: 10, file_path: "C:/Users/paulo/Downloads/videoplayback.mp4",
+           start_time: 15f, duration: 5, file_path: "C:/Users/paulo/Downloads/videoplayback.mp4",
            r: 30f, theta: 0f, phi: 0f, volume: 1, loop: false);
 
 
         AddMedia(videoPrefab,
-           start_time: 28f, duration: 10, file_path: "C:/Users/paulo/Downloads/videoplayback.mp4",
+           start_time: 20f, duration: 5, file_path: "C:/Users/paulo/Downloads/videoplayback.mp4",
            r: 30f, theta: 0f, phi: -60f, volume: 1, loop: false);
 
-        StartOtherMedia(video360);
+        AddMedia(videoPrefab,
+           start_time: 25f, duration: 13, file_path: "C:/Users/paulo/Downloads/videoplayback.mp4",
+           r: 30f, theta: 0f, phi: 0f, volume: 1, loop: true, movement: new CircularMovement(r:0f, theta:0, phi:360, duration:10));
+
+        float step = 60;
+        for(int i = 0; i < 360/step; i++)
+        {
+            AddMedia(videoPrefab, start_time: 38f, duration: 60, file_path: "C:/Users/paulo/Downloads/videoplayback.mp4",
+           r: 30f, theta: 0f, phi: 0f+i*step, volume: 1, loop: true, movement: new CircularMovement(r:-22f, theta: 0, phi: 360, duration: 10));
+        }
+
+        //StartOtherMedia(video360);
 
 
     }
@@ -63,10 +73,14 @@ public class MultimediaController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {        
-        if (!video360.isPlaying && Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))
         {
-            //video360.Play();
-        }        
+            if (video360.isPrepared)
+            {
+                video360.Play();
+            }
+        }
+         
     }
     void StartOtherMedia(VideoPlayer source)
     {
@@ -74,6 +88,11 @@ public class MultimediaController : MonoBehaviour
         {
             media.GetComponent<MediaControllerAbstract>().PrepareAnchors();
         }
+    }
+
+    void StartVideo360(VideoPlayer source)
+    {
+        video360.Play();
     }
 
     void StopOtherMedia(VideoPlayer source)
@@ -85,10 +104,12 @@ public class MultimediaController : MonoBehaviour
             media.GetComponent<MediaControllerAbstract>().PrepareAnchors();
         }
     }
-    void AddMedia(GameObject mediaPrefab, float start_time, float r, float theta, float phi, string file_path = "", float volume = 0, bool loop = false, float duration = float.MaxValue, bool follow_camera = false, string text = "")
+
+    
+    void AddMedia(GameObject mediaPrefab, float start_time, float r, float theta, float phi, string file_path = "", float volume = 0, bool loop = false, float duration = float.MaxValue, bool follow_camera = false, string text = "", Movement movement = null)
     {
         GameObject newMedia = Instantiate(mediaPrefab);
-        newMedia.GetComponent<MediaControllerAbstract>().Configure(start_time, duration, file_path, r, theta, phi, volume, loop, follow_camera, text);        
+        newMedia.GetComponent<MediaControllerAbstract>().Configure(start_time, duration, file_path, r, theta, phi, volume, loop, follow_camera, text, movement);        
         other_media.Add(newMedia);        
     }    
 }

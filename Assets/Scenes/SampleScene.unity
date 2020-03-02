@@ -197,7 +197,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!328 &374114122
 VideoPlayer:
   m_ObjectHideFlags: 0
@@ -222,10 +222,11 @@ VideoPlayer:
   m_TargetAudioSources:
   - {fileID: 0}
   m_DirectAudioVolumes:
-  - 0
-  m_Url: file://C:/Users/paulo/Videos/360/waterfall.mp4
+  - 0.643
+  m_Url: file://C:/Users/paulo/Downloads/360_VR Master Series _ Free Download _ Crystal
+    Shower Falls.mp4
   m_EnabledAudioTracks: 01
-  m_DirectAudioMutes: 01
+  m_DirectAudioMutes: 00
   m_ControlledAudioTrackCount: 1
   m_PlayOnAwake: 0
   m_SkipOnDrop: 1
@@ -388,7 +389,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 534669902}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: db131c942673a284fbcd52e4b6e09081, type: 3}
   m_Name: 

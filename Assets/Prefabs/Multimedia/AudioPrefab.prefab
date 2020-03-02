@@ -145,4 +145,7 @@ MonoBehaviour:
   duration: 0
   volume: 0
   file_path: 
+  text: 
   loop: 0
+  follow_camera: 0
+  mainCamera: {fileID: 0}
