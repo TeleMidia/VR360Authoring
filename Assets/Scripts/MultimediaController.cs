@@ -37,7 +37,7 @@ public class MultimediaController : MonoBehaviour
 
         AddMedia(audioPrefab,
             start_time: 3f, duration: 10, file_path: "C:/Users/paulo/Downloads/sample.wav",
-            r: 5f, theta: -30f, phi: 0f, volume:1, loop:false, movement: new LinearMovement(r: 15, theta: 0f, phi: 0, duration:6f));
+            r: 15f, theta: -30f, phi: 0f, volume:1, loop:false, movement: new LinearMovement(r: 15, theta: 0f, phi: 0, duration:6f));
 
 
         AddMedia(videoPrefab,
@@ -62,7 +62,7 @@ public class MultimediaController : MonoBehaviour
         for(int i = 0; i < 360/step; i++)
         {
             AddMedia(videoPrefab, start_time: 38f, duration: 60, file_path: "C:/Users/paulo/Downloads/videoplayback.mp4",
-           r: 30f, theta: 0f, phi: 0f+i*step, volume: 1, loop: true, movement: new CircularMovement(r:-22f, theta: 0, phi: 360, duration: 10));
+           r: 30f, theta: 0f, phi: 0f+i*step, volume: 1, loop: false, movement: new CircularMovement(r:-22f, theta: 0, phi: 360, duration: 10));
         }
 
         //StartOtherMedia(video360);
