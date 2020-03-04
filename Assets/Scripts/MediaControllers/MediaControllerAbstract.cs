@@ -16,6 +16,7 @@ public abstract class MediaControllerAbstract: MonoBehaviour
     private Movement movement;
     private bool isMoving;
     private Vector3 start_pos;
+    public GameObject controller;
 
     private void InvokePlayStop()
     {
@@ -36,7 +37,11 @@ public abstract class MediaControllerAbstract: MonoBehaviour
     }
 
     public void PrepareAnchors()
-    {        
+    {
+        if (this.movement != null)
+        {
+            this.movement.Replace();
+        }
         Invoke("InvokePlayStop", start_time);        
     }
 
@@ -50,7 +55,7 @@ public abstract class MediaControllerAbstract: MonoBehaviour
         }
     }
 
-    public virtual void Configure(float start_time, float duration, string file_path, float r, float theta, float phi, float volume, bool loop, bool follow_camera, string text, Movement movement)
+    public virtual void Configure(float start_time, float duration, string file_path, float r, float theta, float phi, float volume, bool loop, bool follow_camera, string text, Movement movement, GameObject controller)
     {
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         this.start_time = start_time;
@@ -64,8 +69,8 @@ public abstract class MediaControllerAbstract: MonoBehaviour
         this.phi = phi;
         this.r = r;
         this.movement = movement;
-        this.isMoving = false;    
-
+        this.isMoving = false;
+        this.controller = controller;
 
         this.origin = new Vector3(0, 0, r);
         this.start_pos = Utils.PolarToCartesian(this.origin, theta, phi);
@@ -91,6 +96,12 @@ public abstract class MediaControllerAbstract: MonoBehaviour
     public abstract void Load();
 
     public abstract void StopMedia();
+
+    public void AbortMedia()
+    {
+        StopMedia();
+        CancelInvoke();
+    }
 
     public abstract void PlayMedia();   
 

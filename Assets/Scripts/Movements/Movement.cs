@@ -21,5 +21,10 @@ public abstract class Movement
         this.end_pos = Utils.PolarToCartesian(new Vector3(0,0,r), theta, phi) ;
         this.duration = duration;
     }
+
+    public void Replace()
+    {
+        this.start_time = -1;
+    }
     public abstract Vector3 Move(float start_r, float start_theta, float start_phi);
 }

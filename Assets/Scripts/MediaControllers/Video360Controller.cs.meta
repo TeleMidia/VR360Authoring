@@ -1,0 +1,20 @@
+fileFormatVersion: 2
+guid: 9e8fad6e33ec2e04298433d48b0709d8
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - video360: {instanceID: 0}
+  - imagePrefab: {fileID: 2458419030772916761, guid: a13964ebd9658c246b6a107488d48cb3,
+      type: 3}
+  - audioPrefab: {fileID: 2108939953433365681, guid: 1c52a48a70cc4834b8b0dd8674858ae3,
+      type: 3}
+  - videoPrefab: {fileID: 7489877019352574184, guid: 01f8226d73c712f4ebe3287925549293,
+      type: 3}
+  - textPrefab: {fileID: 6104533548485137576, guid: fd07b29c665488a45a073e639a72066c,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
