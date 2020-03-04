@@ -21,11 +21,15 @@
         laserLineRenderer.endWidth = laserWidth;
         ShootLaserFromTargetPosition(transform.position, transform.forward, laserMaxLength);
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.forward, out hit, laserMaxLength))
+
+        if (Input.GetMouseButtonDown(0))
         {
-            if (hit.collider.gameObject.CompareTag("VideoPreview"))
+            if (Physics.Raycast(transform.position, transform.forward, out hit, laserMaxLength))
             {
-                Debug.Log("Colidiu");
+                if (hit.collider.gameObject.CompareTag("VideoPreview"))
+                {
+                    hit.collider.gameObject.GetComponent<Video360PreviewController>().controller.GetComponent<Video360Controller>().StartVideo360();
+                }
             }
         }
     }
@@ -34,12 +38,7 @@
     {
         Ray ray = new Ray(targetPosition, direction);
         RaycastHit raycastHit;
-        Vector3 endPosition = targetPosition + (length * direction);
-
-        if (Physics.Raycast(ray, out raycastHit, length))
-        {
-            endPosition = raycastHit.point;
-        }
+        Vector3 endPosition = targetPosition + (length * direction);       
 
         laserLineRenderer.SetPosition(0, targetPosition);
         laserLineRenderer.SetPosition(1, endPosition);
