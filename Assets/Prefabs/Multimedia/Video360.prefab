@@ -56,7 +56,7 @@ VideoPlayer:
   m_TargetAudioSources:
   - {fileID: 0}
   m_DirectAudioVolumes:
-  - 0
+  - 1
   m_Url: 
   m_EnabledAudioTracks: 01
   m_DirectAudioMutes: 00
@@ -80,3 +80,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   video360PreviewSphere: {fileID: 587266993325439868, guid: 6570e9b300bcfaa408f46a1c8348cfa4,
     type: 3}
+  Video360Texture: {fileID: 8400000, guid: 01db1222fef26f04ea20002f5baf602c, type: 2}
+  TeleMidiaTexture: {fileID: 2800000, guid: 2b483a560b317fc40ae0ca4904dc6ba0, type: 3}
+  Material360: {fileID: 2100000, guid: f2884e1c018989a43a1414288ccb597c, type: 2}

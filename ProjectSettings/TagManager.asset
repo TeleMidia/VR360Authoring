@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Video360
   - VideoPreview
+  - StartPresentation
   layers:
   - Default
   - TransparentFX

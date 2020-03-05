@@ -37,6 +37,7 @@ public class VideoController : MediaControllerAbstract
     public override void StopMedia()
     {
         videoPlayer.Stop();
+        videoPlayer.Prepare();
         GetComponent<MeshRenderer>().enabled = false;
     }
 

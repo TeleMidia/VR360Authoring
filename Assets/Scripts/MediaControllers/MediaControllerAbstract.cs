@@ -17,6 +17,7 @@ public abstract class MediaControllerAbstract: MonoBehaviour
     private bool isMoving;
     private Vector3 start_pos;
     public GameObject controller;
+    public GameObject father;
 
     private void InvokePlayStop()
     {
@@ -55,7 +56,7 @@ public abstract class MediaControllerAbstract: MonoBehaviour
         }
     }
 
-    public virtual void Configure(float start_time, float duration, string file_path, float r, float theta, float phi, float volume, bool loop, bool follow_camera, string text, Movement movement, GameObject controller)
+    public virtual void Configure(GameObject father, float start_time, float duration, string file_path, float r, float theta, float phi, float volume, bool loop, bool follow_camera, string text, Movement movement, GameObject controller)
     {
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         this.start_time = start_time;
@@ -71,6 +72,7 @@ public abstract class MediaControllerAbstract: MonoBehaviour
         this.movement = movement;
         this.isMoving = false;
         this.controller = controller;
+        this.father = father;
 
         this.origin = new Vector3(0, 0, r);
         this.start_pos = Utils.PolarToCartesian(this.origin, theta, phi);
