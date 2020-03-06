@@ -70,4 +70,15 @@ public class Video360Controller : MonoBehaviour
         newMedia.GetComponent<MediaControllerAbstract>().Configure(this.gameObject, start_time, duration, file_path, r, theta, phi, volume, loop, follow_camera, text, movement, controller);        
         other_media.Add(newMedia);        
     }    
+
+    public void AddSubtitle(GameObject mediaPrefab, float r, float theta, float phi, string file_path)
+    {
+        SubtitleFragment[] subtitleFragments = SubtitleReader.ReadSubtitles(file_path);
+
+        foreach(SubtitleFragment subtitleFragment in subtitleFragments)
+        {
+            AddMedia(mediaPrefab: mediaPrefab, start_time: subtitleFragment.start_time, duration: subtitleFragment.duration, text: subtitleFragment.text,
+                r:r, theta:theta, phi:phi, follow_camera:true);
+        }
+    }
 }

@@ -22,10 +22,11 @@ public class MultimediaController : MonoBehaviour
     {
         video1 = AddVideo360("C:/Users/paulo/Downloads/360_VR Master Series _ Free Download _ Crystal Shower Falls.mp4");
         video2 = AddVideo360("C:/Users/paulo/Downloads/Best VR 360 Video.mp4");
-        
 
-        video1.GetComponent<Video360Controller>().AddMedia(textPrefab, start_time: 0, duration: 3, r: 5, theta: 25, phi: 0, text: "Imagem seguindo camera", follow_camera: true);
-        video1.GetComponent<Video360Controller>().AddMedia(textPrefab, start_time: 3, duration: 5, r: 5, theta: 25, phi: 0, text: "Imagem com som", follow_camera: true);
+        video1.GetComponent<Video360Controller>().AddSubtitle(textPrefab, r: 10, theta: 25, phi: 0, file_path: @"C:\Users\paulo\Downloads\jumanji-the-next-level_HI_english-2156994\Jumanji.The.Next.Level.2019.BDRip.XviD.AC3-EVO-HI.srt");
+
+        //video1.GetComponent<Video360Controller>().AddMedia(textPrefab, start_time: 0, duration: 3, r: 5, theta: 25, phi: 0, text: "Imagem seguindo camera", follow_camera: true);
+        //video1.GetComponent<Video360Controller>().AddMedia(textPrefab, start_time: 3, duration: 5, r: 5, theta: 25, phi: 0, text: "Imagem com som", follow_camera: true);
 
         video1.GetComponent<Video360Controller>().AddMedia(imagePrefab,
             start_time: 0f, duration: 3, file_path: @"C:\Users\paulo\Pictures\WebMedia\31-10-2019-505.jpg",
@@ -60,7 +61,7 @@ public class MultimediaController : MonoBehaviour
            start_time: 25f, duration: 12, file_path: "C:/Users/paulo/Downloads/videoplayback.mp4",
            r: 30f, theta: 0f, phi: 0f, volume: 1, loop: true, movement: new CircularMovement(r: 0f, theta: 0, phi: 720, duration: 10));
 
-        video1.GetComponent<Video360Controller>().AddMedia(video360PreviewPrefab, start_time: 38, duration: 10, r: 4, theta: 0, phi: 0, controller: video2);
+        video1.GetComponent<Video360Controller>().AddMedia(video360PreviewPrefab, start_time: 60, duration: 60, r: 4, theta: 0, phi: 60, controller: video2);
 
         float step = 60;
         for (int i = 0; i < 360 / step; i++)
@@ -79,6 +80,7 @@ public class MultimediaController : MonoBehaviour
         }
 
         StopPresentation();
+        //StartPresentation();
     }
     
     GameObject AddVideo360(string url)
