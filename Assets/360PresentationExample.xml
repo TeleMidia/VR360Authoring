@@ -21,8 +21,8 @@
     <positionBase>
       <position id="center15" r="15"/>
       <position id="pos_image_sound" r="15" theta="-30"/>
-      <position id="center30" r="30"/>
-      <position id="subtilte_pos" r="30" theta="25"/>
+      <position id="center30" r="30" phi="90"/>
+      <position id="subtitle_pos" r="15" theta="25"/>
       <position id="anchor_pos" r="4" phi="60"/>
     </positionBase>
     
@@ -32,13 +32,14 @@
     <port id="port" component="waterfall"/>
 
     <!--volume 1 is equivalent to 100% and 0 to 0%-->
-    <video360 id="waterfall" src ="waterfal.mp4" volume="1">
+    <video360 id="waterfall" src ="C:/Users/paulo/Downloads/360_VR Master Series _ Free Download _ Crystal Shower Falls.mp4" volume="0.3">
       <!--media types:
         image
         video
-        sound
+        audio
         text
         video360anchor
+        subtitle
         
         Attributes:
         follow_camera: true if media follows camera (default:false)
@@ -51,22 +52,22 @@
         volume: volume for video and sound (default:1)
         loop: if it plays in loop (for video and audio) (default:false)
       -->
-      <media type="image" start_time="0" duration="3" src="webmedia.png" position="center15" follow_camera="true"/>
-      <media type="image" start_time="3" duration="10" src="vaporwave.png" position="pos_image_sound" movement="linear1"/>
-      <media type="sound" start_time="3" volume="0.5" duration="10" src="sample.wav" position="pos_image_sound" movement="linear1"/>
-
-      <media type="video360anchor" start_time="20" duration="20" position="anchor_pos" anchor="rollercoaster"/>
+      <media type="image" start_time="0" duration="3" src="C:/Users/paulo/Pictures/WebMedia/31-10-2019-505.jpg" position="center15" follow_camera="true"/>
+      <media type="image" start_time="3" duration="10" src="C:/Users/paulo/Pictures/Saved Pictures/vapor-wave.png" position="pos_image_sound" movement="linear1"/>
+      <media type="audio" start_time="3" volume="0.5" duration="10" src="C:/Users/paulo/Downloads/sample.wav" position="pos_image_sound" movement="linear1"/>
+      
+      <media type="video360anchor" start_time="10" duration="20" position="anchor_pos" anchor="rollercoaster"/>
       
       <!--subtitle
         it reads the subtitle from a srt file and displays it according to the time on the file
         attributes: position and src
       -->
-      <subtitle position="subtitle_pos" src="jumanji.srt"/>
+      <media type="subtitle" position="subtitle_pos" src="C:/Users/paulo/Downloads/jumanji-the-next-level_HI_english-2156994/Jumanji.The.Next.Level.2019.BDRip.XviD.AC3-EVO-HI.srt"/>
     </video360>
 
-    <video360 id ="rollercoaster" src="rollercoaster.mp4" volume="1">
-      <media type="text" text="This is a rollercoaster video" start_time="2" duration="20" position="subtitle_pos"/>
-      <media type="video" start_time="10" duration="50" src="dorime.mp4" volume="1" position="center30" movement="circular1"/>
+    <video360 id ="rollercoaster" src="C:/Users/paulo/Downloads/Best VR 360 Video.mp4" volume="0.3">
+      <media type="text" text="This is a rollercoaster video" start_time="2" duration="20" position="subtitle_pos" follow_camera="true"/>
+      <media type="video" start_time="10" duration="50" src="C:/Users/paulo/Downloads/videoplayback.mp4" volume="1" position="center30" movement="circular1"/>
     </video360>
   </body>  
 </presentation360>
