@@ -28,3 +28,14 @@ public abstract class Movement
     }
     public abstract Vector3 Move(float start_r, float start_theta, float start_phi);
 }
+
+public class Position
+{
+    public float r, theta, phi;
+    public Position(float r = 0, float theta = 0, float phi = 0)
+    {
+        this.r = r;
+        this.theta = theta;
+        this.phi = phi;
+    }
+}

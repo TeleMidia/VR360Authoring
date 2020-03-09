@@ -16,7 +16,7 @@ public class Video360Controller : MonoBehaviour
     public Material Material360;
 
     private List<GameObject> other_media;
-    public void LoadVideo360(string file_path)
+    public void LoadVideo360(string file_path, float volume)
     {
         this.video360 = GetComponent<VideoPlayer>();
         video360.url = "file:///" + file_path;
@@ -25,6 +25,7 @@ public class Video360Controller : MonoBehaviour
         video360.started += StartOtherMedia;
         video360.loopPointReached += AbortOtherMedia;
         video360.loopPointReached += EndVideo360;
+        video360.SetDirectAudioVolume(volume: volume, trackIndex: 0);
     }
     public void StartVideo360()
     {
@@ -64,14 +65,14 @@ public class Video360Controller : MonoBehaviour
     }
 
     
-    public void AddMedia(GameObject mediaPrefab, float start_time, float r, float theta, float phi, string file_path = "", float volume = 0, bool loop = false, float duration = float.MaxValue, bool follow_camera = false, string text = "", Movement movement = null, GameObject controller = null)
+    public void AddMedia(GameObject mediaPrefab, float start_time=0, float r=0, float theta=0, float phi=0, string file_path = "", float volume = 0, bool loop = false, float duration = float.MaxValue, bool follow_camera = false, string text = "", Movement movement = null, GameObject controller = null)
     {
         GameObject newMedia = Instantiate(mediaPrefab);
         newMedia.GetComponent<MediaControllerAbstract>().Configure(this.gameObject, start_time, duration, file_path, r, theta, phi, volume, loop, follow_camera, text, movement, controller);        
         other_media.Add(newMedia);        
     }    
 
-    public void AddSubtitle(GameObject mediaPrefab, float r, float theta, float phi, string file_path)
+    public void AddSubtitle(GameObject mediaPrefab, string file_path, float r=0, float theta=0, float phi=0)
     {
         SubtitleFragment[] subtitleFragments = SubtitleReader.ReadSubtitles(file_path);
 

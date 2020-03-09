@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Video;
+using System.Xml;
 public class MultimediaController : MonoBehaviour
 {
     public delegate void MyHandler();
@@ -19,7 +20,7 @@ public class MultimediaController : MonoBehaviour
     private event MyHandler Port;
     private event MyHandler End;
     void Start()
-    {
+    {   
         video1 = AddVideo360("C:/Users/paulo/Downloads/360_VR Master Series _ Free Download _ Crystal Shower Falls.mp4");
         video2 = AddVideo360("C:/Users/paulo/Downloads/Best VR 360 Video.mp4");
 
@@ -83,10 +84,10 @@ public class MultimediaController : MonoBehaviour
         //StartPresentation();
     }
     
-    GameObject AddVideo360(string url)
+    GameObject AddVideo360(string src, float volume=1f)
     {
         GameObject video = Instantiate(video360Prefab);
-        video.GetComponent<Video360Controller>().LoadVideo360(url);
+        video.GetComponent<Video360Controller>().LoadVideo360(src, volume:volume);
         return video;        
     }
 
@@ -103,5 +104,142 @@ public class MultimediaController : MonoBehaviour
     {
         this.End();
         Instantiate(startPresentation);
+    }
+
+
+    public void LoadXmlFile(string file_path)
+    {
+        XmlDocument document = new XmlDocument();
+        document.Load(file_path);
+
+        if (document.LastChild.Name.Equals("presentation360"))
+        {
+            XmlNode head = document.LastChild.FirstChild;
+            XmlNode body = document.LastChild.LastChild;
+
+            Dictionary<string, Movement> movements = null;
+            Dictionary<string, Position> positions = null;
+            
+            //reading head nodes
+            foreach (XmlNode head_child in head.ChildNodes)
+            {
+                if (head_child.Name.Equals("movementBase"))
+                {
+                    movements = ReadMovements(head_child);
+                }
+                if (head_child.Name.Equals("positionBase"))
+                {
+                    positions = ReadPositions(head_child);
+                }
+            }
+
+            //reading video360 body nodes
+            Dictionary<string, GameObject> video360_objects = new Dictionary<string, GameObject>();
+            foreach (XmlNode body_child in body.ChildNodes)
+            {
+                if (body_child.Name.Equals("video360"))
+                {
+                    string id = body_child.Attributes.GetNamedItem("id").Value;
+                    string src = body_child.Attributes.GetNamedItem("src").Value;
+                    float volume = 1f;
+                    XmlNode volume_node = body_child.Attributes.GetNamedItem("volume");
+                    if(volume_node != null)
+                    {
+                        volume = float.Parse(volume_node.Value);
+                    }
+                    GameObject new_video360 = AddVideo360(src:src, volume:volume);
+                    AddAdditionalMedia(body_child, new_video360 ,movements, positions, video360_objects);
+                    video360_objects.Add(src, new_video360);
+                }
+            }
+            var port = document.DocumentElement.SelectSingleNode("//presentation360/body/port");
+
+            SetAsInitial(video360_objects[port.Attributes.GetNamedItem("component").Value]);
+        }
+    }
+
+    public void AddAdditionalMedia(XmlNode video360node, GameObject video360, Dictionary<string, Movement> movements, Dictionary<string, Position> positions, Dictionary<string, GameObject> video360_objects)
+    {
+
+    }
+
+
+    public Dictionary<string, Movement> ReadMovements(XmlNode movementBase)
+    {
+        Dictionary<string, Movement> movements = new Dictionary<string, Movement>();
+
+        foreach (XmlNode mov_node in movementBase.ChildNodes)
+        {
+            if (mov_node.Name.Equals("movement"))
+            {
+                Movement new_mov;
+                var id = mov_node.Attributes.GetNamedItem("id").Value;
+                var type = mov_node.Attributes.GetNamedItem("type").Value;
+                switch (type)
+                {
+                    case "circular":
+                        new_mov = new CircularMovement();
+                        break;
+                    default:
+                        new_mov = new LinearMovement();
+                        break;
+                }
+
+                foreach (XmlAttribute att in mov_node.Attributes)
+                {
+                    switch (att.Name)
+                    {
+                        case "r":
+                            new_mov.delta_r = float.Parse(att.Value);
+                            break;
+                        case "theta":
+                            new_mov.delta_theta = float.Parse(att.Value);
+                            break;
+                        case "phi":
+                            new_mov.delta_phi = float.Parse(att.Value);
+                            break;
+                        case "duration":
+                            new_mov.duration = float.Parse(att.Value);
+                            break;
+                    }
+                }
+                movements.Add(id, new_mov);
+            }
+        }
+
+        return movements;
+    }
+    public Dictionary<string, Position> ReadPositions(XmlNode positionBase)
+    {
+        Dictionary<string, Position> positions = new Dictionary<string, Position>();
+
+        foreach (XmlNode pos_node in positionBase.ChildNodes)
+        {
+            if (pos_node.Name.Equals("position"))
+            {
+                Position new_pos;
+                var id = pos_node.Attributes.GetNamedItem("id").Value;
+                new_pos = new Position();
+
+                foreach (XmlAttribute att in pos_node.Attributes)
+                {
+                    switch (att.Name)
+                    {
+                        case "r":
+                            new_pos.r = float.Parse(att.Value);
+                            break;
+                        case "theta":
+                            new_pos.theta = float.Parse(att.Value);
+                            break;
+                        case "phi":
+                            new_pos.phi = float.Parse(att.Value);
+                            break;
+                    }
+                }
+                positions.Add(id, new_pos);
+            }
+        }
+
+        return positions;
     }
 }

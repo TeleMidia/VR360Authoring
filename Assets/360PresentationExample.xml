@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<presentation360>
+  <head>
+    <!--
+    r - distance from sphere center
+    theta - vertical polar coordinate in degrees (positive is to down direction)
+    phi - horizontal polar coordinate in degrees (positive is to right direction)
+    
+    default values if not specified: r=0, theta=0, phi=0, duration=1
+    -->
+    <movementBase>
+      <!--linear movement: attributes define where media will be placed in the end of the movement
+        and a linear interpolation is performed for defining the media position during the movement
+          circular movement: attributes define how much the media will move
+      -->
+      <movement id="linear1" type ="linear" r="15" duration="6"/>
+      <movement id="circular1" type ="circular" phi="720" duration="10"/>
+    </movementBase>
+
+    <positionBase>
+      <position id="center15" r="15"/>
+      <position id="pos_image_sound" r="15" theta="-30"/>
+      <position id="center30" r="30"/>
+      <position id="subtilte_pos" r="30" theta="25"/>
+      <position id="anchor_pos" r="4" phi="60"/>
+    </positionBase>
+    
+  </head>
+
+  <body>
+    <port id="port" component="waterfall"/>
+
+    <!--volume 1 is equivalent to 100% and 0 to 0%-->
+    <video360 id="waterfall" src ="waterfal.mp4" volume="1">
+      <!--media types:
+        image
+        video
+        sound
+        text
+        video360anchor
+        
+        Attributes:
+        follow_camera: true if media follows camera (default:false)
+        start_time: time of start in seconds (default:0)
+        duration: media duration in seconds (default:0)
+        
+        Special Attributes
+        anchor: id of another video360 (if it is an anchor to another enhanced video360)
+        text: for a text media
+        volume: volume for video and sound (default:1)
+        loop: if it plays in loop (for video and audio) (default:false)
+      -->
+      <media type="image" start_time="0" duration="3" src="webmedia.png" position="center15" follow_camera="true"/>
+      <media type="image" start_time="3" duration="10" src="vaporwave.png" position="pos_image_sound" movement="linear1"/>
+      <media type="sound" start_time="3" volume="0.5" duration="10" src="sample.wav" position="pos_image_sound" movement="linear1"/>
+
+      <media type="video360anchor" start_time="20" duration="20" position="anchor_pos" anchor="rollercoaster"/>
+      
+      <!--subtitle
+        it reads the subtitle from a srt file and displays it according to the time on the file
+        attributes: position and src
+      -->
+      <subtitle position="subtitle_pos" src="jumanji.srt"/>
+    </video360>
+
+    <video360 id ="rollercoaster" src="rollercoaster.mp4" volume="1">
+      <media type="text" text="This is a rollercoaster video" start_time="2" duration="20" position="subtitle_pos"/>
+      <media type="video" start_time="10" duration="50" src="dorime.mp4" volume="1" position="center30" movement="circular1"/>
+    </video360>
+  </body>  
+</presentation360>

@@ -7,7 +7,7 @@ using UnityEngine;
 
 class CircularMovement: Movement
 {
-    public CircularMovement(float r, float theta, float phi, float duration) : base(r:r, theta:theta, phi:phi, duration:duration) { }
+    public CircularMovement(float r=0, float theta=0, float phi=0, float duration=1) : base(r:r, theta:theta, phi:phi, duration:duration) { }
 
     public override Vector3 Move(float start_r, float start_theta, float start_phi)
     {
