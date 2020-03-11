@@ -47,10 +47,10 @@ public class RaySelect : MonoBehaviour
 
         if (Physics.Raycast(transform.position, transform.forward, out hit, laserMaxLength))
         {
-            if (hit.collider.gameObject.CompareTag("VideoPreview"))
+            if (hit.collider.gameObject.CompareTag("TargetTransition"))
             {
-                hit.collider.gameObject.GetComponent<Video360PreviewController>().father.GetComponent<Video360Controller>().StopVideo360();
-                hit.collider.gameObject.GetComponent<Video360PreviewController>().controller.GetComponent<Video360Controller>().StartVideo360();
+                hit.collider.gameObject.GetComponent<MediaControllerAbstract>().father.GetComponent<Video360Controller>().StopVideo360();
+                hit.collider.gameObject.GetComponent<MediaControllerAbstract>().controller.GetComponent<Video360Controller>().StartVideo360();
             }
 
             if (hit.collider.gameObject.CompareTag("StartPresentation"))

@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 6104533548485137590}
   - component: {fileID: 6104533548485137577}
   - component: {fileID: 6104533548485137588}
+  - component: {fileID: 7249148953557204888}
   m_Layer: 0
   m_Name: TextPrefab
-  m_TagString: Untagged
+  m_TagString: TargetTransition
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -112,3 +113,20 @@ MonoBehaviour:
   loop: 0
   follow_camera: 0
   mainCamera: {fileID: 0}
+  controller: {fileID: 0}
+  father: {fileID: 0}
+  previewTime: 
+--- !u!64 &7249148953557204888
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6104533548485137576}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 0}

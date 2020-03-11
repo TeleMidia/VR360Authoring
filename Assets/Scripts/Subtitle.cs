@@ -9,18 +9,18 @@ using System.Threading;
 
 public class SubtitleFragment
 {
-    public float start_time, duration;
+    public float begin, duration;
     public string text;
-    public SubtitleFragment(float start_time, float duration, string text)
+    public SubtitleFragment(float begin, float duration, string text)
     {
-        this.start_time = start_time;
+        this.begin = begin;
         this.duration = duration;
         this.text = text;
     }
 
     public override string ToString()
     {
-        return "Start Time: " + start_time + " Duration: " + duration + "\n" + text;
+        return "Start Time: " + begin + " Duration: " + duration + "\n" + text;
     }
 }
 
@@ -51,7 +51,7 @@ public class SubtitleReader
 
             Console.WriteLine("Start: " + t_start.TotalSeconds + " Duration: " + (t_end.TotalSeconds - t_start.TotalSeconds));
 
-            float start_time = (float)t_start.TotalSeconds;
+            float begin = (float)t_start.TotalSeconds;
             float duration = (float)(t_end.TotalSeconds - t_start.TotalSeconds);
 
             string text = s.Replace(first_line + "\n", "");
@@ -59,7 +59,7 @@ public class SubtitleReader
             text = text.Replace("</font>", "</color>");
             Console.WriteLine("Text:" + text);
 
-            subtitleFragments[i++] = new SubtitleFragment(start_time: start_time, duration: duration, text: text);
+            subtitleFragments[i++] = new SubtitleFragment(begin: begin, duration: duration, text: text);
         }
 
         return subtitleFragments;

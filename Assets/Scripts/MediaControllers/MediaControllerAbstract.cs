@@ -18,6 +18,7 @@ public abstract class MediaControllerAbstract: MonoBehaviour
     private Vector3 start_pos;
     public GameObject controller;
     public GameObject father;
+    public string previewTime;
 
     private void InvokePlayStop()
     {
@@ -30,10 +31,12 @@ public abstract class MediaControllerAbstract: MonoBehaviour
     private void PlayMovement()
     {
         this.isMoving = true;
+        if(GetComponent<Collider>()!=null) GetComponent<Collider>().enabled = true;
     }
 
     private void StopMovement()
     {
+        if (GetComponent<Collider>() != null) GetComponent<Collider>().enabled = false;
         this.isMoving = false;
     }
 
@@ -56,7 +59,7 @@ public abstract class MediaControllerAbstract: MonoBehaviour
         }
     }
 
-    public virtual void Configure(GameObject father, float start_time, float duration, string file_path, float r, float theta, float phi, float volume, bool loop, bool follow_camera, string text, Movement movement, GameObject controller)
+    public virtual void Configure(GameObject father, float start_time, float duration, string file_path, float r, float theta, float phi, float volume, bool loop, bool follow_camera, string text, Movement movement, GameObject controller, string previewTime)
     {
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         this.start_time = start_time;
@@ -73,6 +76,7 @@ public abstract class MediaControllerAbstract: MonoBehaviour
         this.isMoving = false;
         this.controller = controller;
         this.father = father;
+        this.previewTime = previewTime;
 
         this.origin = new Vector3(0, 0, r);
         this.start_pos = Utils.PolarToCartesian(this.origin, theta, phi);
@@ -101,6 +105,7 @@ public abstract class MediaControllerAbstract: MonoBehaviour
 
     public void AbortMedia()
     {
+        if (GetComponent<Collider>() != null) GetComponent<Collider>().enabled = false;
         StopMedia();
         CancelInvoke();
     }

@@ -65,21 +65,21 @@ public class Video360Controller : MonoBehaviour
     }
 
     
-    public void AddMedia(GameObject mediaPrefab, float start_time=0, float r=0, float theta=0, float phi=0, string file_path = "", float volume = 0, bool loop = false, float duration = float.MaxValue, bool follow_camera = false, string text = "", Movement movement = null, GameObject controller = null)
+    public void AddMedia(GameObject mediaPrefab, float begin=0, float r=0, float theta=0, float phi=0, string file_path = "", float volume = 0, bool loop = false, float duration = float.MaxValue, bool follow_camera = false, string text = "", Movement movement = null, GameObject controller = null, string previewTime = "0s,5s")
     {
         GameObject newMedia = Instantiate(mediaPrefab);
-        newMedia.GetComponent<MediaControllerAbstract>().Configure(this.gameObject, start_time, duration, file_path, r, theta, phi, volume, loop, follow_camera, text, movement, controller);        
+        newMedia.GetComponent<MediaControllerAbstract>().Configure(this.gameObject, begin, duration, file_path, r, theta, phi, volume, loop, follow_camera, text, movement, controller, previewTime);        
         other_media.Add(newMedia);        
     }    
 
-    public void AddSubtitle(GameObject mediaPrefab, string file_path, float r=0, float theta=0, float phi=0)
+    public void AddSubtitle(GameObject mediaPrefab, string file_path, float r=0, float theta=0, float phi=0, GameObject controller = null)
     {
         SubtitleFragment[] subtitleFragments = SubtitleReader.ReadSubtitles(file_path);
 
         foreach(SubtitleFragment subtitleFragment in subtitleFragments)
         {
-            AddMedia(mediaPrefab: mediaPrefab, start_time: subtitleFragment.start_time, duration: subtitleFragment.duration, text: subtitleFragment.text,
-                r:r, theta:theta, phi:phi, follow_camera:true);
+            AddMedia(mediaPrefab: mediaPrefab, begin: subtitleFragment.begin, duration: subtitleFragment.duration, text: subtitleFragment.text,
+                r:r, theta:theta, phi:phi, follow_camera:true, controller:controller);
         }
     }
 }

@@ -5,8 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Video360
-  - VideoPreview
   - StartPresentation
+  - TargetTransition
   layers:
   - Default
   - TransparentFX
