@@ -36,6 +36,7 @@ public class PreviewController : MediaControllerAbstract
 
     private void PlayVideoPreview()
     {
+        GetComponent<VideoPlayer>().Prepare();
         GetComponent<VideoPlayer>().time = startpreview;
         GetComponent<VideoPlayer>().Play();
         Invoke("PauseVideoPreview", stoppreview - startpreview);
@@ -48,7 +49,7 @@ public class PreviewController : MediaControllerAbstract
 
     public override void StopMedia()
     {
-        CancelInvoke();
+        //CancelInvoke();
         GetComponent<VideoPlayer>().Stop();
         GetComponent<MeshRenderer>().enabled = false;
     }

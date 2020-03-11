@@ -25,7 +25,7 @@ public class RaySelect : MonoBehaviour
     void Update()
     {
         laserLineRenderer.startWidth = laserWidth;
-        laserLineRenderer.endWidth = laserWidth;
+        laserLineRenderer.endWidth = laserWidth*2;
         ShootLaserFromTargetPosition(transform.position, transform.forward, laserMaxLength);
 
     }
@@ -34,7 +34,16 @@ public class RaySelect : MonoBehaviour
     {
         Ray ray = new Ray(targetPosition, direction);
         RaycastHit raycastHit;
-        Vector3 endPosition = targetPosition + (length * direction);
+        Vector3 endPosition;
+
+        if (Physics.Raycast(transform.position, transform.forward, out raycastHit, laserMaxLength))
+        {
+            endPosition = raycastHit.collider.gameObject.transform.position;
+        }
+        else
+        {
+            endPosition = targetPosition + (length * direction);
+        }
 
         laserLineRenderer.SetPosition(0, targetPosition);
         laserLineRenderer.SetPosition(1, endPosition);

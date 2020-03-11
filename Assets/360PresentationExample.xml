@@ -78,9 +78,9 @@
     <scene360 id="garden" src ="C:/Users/paulo/Videos/Video360_4k/Botanical Garden.mp4" volume="0.3"></scene360>
     
     <scene360 id="christ" src ="C:/Users/paulo/Videos/Video360_4k/christ.mp4" volume="0.3">
-      <preview begin="5s" previewTime="15s,18s" shape="sphere" duration="30s" position="anchor_pos" target="sugar_loaf"/>
-      <preview begin="5s" previewTime="5s,10s" shape="plain" duration="30s" position="center30" target="rollercoaster"/>
-      <video begin="5s" duration="30s" src="C:/Users/paulo/Downloads/videoplayback.mp4" volume="1" position="center30esq" target="ipanema"/>
+      <preview begin="5s" previewTime="15s,18s" shape="sphere" duration="10s" position="anchor_pos" target="sugar_loaf"/>
+      <preview begin="15s" previewTime="5s,10s" shape="plain" duration="10s" position="center30" target="rollercoaster"/>
+      <video begin="5s" duration="30s" src="C:/Users/paulo/Downloads/videoplayback.mp4" volume="1" position="center30esq" target="ipanema" loop="true"/>
       <text text="Click here to go to ipanema beach" begin="5s" duration="30s" position="center30esqUP"/>
 
       <image begin="5s" duration="30s" src="C:/Users/paulo/Pictures/WebMedia/31-10-2019-505.jpg" position="center60esq" target="sugar_loaf"/>      
