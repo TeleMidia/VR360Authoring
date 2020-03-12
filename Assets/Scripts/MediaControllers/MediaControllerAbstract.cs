@@ -16,11 +16,12 @@ public abstract class MediaControllerAbstract: MonoBehaviour
     private Movement movement;
     private bool isMoving;
     private Vector3 start_pos;
-    public GameObject controller;
+    public string target_name, id;
+    public GameObject target;
     public GameObject father;
     public string previewTime;
 
-    private void InvokePlayStop()
+    public void InvokePlayStop()
     {
         PlayMedia();
         PlayMovement();
@@ -59,9 +60,10 @@ public abstract class MediaControllerAbstract: MonoBehaviour
         }
     }
 
-    public virtual void Configure(GameObject father, float start_time, float duration, string file_path, float r, float theta, float phi, float volume, bool loop, bool follow_camera, string text, Movement movement, GameObject controller, string previewTime)
+    public virtual void Configure(string id, GameObject father, float start_time, float duration, string file_path, float r, float theta, float phi, float volume, bool loop, bool follow_camera, string text, Movement movement, string target_name, string previewTime)
     {
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+        this.id = id;
         this.start_time = start_time;
         this.duration = duration;
         this.volume = volume;
@@ -74,7 +76,7 @@ public abstract class MediaControllerAbstract: MonoBehaviour
         this.r = r;
         this.movement = movement;
         this.isMoving = false;
-        this.controller = controller;
+        this.target_name = target_name;
         this.father = father;
         this.previewTime = previewTime;
 
@@ -96,7 +98,7 @@ public abstract class MediaControllerAbstract: MonoBehaviour
         
         this.transform.Rotate(new Vector3(0, 180, 0));
 
-        Load();
+        //Load();
     }
 
     public abstract void Load();

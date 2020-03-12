@@ -10,7 +10,7 @@ public class PreviewController : MediaControllerAbstract
     private float stoppreview;
     public override void Load()
     {
-        GetComponent<VideoPlayer>().url = controller.GetComponent<VideoPlayer>().url;
+        GetComponent<VideoPlayer>().url = target.GetComponent<VideoPlayer>().url;
         GetComponent<VideoPlayer>().Prepare();
         string[] numbers = Regex.Split(previewTime, @"\D+");
         Debug.Log("Quantidade: " + numbers.Length);
@@ -26,6 +26,7 @@ public class PreviewController : MediaControllerAbstract
         }
         startpreview = times[0];
         stoppreview = times[1];
+        GetComponent<VideoPlayer>().time = startpreview;
     }
 
     public override void PlayMedia()
@@ -36,14 +37,14 @@ public class PreviewController : MediaControllerAbstract
 
     private void PlayVideoPreview()
     {
-        GetComponent<VideoPlayer>().Prepare();
-        GetComponent<VideoPlayer>().time = startpreview;
+        GetComponent<VideoPlayer>().Prepare();        
         GetComponent<VideoPlayer>().Play();
         Invoke("PauseVideoPreview", stoppreview - startpreview);
     }
     private void PauseVideoPreview()
     {
         GetComponent<VideoPlayer>().Pause();
+        GetComponent<VideoPlayer>().time = startpreview;
         PlayVideoPreview();
     }
 

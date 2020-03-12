@@ -59,7 +59,8 @@ public class RaySelect : MonoBehaviour
             if (hit.collider.gameObject.CompareTag("TargetTransition"))
             {
                 hit.collider.gameObject.GetComponent<MediaControllerAbstract>().father.GetComponent<Video360Controller>().StopVideo360();
-                hit.collider.gameObject.GetComponent<MediaControllerAbstract>().controller.GetComponent<Video360Controller>().StartVideo360();
+                hit.collider.gameObject.GetComponent<MediaControllerAbstract>().target.SetActive(true);
+                hit.collider.gameObject.GetComponent<MediaControllerAbstract>().target.GetComponent<Video360Controller>().StartVideo360();
             }
 
             if (hit.collider.gameObject.CompareTag("StartPresentation"))
