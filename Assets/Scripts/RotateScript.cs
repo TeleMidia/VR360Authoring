@@ -16,7 +16,7 @@ public class RotateScript : MonoBehaviour
     void Update()
     {
         if (Input.GetMouseButton(0))
-        {      
+        {
             transform.Rotate(new Vector3(-Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0f) * speed * Time.deltaTime, Space.Self);
             transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, 0);
         }

@@ -47,7 +47,10 @@ public abstract class MediaControllerAbstract: MonoBehaviour
         {
             this.movement.Replace();
         }
-        Invoke("InvokePlayStop", start_time);        
+        if (this.start_time >= 0)
+        {
+            Invoke("InvokePlayStop", start_time);
+        }
     }
 
     private void Update()
