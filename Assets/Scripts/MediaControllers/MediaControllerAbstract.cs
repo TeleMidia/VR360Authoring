@@ -41,6 +41,14 @@ public abstract class MediaControllerAbstract: MonoBehaviour
         this.isMoving = false;
     }
 
+    public bool IsPlaying
+    {
+        get
+        {
+            return this.isMoving;
+        }
+    }
+
     public void PrepareAnchors()
     {
         if (this.movement != null)
@@ -110,7 +118,7 @@ public abstract class MediaControllerAbstract: MonoBehaviour
 
     public void AbortMedia()
     {
-        if (GetComponent<Collider>() != null) GetComponent<Collider>().enabled = false;
+        StopMovement();
         StopMedia();
         CancelInvoke();
     }

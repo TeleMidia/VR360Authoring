@@ -253,6 +253,8 @@ MonoBehaviour:
     type: 3}
   roiPrefab: {fileID: 5070431098888724027, guid: a3aad52f7e462944480b9bcb0f79ab38,
     type: 3}
+  u_roiPrefab: {fileID: 5070431098888724027, guid: cdda1dd48e541454e85917ce75bec537,
+    type: 3}
   imagePrefab: {fileID: 2458419030772916761, guid: a13964ebd9658c246b6a107488d48cb3,
     type: 3}
   audioPrefab: {fileID: 2108939953433365681, guid: 1c52a48a70cc4834b8b0dd8674858ae3,
@@ -372,13 +374,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 534669902}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!114 &534669906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -404,6 +406,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e119f8eb118aae54299a16b52b975a11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  u_roi_objects: []
 --- !u!1 &719624739 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 124034, guid: 4d293c8e162f3874b982baadd71153d2,

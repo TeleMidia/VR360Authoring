@@ -89,7 +89,7 @@
       <image id="sugar_loaf_image" begin="5s" duration="30s" src="C:/Users/paulo/Pictures/sugar-loaf.jpg" position="center60esq" target="sugar_loaf"/>      
       <text id ="sugar_loaf_text" text="Click here to go to the sugar loaf" begin="5s" duration="30s" position="center60esqUP"/>
       -->
-      <roi id="roi_1" begin="5s" duration="120s" position="top_pos" target="telemidia" />
+      <u_roi id="roi_1" begin="5s" duration="120s" position="top_pos" target="telemidia" />
 
       <image id="telemidia" src="C:/Users/paulo/Pictures/telemidia.jpg" duration="20s" position="center30esq" />
     </scene360>

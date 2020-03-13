@@ -15,7 +15,7 @@ public class MultimediaController : MonoBehaviour
     public GameObject previewSphere, previewPlain;
 
     [Header("ROI 360")]
-    public GameObject roiPrefab;
+    public GameObject roiPrefab, u_roiPrefab;
 
     [Header("Common Media")]
     public GameObject imagePrefab, audioPrefab, videoPrefab, textPrefab;
@@ -212,7 +212,7 @@ public class MultimediaController : MonoBehaviour
     {
         foreach (XmlNode mediaNode in scene360node.ChildNodes)
         {
-            string[] mediaTypes = {"image", "audio", "video", "text", "preview", "subtitle", "roi"};
+            string[] mediaTypes = {"image", "audio", "video", "text", "preview", "subtitle", "roi", "u_roi"};
             if (mediaTypes.Contains(mediaNode.Name)){
                 float begin = mediaNode.Attributes.GetNamedItem("begin") != null? float.Parse(mediaNode.Attributes.GetNamedItem("begin").Value.Replace("s", "")): -1;
                 float duration = mediaNode.Attributes.GetNamedItem("duration") != null ? float.Parse(mediaNode.Attributes.GetNamedItem("duration").Value.Replace("s", "")) : 0;
@@ -269,6 +269,9 @@ public class MultimediaController : MonoBehaviour
                         break;
                     case "roi":
                         mediaObject = video360.GetComponent<Video360Controller>().AddMedia(id, roiPrefab, begin:begin, duration:duration, r:r, theta:theta, phi:phi, target_name:target_name);
+                        break;
+                    case "u_roi":
+                        mediaObject = video360.GetComponent<Video360Controller>().AddMedia(id, u_roiPrefab, begin: begin, duration: duration, r: r, theta: theta, phi: phi, target_name: target_name);
                         break;
                 } 
                 if(mediaObject != null)
