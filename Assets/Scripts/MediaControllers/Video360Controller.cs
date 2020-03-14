@@ -65,23 +65,28 @@ public class Video360Controller : MonoBehaviour
     }
 
     
-    public GameObject AddMedia(string id, GameObject mediaPrefab, float begin=0, float r=0, float theta=0, float phi=0, string file_path = "", float volume = 0, bool loop = false, float duration = float.MaxValue, bool follow_camera = false, string text = "", Movement movement = null, string target_name="", string previewTime = "0s,5s")
+    public GameObject AddMedia(string id, GameObject mediaPrefab, float begin=0, float r=0, float theta=0, float phi=0, string file_path = "", float volume = 0, bool loop = false, float duration = float.MaxValue, bool follow_camera = false, string text = "", Movement movement = null, string on_select_name = "", string during_out_of_focus_name="", string on_focus_name="", string previewTime = "0s,5s")
     {
         GameObject newMedia = Instantiate(mediaPrefab);
-        newMedia.GetComponent<MediaControllerAbstract>().Configure(id, this.gameObject, begin, duration, file_path, r, theta, phi, volume, loop, follow_camera, text, movement, target_name, previewTime);        
+        newMedia.GetComponent<MediaControllerAbstract>().Configure(id:id, father:this.gameObject, start_time:begin, 
+                                                                   duration:duration, file_path:file_path, r:r, theta:theta, 
+                                                                   phi:phi, volume:volume, loop:loop, follow_camera:follow_camera,
+                                                                   text:text, movement:movement, on_select_name:on_select_name,
+                                                                   previewTime:previewTime, on_focus_name:on_focus_name, 
+                                                                   during_out_of_focus_name: during_out_of_focus_name);        
         other_media.Add(newMedia);
 
         return newMedia;
     }    
 
-    public void AddSubtitle(string id, GameObject mediaPrefab, string file_path, float r=0, float theta=0, float phi=0, string target_name = "")
+    public void AddSubtitle(string id, GameObject mediaPrefab, string file_path, float r=0, float theta=0, float phi=0, string on_select_name = "")
     {
         SubtitleFragment[] subtitleFragments = SubtitleReader.ReadSubtitles(file_path);
         int i = 0;
         foreach(SubtitleFragment subtitleFragment in subtitleFragments)
         {
             AddMedia(id+"_"+(i++),mediaPrefab: mediaPrefab, begin: subtitleFragment.begin, duration: subtitleFragment.duration, text: subtitleFragment.text,
-                r:r, theta:theta, phi:phi, follow_camera:true, target_name: target_name);
+                r:r, theta:theta, phi:phi, follow_camera:true, on_select_name: on_select_name);
         }
     }
 }

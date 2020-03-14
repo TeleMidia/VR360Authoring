@@ -10,7 +10,7 @@ public class PreviewController : MediaControllerAbstract
     private float stoppreview;
     public override void Load()
     {
-        GetComponent<VideoPlayer>().url = target.GetComponent<VideoPlayer>().url;
+        GetComponent<VideoPlayer>().url = on_select_object.GetComponent<VideoPlayer>().url;
         GetComponent<VideoPlayer>().Prepare();
         string[] numbers = Regex.Split(previewTime, @"\D+");
         Debug.Log("Quantidade: " + numbers.Length);

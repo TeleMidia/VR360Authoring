@@ -193,12 +193,22 @@ public class MultimediaController : MonoBehaviour
                 MediaControllerAbstract mediaControllerAbstract = curMedia.GetComponent<MediaControllerAbstract>();
                 if(mediaControllerAbstract != null)
                 {
-                    Debug.Log("ID: "+media_id+" Target: "+mediaControllerAbstract.target_name);
-                    if(scene_objects.Keys.Contains(mediaControllerAbstract.target_name)){
-                        mediaControllerAbstract.target = scene_objects[mediaControllerAbstract.target_name];
-                        Debug.Log("Added target "+mediaControllerAbstract.target_name);
+                    if(scene_objects.Keys.Contains(mediaControllerAbstract.on_select_name)){
+                        mediaControllerAbstract.on_select_object = scene_objects[mediaControllerAbstract.on_select_name];
                     }
                     mediaControllerAbstract.Load();
+                }
+                RoiController roiController = curMedia.GetComponent<RoiController>();
+                if(roiController != null)
+                {
+                    if (scene_objects.Keys.Contains(roiController.on_focus_name))
+                    {
+                        roiController.on_focus_object = scene_objects[roiController.on_focus_name];
+                    }
+                    if (scene_objects.Keys.Contains(roiController.during_out_of_focus_name))
+                    {
+                        roiController.during_out_of_focus_object = scene_objects[roiController.during_out_of_focus_name];
+                    }
                 }
             }
 
@@ -212,7 +222,7 @@ public class MultimediaController : MonoBehaviour
     {
         foreach (XmlNode mediaNode in scene360node.ChildNodes)
         {
-            string[] mediaTypes = {"image", "audio", "video", "text", "preview", "subtitle", "roi", "u_roi"};
+            string[] mediaTypes = {"image", "audio", "video", "text", "preview", "subtitle", "roi"};
             if (mediaTypes.Contains(mediaNode.Name)){
                 float begin = mediaNode.Attributes.GetNamedItem("begin") != null? float.Parse(mediaNode.Attributes.GetNamedItem("begin").Value.Replace("s", "")): -1;
                 float duration = mediaNode.Attributes.GetNamedItem("duration") != null ? float.Parse(mediaNode.Attributes.GetNamedItem("duration").Value.Replace("s", "")) : 0;
@@ -222,10 +232,9 @@ public class MultimediaController : MonoBehaviour
                 string src = mediaNode.Attributes.GetNamedItem("src") != null ? mediaNode.Attributes.GetNamedItem("src").Value : "";
                 string text = mediaNode.Attributes.GetNamedItem("text") != null ? mediaNode.Attributes.GetNamedItem("text").Value : "";
                 Movement movement = mediaNode.Attributes.GetNamedItem("movement") != null ? movements[mediaNode.Attributes.GetNamedItem("movement").Value] : null;
-                string target_name = mediaNode.Attributes.GetNamedItem("target") != null ? mediaNode.Attributes.GetNamedItem("target").Value : "";
+                string on_select_name = mediaNode.Attributes.GetNamedItem("on_select") != null ? mediaNode.Attributes.GetNamedItem("on_select").Value : "";
                 string id = mediaNode.Attributes.GetNamedItem("id") != null ? mediaNode.Attributes.GetNamedItem("id").Value : "";
                 Position position = mediaNode.Attributes.GetNamedItem("position") != null ? positions[mediaNode.Attributes.GetNamedItem("position").Value] : null; 
-                string previewTime = mediaNode.Attributes.GetNamedItem("previewTime") != null ? mediaNode.Attributes.GetNamedItem("previewTime").Value : "0s,5s";
                 float r = 0, theta = 0, phi = 0;                
                 
                 if(position != null)
@@ -240,7 +249,7 @@ public class MultimediaController : MonoBehaviour
                     case "image":
                         mediaObject = video360.GetComponent<Video360Controller>().AddMedia(id, imagePrefab, begin: begin, duration:duration,
                             r: r, theta: theta, phi: phi, movement: movement, file_path:src, follow_camera:follow_camera,
-                            target_name: target_name);
+                            on_select_name: on_select_name);
 
                         break;
                     case "audio":
@@ -251,28 +260,32 @@ public class MultimediaController : MonoBehaviour
                     case "video":
                         mediaObject = video360.GetComponent<Video360Controller>().AddMedia(id, videoPrefab, begin: begin, duration: duration,
                             r: r, theta: theta, phi: phi, movement: movement, file_path: src, follow_camera: follow_camera,
-                            volume: volume, loop: loop, target_name: target_name);
+                            volume: volume, loop: loop, on_select_name: on_select_name);
                         break;
                     case "text":
                         mediaObject = video360.GetComponent<Video360Controller>().AddMedia(id, textPrefab, begin: begin, duration: duration,
                             r: r, theta: theta, phi: phi, movement: movement, follow_camera: follow_camera, text:text,
-                            target_name: target_name);
+                            on_select_name: on_select_name);
                         break;
                     case "subtitle":
-                        video360.GetComponent<Video360Controller>().AddSubtitle(id, textPrefab, file_path:src, r: r, theta: theta, phi: phi, target_name: target_name);
+                        video360.GetComponent<Video360Controller>().AddSubtitle(id, textPrefab, file_path:src, r: r, theta: theta, phi: phi, on_select_name: on_select_name);
                         break;
                     case "preview":
+                        string previewTime = mediaNode.Attributes.GetNamedItem("preview_time") != null ? mediaNode.Attributes.GetNamedItem("preview_time").Value : "0s,5s";
                         string shape = mediaNode.Attributes.GetNamedItem("shape") != null ? mediaNode.Attributes.GetNamedItem("shape").Value : "";
                         GameObject preview = shape.Equals("sphere")?previewSphere:previewPlain;
                         mediaObject = video360.GetComponent<Video360Controller>().AddMedia(id, preview, begin: begin, duration: duration,
-                            r: r, theta: theta, phi: phi, movement: movement, follow_camera: follow_camera, target_name: target_name, previewTime:previewTime);
+                            r: r, theta: theta, phi: phi, movement: movement, follow_camera: follow_camera, on_select_name: on_select_name, previewTime:previewTime);
                         break;
                     case "roi":
-                        mediaObject = video360.GetComponent<Video360Controller>().AddMedia(id, roiPrefab, begin:begin, duration:duration, r:r, theta:theta, phi:phi, target_name:target_name);
+                        string during_out_of_focus_name = mediaNode.Attributes.GetNamedItem("during_out_of_focus") != null ? mediaNode.Attributes.GetNamedItem("during_out_of_focus").Value : "";
+                        string on_focus_name = mediaNode.Attributes.GetNamedItem("on_focus") != null ? mediaNode.Attributes.GetNamedItem("on_focus").Value : "";
+
+                        mediaObject = video360.GetComponent<Video360Controller>().AddMedia(id, roiPrefab, begin:begin, duration:duration, r:r, theta:theta, phi:phi, on_focus_name:on_focus_name, during_out_of_focus_name:during_out_of_focus_name);
                         break;
-                    case "u_roi":
+                    /*case "u_roi":
                         mediaObject = video360.GetComponent<Video360Controller>().AddMedia(id, u_roiPrefab, begin: begin, duration: duration, r: r, theta: theta, phi: phi, target_name: target_name);
-                        break;
+                        break;*/
                 } 
                 if(mediaObject != null)
                 {

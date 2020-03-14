@@ -81,17 +81,17 @@
     
     <scene360 id="christ" src ="C:/Users/paulo/Videos/Video360_4k/christ.mp4" volume="0.3">
       <!--
-      <preview id ="preview_sugar_loaf" begin="5s" previewTime="15s,18s" shape="sphere" duration="10s" position="anchor_pos" target="sugar_loaf"/>
-      <preview id ="preview_roller" begin="15s" previewTime="5s,10s" shape="plain" duration="10s" position="center30" target="rollercoaster"/>
-      <image id="ipanema_image" begin="5s" duration="30s" src="C:/Users/paulo/Pictures/ipanema.jpg" position="center30esq" target="ipanema" loop="true"/>
+      <preview id ="preview_sugar_loaf" begin="5s" previewTime="15s,18s" shape="sphere" duration="10s" position="anchor_pos" on_select="sugar_loaf"/>
+      <preview id ="preview_roller" begin="15s" previewTime="5s,10s" shape="plain" duration="10s" position="center30" on_select="rollercoaster"/>
+      <image id="ipanema_image" begin="5s" duration="30s" src="C:/Users/paulo/Pictures/ipanema.jpg" position="center30esq" on_select="ipanema" loop="true"/>
       <text id ="ipanema_text" text="Click here to go to ipanema beach" begin="5s" duration="30s" position="center30esqUP"/>
 
-      <image id="sugar_loaf_image" begin="5s" duration="30s" src="C:/Users/paulo/Pictures/sugar-loaf.jpg" position="center60esq" target="sugar_loaf"/>      
+      <image id="sugar_loaf_image" begin="5s" duration="30s" src="C:/Users/paulo/Pictures/sugar-loaf.jpg" position="center60esq" on_select="sugar_loaf"/>      
       <text id ="sugar_loaf_text" text="Click here to go to the sugar loaf" begin="5s" duration="30s" position="center60esqUP"/>
       -->
-      <u_roi id="roi_1" begin="5s" duration="120s" position="top_pos" target="telemidia" />
+      <roi id="roi_1" begin="5s" duration="120s" position="top_pos" on_focus="telemidia"/>
 
-      <image id="telemidia" src="C:/Users/paulo/Pictures/telemidia.jpg" duration="20s" position="center30esq" />
+      <image id="telemidia" src="C:/Users/paulo/Pictures/telemidia.jpg" duration="20s" position="center30esq"  follow_camera="true"/>
     </scene360>
     <scene360 id="sugar_loaf" src ="C:/Users/paulo/Videos/Video360_4k/Sugar_loaf.mp4" volume="0.3"></scene360>
   </body>  

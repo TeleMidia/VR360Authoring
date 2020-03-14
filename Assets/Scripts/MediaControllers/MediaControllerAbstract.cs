@@ -16,8 +16,8 @@ public abstract class MediaControllerAbstract: MonoBehaviour
     private Movement movement;
     private bool isMoving;
     private Vector3 start_pos;
-    public string target_name, id;
-    public GameObject target;
+    public string on_select_name, on_focus_name, during_out_of_focus_name, id;
+    public GameObject on_select_object, on_focus_object, during_out_of_focus_object;
     public GameObject father;
     public string previewTime;
 
@@ -71,7 +71,11 @@ public abstract class MediaControllerAbstract: MonoBehaviour
         }
     }
 
-    public virtual void Configure(string id, GameObject father, float start_time, float duration, string file_path, float r, float theta, float phi, float volume, bool loop, bool follow_camera, string text, Movement movement, string target_name, string previewTime)
+    public virtual void Configure(string id, GameObject father, float start_time, float duration, 
+                                string file_path, float r, float theta, float phi, float volume, 
+                                bool loop, bool follow_camera, string text, Movement movement, 
+                                string on_select_name, string on_focus_name, string during_out_of_focus_name,
+                                string previewTime)
     {
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         this.id = id;
@@ -87,7 +91,9 @@ public abstract class MediaControllerAbstract: MonoBehaviour
         this.r = r;
         this.movement = movement;
         this.isMoving = false;
-        this.target_name = target_name;
+        this.on_select_name = on_select_name;
+        this.on_focus_name = on_focus_name;
+        this.during_out_of_focus_name = during_out_of_focus_name;
         this.father = father;
         this.previewTime = previewTime;
 

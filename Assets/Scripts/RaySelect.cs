@@ -36,9 +36,12 @@ public class RaySelect : MonoBehaviour
         RaycastHit raycastHit;
         Vector3 endPosition;
 
-        if (Physics.Raycast(transform.position, transform.forward, out raycastHit, laserMaxLength))
+        if (Physics.Raycast(transform.position, transform.forward, out raycastHit, laserMaxLength) &&
+            (raycastHit.collider.gameObject.CompareTag("TargetTransition") ||
+            raycastHit.collider.gameObject.CompareTag("StartPresentation")))
         {
-            endPosition = raycastHit.collider.gameObject.transform.position;
+            
+           endPosition = raycastHit.collider.gameObject.transform.position;
         }
         else
         {
@@ -59,8 +62,8 @@ public class RaySelect : MonoBehaviour
             if (hit.collider.gameObject.CompareTag("TargetTransition"))
             {
                 hit.collider.gameObject.GetComponent<MediaControllerAbstract>().father.GetComponent<Video360Controller>().StopVideo360();
-                hit.collider.gameObject.GetComponent<MediaControllerAbstract>().target.SetActive(true);
-                hit.collider.gameObject.GetComponent<MediaControllerAbstract>().target.GetComponent<Video360Controller>().StartVideo360();
+                hit.collider.gameObject.GetComponent<MediaControllerAbstract>().on_select_object.SetActive(true);
+                hit.collider.gameObject.GetComponent<MediaControllerAbstract>().on_select_object.GetComponent<Video360Controller>().StartVideo360();
             }
 
             if (hit.collider.gameObject.CompareTag("StartPresentation"))
