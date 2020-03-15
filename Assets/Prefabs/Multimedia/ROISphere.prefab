@@ -49,7 +49,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5070431098888724027}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -112,8 +112,13 @@ MonoBehaviour:
   loop: 0
   follow_camera: 0
   mainCamera: {fileID: 0}
-  target_name: 
+  on_select_name: 
+  on_focus_name: 
+  during_out_of_focus_name: 
   id: 
-  target: {fileID: 0}
+  on_select_object: {fileID: 0}
+  on_focus_object: {fileID: 0}
+  during_out_of_focus_object: {fileID: 0}
+  src_roi_object: {fileID: 0}
   father: {fileID: 0}
   previewTime: 

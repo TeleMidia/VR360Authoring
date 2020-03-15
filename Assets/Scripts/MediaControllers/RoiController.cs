@@ -11,11 +11,11 @@ public class RoiController : MediaControllerAbstract
 
     public override void PlayMedia()
     {
-        GetComponent<MeshRenderer>().enabled = true;
+        //GetComponent<MeshRenderer>().enabled = true;
     }
 
     public override void StopMedia()
     {
-        GetComponent<MeshRenderer>().enabled = false;
+        //GetComponent<MeshRenderer>().enabled = false;
     }
 }

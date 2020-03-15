@@ -17,7 +17,7 @@ public abstract class MediaControllerAbstract: MonoBehaviour
     private bool isMoving;
     private Vector3 start_pos;
     public string on_select_name, on_focus_name, during_out_of_focus_name, id;
-    public GameObject on_select_object, on_focus_object, during_out_of_focus_object;
+    public GameObject on_select_object, on_focus_object, during_out_of_focus_object, src_roi_object;
     public GameObject father;
     public string previewTime;
 

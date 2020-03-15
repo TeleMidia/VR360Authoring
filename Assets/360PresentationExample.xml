@@ -20,7 +20,7 @@
 
     <positionBase>
       <position id="center60esq" r="30" phi="-60"/>
-      <position id="center30esq" r="30" phi="-30"/>
+      <position id="center30esq" r="4" phi="-30"/>
 
       <position id="center60esqUP" r="15" phi="-60" theta="10"/>
       <position id="center30esqUP" r="15" phi="-30" theta="10"/>
@@ -30,7 +30,7 @@
       <position id="subtitle_pos" r="15" theta="25"/>
       <position id="anchor_pos" r="4" phi="0"/>
 
-      <position id="top_pos" r="1" theta="-90"/>
+      <position id="forward_pos" r="1" theta="0" phi="0"/>
     </positionBase>
     
   </head>
@@ -51,7 +51,7 @@
         Attributes:
         follow_camera: true if media follows camera (default:false)
         start_time: time of start in seconds (default:0)
-        duration: media duration in seconds (default:0)
+        duration: media duration in seconds (default:infinite)
         
         Special Attributes
         anchor: id of another video360 (if it is an anchor to another enhanced video360)
@@ -88,10 +88,12 @@
 
       <image id="sugar_loaf_image" begin="5s" duration="30s" src="C:/Users/paulo/Pictures/sugar-loaf.jpg" position="center60esq" on_select="sugar_loaf"/>      
       <text id ="sugar_loaf_text" text="Click here to go to the sugar loaf" begin="5s" duration="30s" position="center60esqUP"/>
-      -->
-      <roi id="roi_1" begin="5s" duration="120s" position="top_pos" on_focus="telemidia"/>
-
       <image id="telemidia" src="C:/Users/paulo/Pictures/telemidia.jpg" duration="20s" position="center30esq"  follow_camera="true"/>
+      
+      -->
+      <mirror id="mirror1" src="roi_1" position="center30esq" follow_camera="true"/>
+      <roi id="roi_1" begin="5s" duration="120s" position="forward_pos" during_out_of_focus="mirror1"/>
+
     </scene360>
     <scene360 id="sugar_loaf" src ="C:/Users/paulo/Videos/Video360_4k/Sugar_loaf.mp4" volume="0.3"></scene360>
   </body>  

@@ -15,7 +15,9 @@ public class MultimediaController : MonoBehaviour
     public GameObject previewSphere, previewPlain;
 
     [Header("ROI 360")]
-    public GameObject roiPrefab, u_roiPrefab;
+    public GameObject roiPrefab;
+    [Header("Mirror")]
+    public GameObject mirrorPrefab;
 
     [Header("Common Media")]
     public GameObject imagePrefab, audioPrefab, videoPrefab, textPrefab;
@@ -29,60 +31,7 @@ public class MultimediaController : MonoBehaviour
 
     private GameObject initialScene;
     void Start()
-    {
-        /*video1 = AddVideo360("C:/Users/paulo/Downloads/360_VR Master Series _ Free Download _ Crystal Shower Falls.mp4");
-        video2 = AddVideo360("C:/Users/paulo/Downloads/Best VR 360 Video.mp4");
-
-        video1.GetComponent<Video360Controller>().AddSubtitle(textPrefab, r: 10, theta: 25, phi: 0, file_path: @"C:\Users\paulo\Downloads\jumanji-the-next-level_HI_english-2156994\Jumanji.The.Next.Level.2019.BDRip.XviD.AC3-EVO-HI.srt");
-
-        //video1.GetComponent<Video360Controller>().AddMedia(textPrefab, start_time: 0, duration: 3, r: 5, theta: 25, phi: 0, text: "Imagem seguindo camera", follow_camera: true);
-        //video1.GetComponent<Video360Controller>().AddMedia(textPrefab, start_time: 3, duration: 5, r: 5, theta: 25, phi: 0, text: "Imagem com som", follow_camera: true);
-
-        video1.GetComponent<Video360Controller>().AddMedia(imagePrefab,
-            start_time: 0f, duration: 3, file_path: @"C:\Users\paulo\Pictures\WebMedia\31-10-2019-505.jpg",
-            r: 15f, theta: 0f, phi: 0f, follow_camera: true);
-
-
-
-        video1.GetComponent<Video360Controller>().AddMedia(imagePrefab,
-            start_time: 3f, duration: 10, file_path: @"C:\Users\paulo\Pictures\Saved Pictures\vapor-wave.png",
-            r: 15f, theta: -30f, phi: 0f, movement: new LinearMovement(r: 15, theta: 0f, phi: 0, duration: 6f));
-
-        video1.GetComponent<Video360Controller>().AddMedia(audioPrefab,
-            start_time: 3f, duration: 10, file_path: "C:/Users/paulo/Downloads/sample.wav",
-            r: 15f, theta: -30f, phi: 0f, volume: 1, loop: false, movement: new LinearMovement(r: 15, theta: 0f, phi: 0, duration: 6f));
-
-
-        video1.GetComponent<Video360Controller>().AddMedia(videoPrefab,
-           start_time: 10f, duration: 5, file_path: "C:/Users/paulo/Downloads/videoplayback.mp4",
-           r: 30f, theta: 0f, phi: 60f, volume: 1, loop: false);
-
-
-        video1.GetComponent<Video360Controller>().AddMedia(videoPrefab,
-           start_time: 15f, duration: 5, file_path: "C:/Users/paulo/Downloads/videoplayback.mp4",
-           r: 30f, theta: 0f, phi: 0f, volume: 1, loop: false);
-
-
-        video1.GetComponent<Video360Controller>().AddMedia(videoPrefab,
-           start_time: 20f, duration: 5, file_path: "C:/Users/paulo/Downloads/videoplayback.mp4",
-           r: 30f, theta: 0f, phi: -60f, volume: 1, loop: false);
-
-        video1.GetComponent<Video360Controller>().AddMedia(videoPrefab,
-           start_time: 25f, duration: 12, file_path: "C:/Users/paulo/Downloads/videoplayback.mp4",
-           r: 30f, theta: 0f, phi: 0f, volume: 1, loop: true, movement: new CircularMovement(r: 0f, theta: 0, phi: 720, duration: 10));
-
-        video1.GetComponent<Video360Controller>().AddMedia(video360PreviewPrefab, start_time: 60, duration: 60, r: 4, theta: 0, phi: 60, controller: video2);
-
-        float step = 60;
-        for (int i = 0; i < 360 / step; i++)
-        {
-            video2.GetComponent<Video360Controller>().AddMedia(videoPrefab, start_time: 2f, duration: 60, file_path: "C:/Users/paulo/Downloads/videoplayback.mp4",
-           r: 30f, theta: 0f, phi: 0f + i * step, volume: 1, loop: false, movement: new CircularMovement(r: -22f, theta: 0, phi: 360, duration: 10));
-        }
-
-        SetAsInitial(this.video1);
-        //this.Port();
-        */
+    {   
         
 
         LoadXmlFile("C:/Users/paulo/Documents/VR360Video/Assets/360PresentationExample.xml");
@@ -190,14 +139,7 @@ public class MultimediaController : MonoBehaviour
                 GameObject curMedia;
 
                 curMedia = scene_objects[media_id];
-                MediaControllerAbstract mediaControllerAbstract = curMedia.GetComponent<MediaControllerAbstract>();
-                if(mediaControllerAbstract != null)
-                {
-                    if(scene_objects.Keys.Contains(mediaControllerAbstract.on_select_name)){
-                        mediaControllerAbstract.on_select_object = scene_objects[mediaControllerAbstract.on_select_name];
-                    }
-                    mediaControllerAbstract.Load();
-                }
+                
                 RoiController roiController = curMedia.GetComponent<RoiController>();
                 if(roiController != null)
                 {
@@ -209,6 +151,23 @@ public class MultimediaController : MonoBehaviour
                     {
                         roiController.during_out_of_focus_object = scene_objects[roiController.during_out_of_focus_name];
                     }
+                }
+                MirrorController mirrorController = curMedia.GetComponent<MirrorController>();
+                if(mirrorController != null)
+                {
+                    if (scene_objects.Keys.Contains(mirrorController.file_path))
+                    {
+                        mirrorController.src_roi_object = scene_objects[mirrorController.file_path];
+                    }
+                }
+                MediaControllerAbstract mediaControllerAbstract = curMedia.GetComponent<MediaControllerAbstract>();
+                if (mediaControllerAbstract != null)
+                {
+                    if (scene_objects.Keys.Contains(mediaControllerAbstract.on_select_name))
+                    {
+                        mediaControllerAbstract.on_select_object = scene_objects[mediaControllerAbstract.on_select_name];
+                    }
+                    mediaControllerAbstract.Load();
                 }
             }
 
@@ -222,10 +181,10 @@ public class MultimediaController : MonoBehaviour
     {
         foreach (XmlNode mediaNode in scene360node.ChildNodes)
         {
-            string[] mediaTypes = {"image", "audio", "video", "text", "preview", "subtitle", "roi"};
+            string[] mediaTypes = {"image", "audio", "video", "text", "preview", "subtitle", "roi", "mirror" };
             if (mediaTypes.Contains(mediaNode.Name)){
                 float begin = mediaNode.Attributes.GetNamedItem("begin") != null? float.Parse(mediaNode.Attributes.GetNamedItem("begin").Value.Replace("s", "")): -1;
-                float duration = mediaNode.Attributes.GetNamedItem("duration") != null ? float.Parse(mediaNode.Attributes.GetNamedItem("duration").Value.Replace("s", "")) : 0;
+                float duration = mediaNode.Attributes.GetNamedItem("duration") != null ? float.Parse(mediaNode.Attributes.GetNamedItem("duration").Value.Replace("s", "")) : float.MaxValue;
                 float volume = mediaNode.Attributes.GetNamedItem("volume") != null ? float.Parse(mediaNode.Attributes.GetNamedItem("volume").Value) : 0;
                 bool follow_camera = mediaNode.Attributes.GetNamedItem("follow_camera") != null ? bool.Parse(mediaNode.Attributes.GetNamedItem("follow_camera").Value) : false;
                 bool loop = mediaNode.Attributes.GetNamedItem("loop") != null ? bool.Parse(mediaNode.Attributes.GetNamedItem("loop").Value) : false;
@@ -283,9 +242,9 @@ public class MultimediaController : MonoBehaviour
 
                         mediaObject = video360.GetComponent<Video360Controller>().AddMedia(id, roiPrefab, begin:begin, duration:duration, r:r, theta:theta, phi:phi, on_focus_name:on_focus_name, during_out_of_focus_name:during_out_of_focus_name);
                         break;
-                    /*case "u_roi":
-                        mediaObject = video360.GetComponent<Video360Controller>().AddMedia(id, u_roiPrefab, begin: begin, duration: duration, r: r, theta: theta, phi: phi, target_name: target_name);
-                        break;*/
+                    case "mirror":
+                        mediaObject = video360.GetComponent<Video360Controller>().AddMedia(id, mirrorPrefab, begin: begin, duration: duration, r: r, theta: theta, phi: phi, on_select_name: on_select_name, follow_camera:follow_camera,file_path:src);
+                        break;
                 } 
                 if(mediaObject != null)
                 {
