@@ -34,7 +34,7 @@ public class MultimediaController : MonoBehaviour
     {   
         
 
-        LoadXmlFile("C:/Users/paulo/Documents/VR360Video/Assets/360PresentationExample.xml");
+        LoadXmlFile("C:/Users/paulo/Documents/VR360Authoring/Assets/concert_example.xml");
         GameObject[] videos360 = GameObject.FindGameObjectsWithTag("Video360");
         foreach(GameObject video360 in videos360)
         {
@@ -42,8 +42,8 @@ public class MultimediaController : MonoBehaviour
         }
         StopPresentation();
 
-        
-        StartPresentation();
+        Invoke("StartPresentation", 5);
+        //StartPresentation();
     }
     
     GameObject AddVideo360(string src, float volume=1f)
@@ -61,6 +61,12 @@ public class MultimediaController : MonoBehaviour
 
     public void StartPresentation()
     {
+        GameObject[] start_objects = GameObject.FindGameObjectsWithTag("StartPresentation");
+
+        foreach(GameObject start_object in start_objects)
+        {
+            Destroy(start_object);
+        }
         initialScene.SetActive(true);
         this.Port();
     }
@@ -271,8 +277,8 @@ public class MultimediaController : MonoBehaviour
                 {
                     switch (att.Name)
                     {
-                        case "r":
-                            r = float.Parse(att.Value);
+                        case "r":                            
+                            r = float.Parse(att.Value);                            
                             break;
                         case "theta":
                             theta = float.Parse(att.Value);
@@ -320,6 +326,7 @@ public class MultimediaController : MonoBehaviour
                     {
                         case "r":
                             new_pos.r = float.Parse(att.Value);
+                            Debug.Log(att.Value + " r: " + new_pos.r);
                             break;
                         case "theta":
                             new_pos.theta = float.Parse(att.Value);

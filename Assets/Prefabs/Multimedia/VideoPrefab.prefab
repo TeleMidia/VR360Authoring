@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7489877019352574186}
   - component: {fileID: 7489877019352574198}
   - component: {fileID: 1492920833104113274}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: VideoPrefab
   m_TagString: TargetTransition
   m_Icon: {fileID: 0}
@@ -232,7 +232,14 @@ MonoBehaviour:
   loop: 0
   follow_camera: 0
   mainCamera: {fileID: 0}
-  controller: {fileID: 0}
+  on_select_name: 
+  on_focus_name: 
+  during_out_of_focus_name: 
+  id: 
+  on_select_object: {fileID: 0}
+  on_focus_object: {fileID: 0}
+  during_out_of_focus_object: {fileID: 0}
+  src_roi_object: {fileID: 0}
   father: {fileID: 0}
   previewTime: 
 --- !u!64 &1492920833104113274

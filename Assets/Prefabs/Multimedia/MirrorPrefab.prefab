@@ -61,7 +61,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 279
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: b3d22aee3db5e024a837b0dc28353530, type: 2}
   m_TargetDisplay: 0
@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 4460522814470830496}
   - component: {fileID: 4460522814470830497}
   - component: {fileID: 4460522814470830509}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: MirrorPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
