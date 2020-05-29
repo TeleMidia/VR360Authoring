@@ -41,7 +41,7 @@ note={Accepted for publication},
 
 ## Preview Video
 
-The video bellow shows an interactive 360-degree video composed using the model we propose. In this video, a "mirror" of the stage is shown on the bottom of the screen when the user is not lookin at the stage. Moreover, it has a spatial audio that gives the user the impression that it is coming from the stage.
+The video bellow shows an interactive 360-degree video composed using the model we propose. In this video, a "mirror" of the stage is shown on the bottom of the screen when the user is not looking at the stage. Moreover, it has a spatial audio that gives the user the impression that it is coming from the stage.
 
 [![Watch the video](https://img.youtube.com/vi/BPVGBCFifP0/hqdefault.jpg)](https://www.youtube.com/watch?v=BPVGBCFifP0)
 
