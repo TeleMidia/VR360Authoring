@@ -9,16 +9,12 @@ Currently, our tool provides a player for playing interactive 360-degree videos 
 ## Cite our work
 
 ```bibtex
-@inproceedings{2020_07_mendes,
-  author={Mendes, Paulo and Guedes, Álan and Moraes, Daniel and De Albuquerque
-  Azevedo, Roberto Gerson and Colcher, Sérgio},
-  title={An Authoring Model for Interactive 360 videos},
-  booktitle={2020 IEEE International Conference on MultimediaExpo Workshops (ICMEW)}, 
-  year={2020},
-  note={(To be Published)},
-  langid={english},
-  langidopts={variant=american},
-}
+@INPROCEEDINGS{9105958,  
+author={P. R. C. {Mendes} and Á. L. V. {Guedes} and D. d. S. {Moraes} and R. G. A. {Azevedo} and S. {Colcher}},  
+booktitle={2020 IEEE International Conference on Multimedia Expo Workshops (ICMEW)},   
+title={An Authoring Model for Interactive 360 Videos},   
+year={2020},  
+volume={},  number={},  pages={1-6},}
 ```
 
 ## Preview Video
