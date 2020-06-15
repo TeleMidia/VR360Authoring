@@ -6,7 +6,11 @@ It is being developed using Unity 3D and C#.
 
 Currently, our tool provides a player for playing interactive 360-degree videos following the model described in the paper "An Authoring Model for Interactive 360 videos" accepted for publication "In Proceedings of ICME 2020 Workshop: Tools for Creating XR Media Experiences, London, UK, 03 2020".
 
-## Cite our work
+## References
+
+Our work is available on [IEEE Xplore](https://ieeexplore.ieee.org/document/9105958) and [Research Gate](https://www.researchgate.net/publication/342097903_AN_AUTHORING_MODEL_FOR_INTERACTIVE_360_VIDEOS).
+
+### Cite our work
 
 ```bibtex
 @INPROCEEDINGS{9105958,  
