@@ -3,19 +3,15 @@
 <presentation360>
 
   <head>
-    <positionBase>
-      <position id="subtitle_pos" r="8" theta="-20"/>
-      <position id="palco_pos" r="0,7" phi="110" theta="-10"/>
-      <position id="mirror_pos" r="4" phi="0" theta="20"/>
-    </positionBase>
+    <style id="palco_pos" r="0,7" phi="110" theta="-10"/>
   </head>
 
   <body entry = "concert">
     <scene360 id="concert" src="C:/Users/paulo/Desktop/360Video/video_aha.mp4" volume="1">
-      <text id="copyright" text="The rights of this video belongs to 'Nobel Peace Prize Concert'" begin="5s" duration="20s" position="subtitle_pos" follow_camera="true"/>
-      <audio id="audio_video" begin="0s" src="C:/Users/paulo/Desktop/360Video/audio_aha.wav" position="palco_pos" volume="1"/>
-      <hotspot id="hotspot_palco" position ="palco_pos" begin="1s" during_out_of_focus="mirror_palco"/>
-      <mirror id="mirror_palco" src="hotspot_palco" position="mirror_pos" follow_camera="true"/>
+      <text id="copyright" r="8" theta="-20" text="The rights of this video belongs to 'Nobel Peace Prize Concert'" begin="5s" duration="20s" followCamera="true"/>
+      <audio id="audio_video" begin="0s" src="C:/Users/paulo/Desktop/360Video/audio_aha.wav" style="palco_pos" volume="1"/>
+      <hotspot id="hotspot_palco" style ="palco_pos" begin="1s" onLookAt="copyright" duringNotLookingAt="mirror_palco"/>
+      <mirror id="mirror_palco" src="hotspot_palco" followCamera="true"  r="4" phi="0" theta="20"/>
     </scene360>
   </body>
 </presentation360>
