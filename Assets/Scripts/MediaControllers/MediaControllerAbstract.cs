@@ -19,7 +19,7 @@ public abstract class MediaControllerAbstract: MonoBehaviour
     public string on_select_name, on_focus_name, during_out_of_focus_name, id;
     public GameObject on_select_object, on_focus_object, during_out_of_focus_object, src_roi_object;
     public GameObject father;
-    public string previewTime;
+    public float clipBegin, clipEnd;
 
     public void InvokePlayStop()
     {
@@ -78,7 +78,7 @@ public abstract class MediaControllerAbstract: MonoBehaviour
                                 string file_path, float r, float theta, float phi, float volume, 
                                 bool loop, bool follow_camera, string text, Movement movement, 
                                 string on_select_name, string on_focus_name, string during_out_of_focus_name,
-                                string previewTime)
+                                float clipBegin, float clipEnd)
     {
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         this.id = id;
@@ -98,7 +98,8 @@ public abstract class MediaControllerAbstract: MonoBehaviour
         this.on_focus_name = on_focus_name;
         this.during_out_of_focus_name = during_out_of_focus_name;
         this.father = father;
-        this.previewTime = previewTime;
+        this.clipBegin = clipBegin;
+        this.clipEnd = clipEnd;
 
         this.origin = new Vector3(0, 0, r);
         this.start_pos = Utils.PolarToCartesian(this.origin, theta, phi);

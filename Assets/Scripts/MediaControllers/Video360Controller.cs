@@ -65,14 +65,16 @@ public class Video360Controller : MonoBehaviour
     }
 
     
-    public GameObject AddMedia(string id, GameObject mediaPrefab, float begin=0, float r=0, float theta=0, float phi=0, string file_path = "", float volume = 0, bool loop = false, float duration = float.MaxValue, bool follow_camera = false, string text = "", string on_select_name = "", string during_out_of_focus_name="", string on_focus_name="", string previewTime = "0s,5s")
+    public GameObject AddMedia(string id, GameObject mediaPrefab, float begin=0, float r=0, float theta=0, float phi=0, string file_path = "", 
+                               float volume = 0, bool loop = false, float duration = float.MaxValue, bool follow_camera = false, string text = "", 
+                               string on_select_name = "", string during_out_of_focus_name="", string on_focus_name="", float clipBegin = 0, float clipEnd = 5)
     {
         GameObject newMedia = Instantiate(mediaPrefab);
         newMedia.GetComponent<MediaControllerAbstract>().Configure(id:id, father:this.gameObject, start_time:begin, 
                                                                    duration:duration, file_path:file_path, r:r, theta:theta, 
                                                                    phi:phi, volume:volume, loop:loop, follow_camera:follow_camera,
                                                                    text:text, movement:null, on_select_name:on_select_name,
-                                                                   previewTime:previewTime, on_focus_name:on_focus_name, 
+                                                                   clipBegin: clipBegin, clipEnd: clipEnd, on_focus_name:on_focus_name, 
                                                                    during_out_of_focus_name: during_out_of_focus_name);        
         other_media.Add(newMedia);
 

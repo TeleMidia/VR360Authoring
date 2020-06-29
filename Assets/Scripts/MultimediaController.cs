@@ -246,12 +246,14 @@ public class MultimediaController : MonoBehaviour
                     case "subtitle":
                         video360.GetComponent<Video360Controller>().AddSubtitle(id, textPrefab, file_path:src, r: r, theta: theta, phi: phi, on_select_name: on_select_name);
                         break;
-                    case "preview":           
-                        string previewTime = media_attributes.TryGetValue("previewtime", out aux)? aux : "0s,5s";
+                    case "preview":
+                        float clipBegin = media_attributes.TryGetValue("clipbegin", out aux) ? float.Parse(aux.Replace("s", "")) : 0;
+                        float clipEnd = media_attributes.TryGetValue("clipend", out aux) ? float.Parse(aux.Replace("s", "")) : 5;
+
                         string shape = media_attributes.TryGetValue("shape", out aux)? aux : "";
                         GameObject preview = shape.Equals("sphere")?previewSphere:previewPlain;
                         mediaObject = video360.GetComponent<Video360Controller>().AddMedia(id, preview, begin: begin, duration: duration,
-                            r: r, theta: theta, phi: phi, follow_camera: follow_camera, on_select_name: on_select_name, previewTime:previewTime);
+                            r: r, theta: theta, phi: phi, follow_camera: follow_camera, on_select_name: on_select_name, clipBegin: clipBegin, clipEnd:clipEnd);
                         break;
                     case "hotspot":
                         string duringNotLookingAt = media_attributes.TryGetValue("duringnotlookingat", out aux)? aux: "";
