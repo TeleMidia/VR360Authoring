@@ -10,9 +10,7 @@
     </positionBase>
   </head>
 
-  <body>
-    <port id="port" component="concert"/>
-
+  <body entry = "concert">
     <scene360 id="concert" src="C:/Users/paulo/Desktop/360Video/video_aha.mp4" volume="1">
       <text id="copyright" text="The rights of this video belongs to 'Nobel Peace Prize Concert'" begin="5s" duration="20s" position="subtitle_pos" follow_camera="true"/>
       <audio id="audio_video" begin="0s" src="C:/Users/paulo/Desktop/360Video/audio_aha.wav" position="palco_pos" volume="1"/>

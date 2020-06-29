@@ -24,7 +24,7 @@ public class MultimediaController : MonoBehaviour
 
     private GameObject video1, video2;
 
-    private event MyHandler Port;
+    private event MyHandler Entry;
     private event MyHandler End;
 
     private GameObject initialScene;
@@ -54,7 +54,7 @@ public class MultimediaController : MonoBehaviour
     private void SetAsInitial(GameObject video)
     {
         initialScene = video;
-        this.Port += video.GetComponent<Video360Controller>().StartVideo360;
+        this.Entry += video.GetComponent<Video360Controller>().StartVideo360;
     }
 
     public void StartPresentation()
@@ -66,7 +66,7 @@ public class MultimediaController : MonoBehaviour
             Destroy(start_object);
         }
         initialScene.SetActive(true);
-        this.Port();
+        this.Entry();
     }
     public void StopPresentation()
     {
@@ -175,9 +175,11 @@ public class MultimediaController : MonoBehaviour
                 }
             }
 
-            var port = document.DocumentElement.SelectSingleNode("//presentation360/body/port");
+            //var port = document.DocumentElement.SelectSingleNode("//presentation360/body/port");
 
-            SetAsInitial(scene_objects[port.Attributes.GetNamedItem("component").Value]);
+            //SetAsInitial(scene_objects[port.Attributes.GetNamedItem("component").Value]);
+
+            SetAsInitial(scene_objects[body.Attributes.GetNamedItem("entry").Value]);
         }
     }
 
