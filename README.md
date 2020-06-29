@@ -37,7 +37,7 @@ The XML code for this interactive 360-degree video is shown bellow.
    <scene360 id="concert" src="concert.mp4">
      <audio id="mainAudio" begin="0s" src="audio.wav" style="stage"/>
      <hotspot id="hotspotStage" style ="stage" begin="1s" duringNotLookingAt="mirrorStage"/>
-     <mirror id="mirrorStage" src="hotspotStage" r="4" phi="0" heta="20" followCamera="true"/>
+     <mirror id="mirrorStage" src="hotspotStage" r="4" phi="0" theta="20" followCamera="true"/>
    </scene360>
  </body>
  </presentation360>
