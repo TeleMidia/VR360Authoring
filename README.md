@@ -27,7 +27,7 @@ The video bellow shows an interactive 360-degree video composed using the model 
 
 [![Watch the video](https://img.youtube.com/vi/BPVGBCFifP0/hqdefault.jpg)](https://www.youtube.com/watch?v=BPVGBCFifP0)
 
-The XML code for this interactive 360-degree video is show bellow.
+The XML code for this interactive 360-degree video is shown bellow.
 ```
  <presentation360>
  <head>
@@ -36,7 +36,7 @@ The XML code for this interactive 360-degree video is show bellow.
  <body entry="concert">
    <scene360 id="concert" src="concert.mp4">
      <audio id="mainAudio" begin="0s" src="audio.wav" style="stage"/>
-     <hotspot id="hotspotStage" style ="stage" begin="1s" uringNotLookingAt="mirrorStage"/>
+     <hotspot id="hotspotStage" style ="stage" begin="1s" duringNotLookingAt="mirrorStage"/>
      <mirror id="mirrorStage" src="hotspotStage" r="4" phi="0" heta="20" followCamera="true"/>
    </scene360>
  </body>
