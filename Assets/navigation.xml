@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<presentation360>
+
+  <head>
+    <positionBase>
+      <position id="preview1" r="8" phi="10" theta="0"/>
+      <position id="preview2" r="4" phi="90" theta="0"/>
+    </positionBase>
+  </head>
+
+  <body>
+    <port id="port" component="christ_redeemer"/>
+
+    <scene360 id="christ_redeemer" src="C:/Users/paulo/Desktop/360Video/christ_the_redeemer.mp4" volume="1">
+      <preview id ="preview_sugar_loaf" begin="5s" preview_time="15s,18s" shape="plain" duration="40s" position="preview1" on_select="sugar_loaf"/>
+      <preview id ="preview_ipanema_beach" begin="5s" preview_time="15s,18s" shape="plain" duration="40s" position="preview2" on_select="ipanema_beach"/>
+    </scene360>
+
+    <scene360 id="ipanema_beach" src="C:/Users/paulo/Desktop/360Video/ipanema_beach.mp4" volume="1">
+    </scene360>
+
+    <scene360 id="sugar_loaf" src="C:/Users/paulo/Desktop/360Video/sugar_loaf.mp4" volume="1">
+    </scene360>
+  </body>
+</presentation360>

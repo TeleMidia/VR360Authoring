@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RoiController : MediaControllerAbstract
+public class HotspotController : MediaControllerAbstract
 {
     public override void Load()
     {

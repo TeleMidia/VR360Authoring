@@ -13,7 +13,7 @@ public class PreviewController : MediaControllerAbstract
         GetComponent<VideoPlayer>().url = on_select_object.GetComponent<VideoPlayer>().url;
         GetComponent<VideoPlayer>().Prepare();
         string[] numbers = Regex.Split(previewTime, @"\D+");
-        Debug.Log("Quantidade: " + numbers.Length);
+        //Debug.Log("Quantidade: " + numbers.Length);
         int i = 0;
         float[] times = new float[2];
         foreach (string value in numbers)
@@ -26,6 +26,7 @@ public class PreviewController : MediaControllerAbstract
         }
         startpreview = times[0];
         stoppreview = times[1];
+        Debug.Log("Start: "+startpreview+" Stop: "+stoppreview);
         GetComponent<VideoPlayer>().time = startpreview;
     }
 

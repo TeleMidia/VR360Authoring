@@ -1,9 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Video;
-using System.Xml;
+﻿using System.Collections.Generic;
 using System.Linq;
+using System.Xml;
+using UnityEngine;
 public class MultimediaController : MonoBehaviour
 {
     public delegate void MyHandler();
@@ -14,8 +12,8 @@ public class MultimediaController : MonoBehaviour
     [Header("Preview 360")]
     public GameObject previewSphere, previewPlain;
 
-    [Header("ROI 360")]
-    public GameObject roiPrefab;
+    [Header("Hotspot 360")]
+    public GameObject hotspotPrefab;
     [Header("Mirror")]
     public GameObject mirrorPrefab;
 
@@ -34,7 +32,7 @@ public class MultimediaController : MonoBehaviour
     {   
         
 
-        LoadXmlFile("C:/Users/paulo/Documents/VR360Authoring/Assets/concert_example.xml");
+        LoadXmlFile(@"C:\Users\paulo\Documents\VR360Authoring\Assets\concert_example.xml");
         GameObject[] videos360 = GameObject.FindGameObjectsWithTag("Video360");
         foreach(GameObject video360 in videos360)
         {
@@ -146,16 +144,16 @@ public class MultimediaController : MonoBehaviour
 
                 curMedia = scene_objects[media_id];
                 
-                RoiController roiController = curMedia.GetComponent<RoiController>();
-                if(roiController != null)
+                HotspotController hotspotController = curMedia.GetComponent<HotspotController>();
+                if(hotspotController != null)
                 {
-                    if (scene_objects.Keys.Contains(roiController.on_focus_name))
+                    if (scene_objects.Keys.Contains(hotspotController.on_focus_name))
                     {
-                        roiController.on_focus_object = scene_objects[roiController.on_focus_name];
+                        hotspotController.on_focus_object = scene_objects[hotspotController.on_focus_name];
                     }
-                    if (scene_objects.Keys.Contains(roiController.during_out_of_focus_name))
+                    if (scene_objects.Keys.Contains(hotspotController.during_out_of_focus_name))
                     {
-                        roiController.during_out_of_focus_object = scene_objects[roiController.during_out_of_focus_name];
+                        hotspotController.during_out_of_focus_object = scene_objects[hotspotController.during_out_of_focus_name];
                     }
                 }
                 MirrorController mirrorController = curMedia.GetComponent<MirrorController>();
@@ -187,7 +185,7 @@ public class MultimediaController : MonoBehaviour
     {
         foreach (XmlNode mediaNode in scene360node.ChildNodes)
         {
-            string[] mediaTypes = {"image", "audio", "video", "text", "preview", "subtitle", "roi", "mirror" };
+            string[] mediaTypes = {"image", "audio", "video", "text", "preview", "subtitle", "hotspot", "mirror" };
             if (mediaTypes.Contains(mediaNode.Name)){
                 float begin = mediaNode.Attributes.GetNamedItem("begin") != null? float.Parse(mediaNode.Attributes.GetNamedItem("begin").Value.Replace("s", "")): -1;
                 float duration = mediaNode.Attributes.GetNamedItem("duration") != null ? float.Parse(mediaNode.Attributes.GetNamedItem("duration").Value.Replace("s", "")) : float.MaxValue;
@@ -242,11 +240,11 @@ public class MultimediaController : MonoBehaviour
                         mediaObject = video360.GetComponent<Video360Controller>().AddMedia(id, preview, begin: begin, duration: duration,
                             r: r, theta: theta, phi: phi, movement: movement, follow_camera: follow_camera, on_select_name: on_select_name, previewTime:previewTime);
                         break;
-                    case "roi":
+                    case "hotspot":
                         string during_out_of_focus_name = mediaNode.Attributes.GetNamedItem("during_out_of_focus") != null ? mediaNode.Attributes.GetNamedItem("during_out_of_focus").Value : "";
                         string on_focus_name = mediaNode.Attributes.GetNamedItem("on_focus") != null ? mediaNode.Attributes.GetNamedItem("on_focus").Value : "";
 
-                        mediaObject = video360.GetComponent<Video360Controller>().AddMedia(id, roiPrefab, begin:begin, duration:duration, r:r, theta:theta, phi:phi, on_focus_name:on_focus_name, during_out_of_focus_name:during_out_of_focus_name);
+                        mediaObject = video360.GetComponent<Video360Controller>().AddMedia(id, hotspotPrefab, begin:begin, duration:duration, r:r, theta:theta, phi:phi, on_focus_name:on_focus_name, during_out_of_focus_name:during_out_of_focus_name);
                         break;
                     case "mirror":
                         mediaObject = video360.GetComponent<Video360Controller>().AddMedia(id, mirrorPrefab, begin: begin, duration: duration, r: r, theta: theta, phi: phi, on_select_name: on_select_name, follow_camera:follow_camera,file_path:src);
@@ -326,7 +324,7 @@ public class MultimediaController : MonoBehaviour
                     {
                         case "r":
                             new_pos.r = float.Parse(att.Value);
-                            Debug.Log(att.Value + " r: " + new_pos.r);
+                            //Debug.Log(att.Value + " r: " + new_pos.r);
                             break;
                         case "theta":
                             new_pos.theta = float.Parse(att.Value);

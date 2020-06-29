@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<presentation360>
+  <head>
+    <positionBase>
+      <position id="subtitle_pos" r="8" theta="20"/>
+      <position id="sign_pos" r="35" phi="20" theta="-15"/>
+    </positionBase>
+  </head>
+
+  <body>
+    <port id="port" component="presentation"/>
+
+    <scene360 id="presentation" src="C:/Users/paulo/Desktop/360Video/accessible.mp4" volume="1">
+      <text id="copyright" text="Welcome everybody!" begin="5s" duration="40s" position="subtitle_pos" follow_camera="true"/>
+      <image id="sign_language" src="C:/Users/paulo/Pictures/welcome.png" begin="5s" duration="40s" position="sign_pos" follow_camera="true"/>
+      
+    </scene360>
+  </body>
+</presentation360>
