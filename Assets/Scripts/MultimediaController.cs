@@ -4,6 +4,8 @@ using System.Xml;
 using UnityEngine;
 public class MultimediaController : MonoBehaviour
 {
+    public string presentation;
+
     public delegate void MyHandler();
     // Start is called before the first frame update
     [Header("Video 360")]
@@ -34,7 +36,7 @@ public class MultimediaController : MonoBehaviour
     {   
         
 
-        LoadXmlFile(@"C:\Users\paulo\Documents\VR360Video\Assets\concert_example.xml");
+        LoadXmlFile(presentation);
         GameObject[] videos360 = GameObject.FindGameObjectsWithTag("Video360");
         foreach(GameObject video360 in videos360)
         {
