@@ -1,26 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 
 <presentation360>
-
-  <head>
-    <positionBase>
-      <position id="preview1" r="8" phi="10" theta="0"/>
-      <position id="preview2" r="4" phi="90" theta="0"/>
-    </positionBase>
-  </head>
-
-  <body>
-    <port id="port" component="christ_redeemer"/>
-
-    <scene360 id="christ_redeemer" src="C:/Users/paulo/Desktop/360Video/christ_the_redeemer.mp4" volume="1">
-      <preview id ="preview_sugar_loaf" begin="5s" preview_time="15s,18s" shape="plain" duration="40s" position="preview1" on_select="sugar_loaf"/>
-      <preview id ="preview_ipanema_beach" begin="5s" preview_time="15s,18s" shape="plain" duration="40s" position="preview2" on_select="ipanema_beach"/>
-    </scene360>
-
-    <scene360 id="ipanema_beach" src="C:/Users/paulo/Desktop/360Video/ipanema_beach.mp4" volume="1">
-    </scene360>
-
-    <scene360 id="sugar_loaf" src="C:/Users/paulo/Desktop/360Video/sugar_loaf.mp4" volume="1">
-    </scene360>
-  </body>
+<head> 
+ <style id="beachPos" r="3" phi="-90" theta="0"/>
+ <style id="center" r="10" phi="0" theta="0" followCamera="true"/>
+ <style id="aerialViewSt" clipBegin="5s" clipEnd="10s" r="8" phi="10" theta="0" begin="2s" dur="20s"/>
+</head>
+<body entry="aerialView">
+ <scene360 id="aerialView" src="C:/Users/paulo/Videos/Video360/aerialView.mp4"> 
+  <preview clipBegin="5s" clipEnd="10s" src="ipanema" r="4" phi="90" theta="0" begin="2s" dur="20s"/>
+  <preview clipBegin="5s" clipEnd="10s" src="sugarloaf" r="8" phi="-10" theta="0" begin="2s" dur="20s"/>
+ </scene360>
+ <scene360 id="ipanema" src="C:/Users/paulo/Videos/Video360/ipanema.mp4">
+  <preview src="aerialView" style="aerialViewSt"/>
+ </scene360>
+ <scene360 id="sugarloaf" src="C:/Users/paulo/Videos/Video360/sugarloaf.mp4">
+  <preview src="aerialView" style="aerialViewSt"/>
+ </scene360>
+</body>
 </presentation360>

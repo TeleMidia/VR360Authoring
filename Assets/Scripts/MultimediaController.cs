@@ -28,11 +28,13 @@ public class MultimediaController : MonoBehaviour
     private event MyHandler End;
 
     private GameObject initialScene;
+
+    private int globalid = 0;
     void Start()
     {   
         
 
-        LoadXmlFile(@"C:\Users\paulo\Documents\VR360Authoring\Assets\concert_example.xml");
+        LoadXmlFile(@"C:\Users\paulo\Documents\VR360Video\Assets\concert_example.xml");
         GameObject[] videos360 = GameObject.FindGameObjectsWithTag("Video360");
         foreach(GameObject video360 in videos360)
         {
@@ -215,7 +217,7 @@ public class MultimediaController : MonoBehaviour
                 string src = media_attributes.TryGetValue("src", out aux)? aux : "";
                 string text = media_attributes.TryGetValue("text", out aux)? aux : "";
                 string on_select_name = media_attributes.TryGetValue("onselect", out aux)? aux: "";
-                string id = media_attributes.TryGetValue("id", out aux)? aux : "";
+                string id = media_attributes.TryGetValue("id", out aux)? aux : "id"+(globalid++);
                 float r = media_attributes.TryGetValue("r", out aux)? float.Parse(aux) : 0;
                 float theta = media_attributes.TryGetValue("theta", out aux)? float.Parse(aux) : 0;
                 float phi = media_attributes.TryGetValue("phi", out aux)? float.Parse(aux) : 0;
@@ -253,7 +255,7 @@ public class MultimediaController : MonoBehaviour
                         string shape = media_attributes.TryGetValue("shape", out aux)? aux : "";
                         GameObject preview = shape.Equals("sphere")?previewSphere:previewPlain;
                         mediaObject = video360.GetComponent<Video360Controller>().AddMedia(id, preview, begin: begin, duration: duration,
-                            r: r, theta: theta, phi: phi, follow_camera: follow_camera, on_select_name: on_select_name, clipBegin: clipBegin, clipEnd:clipEnd);
+                            r: r, theta: theta, phi: phi, follow_camera: follow_camera, on_select_name: src, clipBegin: clipBegin, clipEnd:clipEnd);
                         break;
                     case "hotspot":
                         string duringNotLookingAt = media_attributes.TryGetValue("duringnotlookingat", out aux)? aux: "";

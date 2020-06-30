@@ -7,9 +7,9 @@
   </head>
 
   <body entry = "concert">
-    <scene360 id="concert" src="C:/Users/paulo/Desktop/360Video/video_aha.mp4" volume="1">
+    <scene360 id="concert" src="C:/Users/paulo/Videos/Video360/video_aha.mp4" volume="1">
       <text id="copyright" r="8" theta="-20" text="The rights of this video belongs to 'Nobel Peace Prize Concert'" begin="5s" duration="20s" followCamera="true"/>
-      <audio id="audio_video" begin="0s" src="C:/Users/paulo/Desktop/360Video/audio_aha.wav" style="palco_pos" volume="1"/>
+      <audio id="audio_video" begin="0s" src="C:/Users/paulo/Videos/Video360/audio_aha.wav" style="palco_pos" volume="1"/>
       <hotspot id="hotspot_palco" style ="palco_pos" begin="1s" onLookAt="copyright" duringNotLookingAt="mirror_palco"/>
       <mirror id="mirror_palco" src="hotspot_palco" followCamera="true"  r="4" phi="0" theta="20"/>
     </scene360>
