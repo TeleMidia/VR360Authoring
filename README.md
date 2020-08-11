@@ -20,6 +20,11 @@ title={An Authoring Model for Interactive 360 Videos},
 year={2020},  
 volume={},  number={},  pages={1-6},}
 ```
+## Presentation ICMEW
+
+The video bellow shows the presentation of this ongoing project at the International Conference on Multimedia and Expo Workshop - Tools for Creating XR Media Experiences. By watching the video you will get a better understanding of how our model works and our intentions with it.
+
+[![Watch the video](https://img.youtube.com/vi/hv2995N8CRQ/hqdefault.jpg)](https://www.youtube.com/watch?v=hv2995N8CRQ)
 
 ## Preview Video
 
