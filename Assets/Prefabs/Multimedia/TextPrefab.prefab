@@ -88,7 +88,7 @@ TextMesh:
   m_TabSize: 4
   m_FontSize: 0
   m_FontStyle: 0
-  m_RichText: 1
+  m_RichText: 0
   m_Font: {fileID: 12800000, guid: f1659956d77f85a42b37e98f232ddee1, type: 3}
   m_Color:
     serializedVersion: 2
@@ -122,7 +122,8 @@ MonoBehaviour:
   during_out_of_focus_object: {fileID: 0}
   src_roi_object: {fileID: 0}
   father: {fileID: 0}
-  previewTime: 
+  clipBegin: 0
+  clipEnd: 0
 --- !u!64 &7249148953557204888
 MeshCollider:
   m_ObjectHideFlags: 0

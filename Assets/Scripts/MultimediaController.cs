@@ -44,7 +44,7 @@ public class MultimediaController : MonoBehaviour
         }
         StopPresentation();
 
-        Invoke("StartPresentation", 5);
+        Invoke("StartPresentation", 1);
         //StartPresentation();
     }
     
@@ -244,7 +244,7 @@ public class MultimediaController : MonoBehaviour
                         break;
                     case "text":
                         mediaObject = video360.GetComponent<Video360Controller>().AddMedia(id, textPrefab, begin: begin, duration: duration,
-                            r: r, theta: theta, phi: phi, follow_camera: follow_camera, text:text,
+                            r: r, theta: theta, phi: phi, follow_camera: follow_camera, text:text.Replace("\\n","\n"),
                             on_select_name: on_select_name);
                         break;
                     case "subtitle":

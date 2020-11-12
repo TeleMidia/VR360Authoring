@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<presentation360>
+
+  <head>
+    <style id="palco_pos" r="0,7" phi="110" theta="-10"/>
+  </head>
+
+  <body entry = "concert">
+    <scene360 id="concert" src="C:/Users/paulo/Videos/Video360/video_aha.mp4" volume="1">
+      
+      <text r="12" theta="0" text="Stay on These Roads é o terceiro\nálbum de estúdio da banda A-ha" begin="5s" duration="10s" followCamera="true"/>
+      <text r="12" theta="0" text="lançado no dia 1 de Maio de 1988 pela Warner Bros Records." begin="15s" duration="10s" followCamera="true"/>
+      <text r="12" theta="0" text="O álbum foi outro grande sucesso do A-ha a nível internacional" begin="25s" duration="10s" followCamera="true"/>
+      <text r="12" theta="0" text="vendendo cerca de 4 milhões de cópias no mundo todo" begin="35s" duration="10s" followCamera="true"/>
+      <text r="12" theta="0" text="Apareceu na posição #148 na lista dos 200 álbuns mais vendidos\n nos Estados Unidos, a Billboard 200" begin="45s" duration="10s" followCamera="true"/>
+      <text r="12" theta="0" text="No Reino Unido, apareceu na posição #2 na UK Albums Chart" begin="55s" duration="10s" followCamera="true"/>
+      <text r="12" theta="0" text="Na Noruega o disco alcançou o topo da lista de álbuns mais vendidos" begin="65s" duration="10s" followCamera="true"/>
+      <text r="12" theta="0" text="Foi certificado com discos de ouro no Reino Unido,\n Suíça e Alemanha e disco de platina no Brasil." begin="75s" duration="10s" followCamera="true"/>
+      <text r="12" theta="0" text="Foram 6 singles lançados com este álbum e\n todos eles recebidos com bastante sucesso" begin="85s" duration="10s" followCamera="true"/>
+      <text r="12" theta="0" text="Esse vídeo é uma apresentação do\n aha na cerimônia do prêmio Nobel" begin="95s" duration="10s" followCamera="true"/>
+      <text r="12" theta="0" text="Aprecie o restante do vídeo." begin="105s" duration="5s" followCamera="true"/>
+      
+      <!--
+      <text r="12" theta="0" text="Stay on These Roads é o terceiro\nálbum de estúdio da banda A-ha" begin="5s" duration="10s" followCamera="false"/>
+      <text r="12" theta="0" text="lançado no dia 1 de Maio de 1988 pela Warner Bros Records." begin="15s" duration="10s" followCamera="false"/>
+      <text r="12" theta="0" text="O álbum foi outro grande sucesso do A-ha a nível internacional" begin="25s" duration="10s" followCamera="false"/>
+      <text r="12" theta="0" text="vendendo cerca de 4 milhões de cópias no mundo todo" begin="35s" duration="10s" followCamera="false"/>
+      <text r="12" theta="0" text="Apareceu na posição #148 na lista dos 200 álbuns mais vendidos\n nos Estados Unidos, a Billboard 200" begin="45s" duration="10s" followCamera="false"/>
+      <text r="12" theta="0" text="No Reino Unido, apareceu na posição #2 na UK Albums Chart" begin="55s" duration="10s" followCamera="false"/>
+      <text r="12" theta="0" text="Na Noruega o disco alcançou o topo da lista de álbuns mais vendidos" begin="65s" duration="10s" followCamera="false"/>
+      <text r="12" theta="0" text="Foi certificado com discos de ouro no Reino Unido,\n Suíça e Alemanha e disco de platina no Brasil." begin="75s" duration="10s" followCamera="false"/>
+      <text r="12" theta="0" text="Foram 6 singles lançados com este álbum e\n todos eles recebidos com bastante sucesso" begin="85s" duration="10s" followCamera="false"/>
+      <text r="12" theta="0" text="Esse vídeo é uma apresentação do\n aha na cerimônia do prêmio Nobel" begin="95s" duration="10s" followCamera="false"/>
+      <text r="12" theta="0" text="Aprecie o restante do vídeo." begin="105s" duration="5s" followCamera="false"/>
+      -->
+
+      <audio id="audio_video" begin="0s" src="C:/Users/paulo/Videos/Video360/audio_aha.wav" style="palco_pos" volume="1"/>
+    </scene360>
+  </body>
+</presentation360>

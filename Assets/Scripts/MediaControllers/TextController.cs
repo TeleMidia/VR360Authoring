@@ -18,4 +18,10 @@ public class TextController : MediaControllerAbstract
     {
         GetComponent<MeshRenderer>().enabled = false;
     }
+
+    /*private void Update()
+    {
+        this.text = GetComponent<TextMesh>().text;
+        Debug.Log(this.text);
+    }*/
 }
