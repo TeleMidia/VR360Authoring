@@ -101,7 +101,9 @@ public abstract class MediaControllerAbstract: MonoBehaviour
         this.clipBegin = clipBegin;
         this.clipEnd = clipEnd;
 
+        //this.origin = new Vector3(0, 1.8f, r);
         this.origin = new Vector3(0, 0, r);
+
         this.start_pos = Utils.PolarToCartesian(this.origin, theta, phi);
 
         if (this.follow_camera)
