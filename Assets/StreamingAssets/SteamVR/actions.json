@@ -83,6 +83,11 @@
       "requirement": "optional"
     },
     {
+      "name": "/actions/Video360/in/TriggerDown",
+      "type": "boolean",
+      "requirement": "mandatory"
+    },
+    {
       "name": "/actions/Video360/in/SelectVideo",
       "type": "boolean"
     }
@@ -107,6 +112,10 @@
     {
       "name": "/actions/Video360",
       "usage": "single"
+    },
+    {
+      "name": "/actions/NewSet",
+      "usage": "single"
     }
   ],
   "default_bindings": [
@@ -129,6 +138,10 @@
     {
       "controller_type": "vive_cosmos_controller",
       "binding_url": "bindings_vive_cosmos_controller.json"
+    },
+    {
+      "controller_type": "logitech_stylus",
+      "binding_url": "bindings_logitech_stylus.json"
     },
     {
       "controller_type": "vive_cosmos",

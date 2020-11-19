@@ -17,6 +17,14 @@ namespace Valve.VR
     public class SteamVR_Input_ActionSet_Video360 : Valve.VR.SteamVR_ActionSet
     {
         
+        public virtual SteamVR_Action_Boolean TriggerDown
+        {
+            get
+            {
+                return SteamVR_Actions.video360_TriggerDown;
+            }
+        }
+        
         public virtual SteamVR_Action_Boolean SelectVideo
         {
             get

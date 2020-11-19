@@ -3,7 +3,7 @@
 <presentation360>
 
   <head>
-    <style id="palco_pos" r="0,7" phi="110" theta="-10"/>
+    <style id="palco_pos" r="0,7" phi="20" theta="-10"/>
   </head>
 
   <body entry = "concert">
