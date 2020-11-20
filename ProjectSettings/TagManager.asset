@@ -10,6 +10,7 @@ TagManager:
   - VideoPreview
   - ROIObject
   - u_ROIObject
+  - Presentation360
   layers:
   - Default
   - TransparentFX

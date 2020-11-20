@@ -12,6 +12,7 @@ public abstract class MediaControllerAbstract: MonoBehaviour
     public string file_path, text;
     public bool loop, follow_camera;
     public GameObject mainCamera;
+    public GameObject presentation360;
     private Vector3 origin;
     private Movement movement;
     private bool isMoving;
@@ -81,6 +82,7 @@ public abstract class MediaControllerAbstract: MonoBehaviour
                                 float clipBegin, float clipEnd)
     {
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+        presentation360 = GameObject.FindGameObjectWithTag("Presentation360");
         this.id = id;
         this.start_time = start_time;
         this.duration = duration;
@@ -114,6 +116,7 @@ public abstract class MediaControllerAbstract: MonoBehaviour
         }
         else
         {
+            //this.transform.parent = presentation360.transform;
             this.transform.localPosition = this.start_pos;
             this.transform.LookAt(Vector3.zero,Vector3.up);
         }
