@@ -73,7 +73,7 @@ public class Video360Controller : MonoBehaviour
         newMedia.GetComponent<MediaControllerAbstract>().Configure(id:id, father:this.gameObject, start_time:begin, 
                                                                    duration:duration, file_path:file_path, r:r, theta:theta, 
                                                                    phi:phi, volume:volume, loop:loop, follow_camera:follow_camera,
-                                                                   text:text, movement:null, on_select_name:on_select_name,
+                                                                   text:text, on_select_name:on_select_name,
                                                                    clipBegin: clipBegin, clipEnd: clipEnd, on_focus_name:on_focus_name, 
                                                                    during_out_of_focus_name: during_out_of_focus_name);        
         other_media.Add(newMedia);

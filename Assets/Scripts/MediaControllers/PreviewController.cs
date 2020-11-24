@@ -16,7 +16,7 @@ public class PreviewController : MediaControllerAbstract
         
         startpreview = clipBegin;
         stoppreview = clipEnd;
-        Debug.Log("Start: "+startpreview+" Stop: "+stoppreview);
+        //Debug.Log("Start: "+startpreview+" Stop: "+stoppreview);
         GetComponent<VideoPlayer>().time = startpreview;
     }
 

@@ -14,7 +14,6 @@ public abstract class MediaControllerAbstract: MonoBehaviour
     public GameObject mainCamera;
     public GameObject presentation360;
     private Vector3 origin;
-    private Movement movement;
     private bool isMoving;
     private Vector3 start_pos;
     public string on_select_name, on_focus_name, during_out_of_focus_name, id;
@@ -52,10 +51,6 @@ public abstract class MediaControllerAbstract: MonoBehaviour
 
     public void PrepareAnchors()
     {
-        if (this.movement != null)
-        {
-            this.movement.Replace();
-        }
         if (this.start_time > 0)
         {
             Invoke("InvokePlayStop", start_time);
@@ -64,7 +59,7 @@ public abstract class MediaControllerAbstract: MonoBehaviour
             InvokePlayStop();
         }
     }
-
+    /*
     private void Update()
     {
         if(this.isMoving && this.movement != null)
@@ -73,11 +68,11 @@ public abstract class MediaControllerAbstract: MonoBehaviour
             this.transform.LookAt(Vector3.zero, Vector3.up);
             this.transform.Rotate(new Vector3(0, 180, 0));
         }
-    }
+    }*/
 
     public virtual void Configure(string id, GameObject father, float start_time, float duration, 
                                 string file_path, float r, float theta, float phi, float volume, 
-                                bool loop, bool follow_camera, string text, Movement movement, 
+                                bool loop, bool follow_camera, string text, 
                                 string on_select_name, string on_focus_name, string during_out_of_focus_name,
                                 float clipBegin, float clipEnd)
     {
@@ -94,7 +89,6 @@ public abstract class MediaControllerAbstract: MonoBehaviour
         this.theta = theta;
         this.phi = phi;
         this.r = r;
-        this.movement = movement;
         this.isMoving = false;
         this.on_select_name = on_select_name;
         this.on_focus_name = on_focus_name;

@@ -94,24 +94,11 @@ public class MultimediaController : MonoBehaviour
         {
             XmlNode head = document.LastChild.FirstChild;
             XmlNode body = document.LastChild.LastChild;
-
-            Dictionary<string, Movement> movements = null;
-            Dictionary<string, Position> positions = null;
             Dictionary<string, XmlNode> styles = new Dictionary<string, XmlNode>();
 
             //reading head nodes
             foreach (XmlNode head_child in head.ChildNodes)
             {
-                //positions and movements are no longer used and will be removed soon
-
-                /*if (head_child.Name.Equals("movementBase"))
-                {
-                    movements = ReadMovements(head_child);
-                }
-                if (head_child.Name.Equals("positionBase"))
-                {
-                    positions = ReadPositions(head_child);
-                }*/
                 if (head_child.Name.Equals("style"))
                 {
                     string id_style = head_child.Attributes.GetNamedItem("id").Value;
@@ -136,8 +123,7 @@ public class MultimediaController : MonoBehaviour
                     }
                     GameObject new_scene360 = AddVideo360(src:src, volume:volume);
                     scene_objects.Add(id, new_scene360);
-                    //AddAdditionalMedia(body_child, new_scene360, movements, positions, scene_objects);
-                    AddAdditionalMedia(body_child, new_scene360, movements, positions, scene_objects, styles);
+                    AddAdditionalMedia(body_child, new_scene360, scene_objects, styles);
                 }
             }
 
@@ -177,15 +163,11 @@ public class MultimediaController : MonoBehaviour
                 }
             }
 
-            //var port = document.DocumentElement.SelectSingleNode("//presentation360/body/port");
-
-            //SetAsInitial(scene_objects[port.Attributes.GetNamedItem("component").Value]);
-
             SetAsInitial(scene_objects[body.Attributes.GetNamedItem("entry").Value]);
         }
     }
 
-    public void AddAdditionalMedia(XmlNode scene360node, GameObject video360, Dictionary<string, Movement> movements, Dictionary<string, Position> positions, Dictionary<string, GameObject> scene_objects, Dictionary<string, XmlNode> styles)
+    public void AddAdditionalMedia(XmlNode scene360node, GameObject video360, Dictionary<string, GameObject> scene_objects, Dictionary<string, XmlNode> styles)
     {
         foreach (XmlNode mediaNode in scene360node.ChildNodes)
         {
@@ -276,89 +258,5 @@ public class MultimediaController : MonoBehaviour
             }
         }
     }
-
-    //positions and movements are currently deprecated
-    /*
-    public Dictionary<string, Movement> ReadMovements(XmlNode movementBase)
-    {
-        Dictionary<string, Movement> movements = new Dictionary<string, Movement>();
-
-        foreach (XmlNode mov_node in movementBase.ChildNodes)
-        {
-            if (mov_node.Name.Equals("movement"))
-            {
-                Movement new_mov;
-                var id = mov_node.Attributes.GetNamedItem("id").Value;
-                var type = mov_node.Attributes.GetNamedItem("type").Value;
-                float r=0, theta=0, phi=0, duration=1;
-                foreach (XmlAttribute att in mov_node.Attributes)
-                {
-                    switch (att.Name)
-                    {
-                        case "r":                            
-                            r = float.Parse(att.Value);                            
-                            break;
-                        case "theta":
-                            theta = float.Parse(att.Value);
-                            break;
-                        case "phi":
-                            phi= float.Parse(att.Value);
-                            break;
-                        case "duration":
-                            duration = float.Parse(att.Value);
-                            break;
-                    }
-                }
-                switch (type)
-                {
-                    case "circular":
-                        new_mov = new CircularMovement(r:r, theta:theta, phi:phi, duration:duration);
-                        break;
-                    default:
-                        new_mov = new LinearMovement(r: r, theta: theta, phi: phi, duration: duration);
-                        break;
-                }
-
-                
-                movements.Add(id, new_mov);
-            }
-        }
-
-        return movements;
-    }
-    public Dictionary<string, Position> ReadPositions(XmlNode positionBase)
-    {
-        Dictionary<string, Position> positions = new Dictionary<string, Position>();
-
-        foreach (XmlNode pos_node in positionBase.ChildNodes)
-        {
-            if (pos_node.Name.Equals("position"))
-            {
-                Position new_pos;
-                var id = pos_node.Attributes.GetNamedItem("id").Value;
-                new_pos = new Position();
-
-                foreach (XmlAttribute att in pos_node.Attributes)
-                {
-                    switch (att.Name)
-                    {
-                        case "r":
-                            new_pos.r = float.Parse(att.Value);
-                            //Debug.Log(att.Value + " r: " + new_pos.r);
-                            break;
-                        case "theta":
-                            new_pos.theta = float.Parse(att.Value);
-                            break;
-                        case "phi":
-                            new_pos.phi = float.Parse(att.Value);
-                            break;
-                    }
-                }
-                positions.Add(id, new_pos);
-            }
-        }
-
-        return positions;
-    }
-    */
+    
 }
