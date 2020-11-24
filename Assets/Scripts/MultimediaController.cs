@@ -99,19 +99,18 @@ public class MultimediaController : MonoBehaviour
             Dictionary<string, Position> positions = null;
             Dictionary<string, XmlNode> styles = new Dictionary<string, XmlNode>();
 
-            //reading head nodes
+
             foreach (XmlNode head_child in head.ChildNodes)
             {
-                //positions and movements are no longer used and will be removed soon
-
-                /*if (head_child.Name.Equals("movementBase"))
+      
+                if (head_child.Name.Equals("movementBase"))
                 {
                     movements = ReadMovements(head_child);
                 }
                 if (head_child.Name.Equals("positionBase"))
                 {
                     positions = ReadPositions(head_child);
-                }*/
+                }
                 if (head_child.Name.Equals("style"))
                 {
                     string id_style = head_child.Attributes.GetNamedItem("id").Value;
@@ -277,8 +276,7 @@ public class MultimediaController : MonoBehaviour
         }
     }
 
-    //positions and movements are currently deprecated
-    /*
+ 
     public Dictionary<string, Movement> ReadMovements(XmlNode movementBase)
     {
         Dictionary<string, Movement> movements = new Dictionary<string, Movement>();
@@ -360,5 +358,4 @@ public class MultimediaController : MonoBehaviour
 
         return positions;
     }
-    */
 }
