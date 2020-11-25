@@ -10,12 +10,12 @@
 <body entry="aerialView">
  <scene360 id="aerialView" src="D:/Movies/aerialView.mp4">
   <audio begin="0s" src="D:/Songs/mas_que_nada.mp3" style="songPos" volume="1"/>
-  <preview clipBegin="5s" clipEnd="10s" src="ipanema" r="4" phi="0" theta="0" begin="7s" dur="20s"/>
+  <preview clipBegin="5s" clipEnd="10s" src="ipanema" r="4" phi="0" theta="0" begin="7s" dur="20s" shape="sphere"/>
   <preview clipBegin="5s" clipEnd="10s" src="sugarloaf" r="8" phi="-100" theta="0" begin="7s" dur="20s"/>
  </scene360>
   <scene360 id="ipanema" src="D:/Movies/ipanema.mp4">
     <audio begin="0s" src="D:/Songs/garota_de_ipanema.mp3" style="songPos" volume="1"/>
-    <preview src="aerialView" style="aerialViewSt"/>
+    <preview src="aerialView" style="aerialViewSt" shape="sphere"/>
   </scene360>
  <scene360 id="sugarloaf" src="D:/Movies/sugarloaf.mp4">
   <audio begin="0s" src="D:/Songs/aquele_abraco.mp3" style="songPos" volume="1"/>

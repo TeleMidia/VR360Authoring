@@ -9,7 +9,7 @@ public class Video360Controller : MonoBehaviour
 
     private VideoPlayer video360;
 
-    public GameObject video360PreviewSphere;
+    //public GameObject video360PreviewSphere;
 
     public Texture Video360Texture;
     public Texture TeleMidiaTexture;
@@ -46,7 +46,7 @@ public class Video360Controller : MonoBehaviour
 
     void EndVideo360(VideoPlayer source)
     {
-        GameObject.FindGameObjectWithTag("GameController").GetComponent<MultimediaController>().StopPresentation();
+        GameObject.FindGameObjectWithTag("GameController").GetComponent<MultimediaControllerScript>().StopPresentation();
     }
     void StartOtherMedia(VideoPlayer source)
     {

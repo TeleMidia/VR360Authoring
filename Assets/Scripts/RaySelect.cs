@@ -69,13 +69,13 @@ public class RaySelect : MonoBehaviour
             if (hit.collider.gameObject.CompareTag("StartPresentation"))
             {
                 Destroy(hit.collider.gameObject);
-                GameObject.FindGameObjectWithTag("GameController").GetComponent<MultimediaController>().StartPresentation();                
+                GameObject.FindGameObjectWithTag("GameController").GetComponent<MultimediaControllerScript>().StartPresentation();                
             }
             Debug.Log("Colidiu "+ hit.collider.gameObject.tag);
         }
         else
         {
-            GameObject.FindGameObjectWithTag("GameController").GetComponent<MultimediaController>().StopPresentation();
+            GameObject.FindGameObjectWithTag("GameController").GetComponent<MultimediaControllerScript>().StopPresentation();
         }
     }
 }

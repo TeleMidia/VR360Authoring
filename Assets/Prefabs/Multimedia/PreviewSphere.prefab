@@ -57,6 +57,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -68,6 +69,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -147,6 +149,15 @@ MonoBehaviour:
   loop: 0
   follow_camera: 0
   mainCamera: {fileID: 0}
-  controller: {fileID: 0}
+  presentation360: {fileID: 0}
+  on_select_name: 
+  on_focus_name: 
+  during_out_of_focus_name: 
+  id: 
+  on_select_object: {fileID: 0}
+  on_focus_object: {fileID: 0}
+  during_out_of_focus_object: {fileID: 0}
+  src_roi_object: {fileID: 0}
   father: {fileID: 0}
-  previewTime: 
+  clipBegin: 0
+  clipEnd: 0

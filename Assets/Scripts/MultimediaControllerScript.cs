@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Xml;
 using UnityEngine;
-public class MultimediaController : MonoBehaviour
+public class MultimediaControllerScript : MonoBehaviour
 {
     public string presentation;
 
