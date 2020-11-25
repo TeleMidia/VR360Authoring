@@ -172,7 +172,7 @@ public class MultimediaControllerScript : MonoBehaviour
                 {
                     if (scene_objects.Keys.Contains(mirrorController.file_path))
                     {
-                        mirrorController.src_roi_object = scene_objects[mirrorController.file_path];
+                        mirrorController.src_hotspot_object = scene_objects[mirrorController.file_path];
                     }
                 }
                 MediaControllerAbstract mediaControllerAbstract = curMedia.GetComponent<MediaControllerAbstract>();
