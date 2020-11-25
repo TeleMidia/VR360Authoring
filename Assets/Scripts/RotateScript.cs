@@ -2,17 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Author: Paulo Renato Conceição Mendes
+/// This script is responsible for allowing the movement of the camera thorugh the mouse (when a HMD is not available)
+/// </summary>
 public class RotateScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    //public GameObject target;
+    //speed of the rotation
     public float speed;
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
+    /// <summary>
+    /// Called once per frame, inherited from MonoBehaviour
+    /// </summary>
     void Update()
     {
         if (Input.GetMouseButton(0))

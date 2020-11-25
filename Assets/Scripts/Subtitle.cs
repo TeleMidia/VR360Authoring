@@ -6,26 +6,46 @@ using System.Threading.Tasks;
 using System.Globalization;
 using System.Text.RegularExpressions;
 using System.Threading;
-
+/// <summary>
+/// Author: Paulo Renato Conceição Mendes
+/// Defines a subtitle fragment, which is a block of text that appears at a certain time and disappears
+/// </summary>
 public class SubtitleFragment
 {
     public float begin, duration;
     public string text;
+    /// <summary>
+    /// Constructor of the fragment
+    /// </summary>
+    /// <param name="begin">time of begin in seconds</param>
+    /// <param name="duration">duration in seconds</param>
+    /// <param name="text">text of the fragment</param>
     public SubtitleFragment(float begin, float duration, string text)
     {
         this.begin = begin;
         this.duration = duration;
         this.text = text;
     }
-
+    /// <summary>
+    /// Readable information about the object
+    /// </summary>
+    /// <returns>string with information about the object</returns>
     public override string ToString()
     {
         return "Start Time: " + begin + " Duration: " + duration + "\n" + text;
     }
 }
-
+/// <summary>
+/// Author: Paulo Renato Conceição Mendes
+/// This class reads a srt file and converts it to Subtitles Fragments
+/// </summary>
 public class SubtitleReader
 {
+    /// <summary>
+    /// Reads a srt file and returns it as a list of subtitles fragments
+    /// </summary>
+    /// <param name="file_path">path of the srt file</param>
+    /// <returns>list of subtitles fragments</returns>
     public static SubtitleFragment[] ReadSubtitles(string file_path)
     {
         string strTargetString = System.IO.File.ReadAllText(file_path);

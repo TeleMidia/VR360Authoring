@@ -2,40 +2,47 @@
 using System.Linq;
 using System.Xml;
 using UnityEngine;
+/// <summary>
+/// Author: Paulo Renato Conceição Mendes
+/// Main controller of the project. It reads presentations and controls them
+/// </summary>
 public class MultimediaControllerScript : MonoBehaviour
 {
+    //url of the presentation
     public string presentation;
-
+    //handler used to handle events
     public delegate void MyHandler();
-    // Start is called before the first frame update
+    //prefab of 360 videos
     [Header("Video 360")]
     public GameObject video360Prefab;
-
+    //prefabs of previews
     [Header("Preview 360")]
     public GameObject previewSphere, previewPlain;
-
+    //prefab of hotspot
     [Header("Hotspot 360")]
     public GameObject hotspotPrefab;
+    //prefab of mirror
     [Header("Mirror")]
     public GameObject mirrorPrefab;
-
+    //prefabs of image, audio, video and text
     [Header("Common Media")]
     public GameObject imagePrefab, audioPrefab, videoPrefab, textPrefab;
-
+    //game object the when selected starts the presentation
     public GameObject startPresentation;
-
-    private GameObject video1, video2;
-
+    //event that calls initial 360 video
     private event MyHandler Entry;
+    //event that stops videos 360 when the application ends
     private event MyHandler End;
-
+    //stores the initial 360 video
     private GameObject initialScene;
-
+    //controls the ids that will be assigned to media objects to which the user haven't assigned any id.
     private int globalid = 0;
+
+    /// <summary>
+    /// Called when the gameobject starts, inherited from MonoBehaviour
+    /// </summary>
     void Start()
     {   
-        
-
         LoadXmlFile(presentation);
         GameObject[] videos360 = GameObject.FindGameObjectsWithTag("Video360");
         foreach(GameObject video360 in videos360)
@@ -47,20 +54,30 @@ public class MultimediaControllerScript : MonoBehaviour
         Invoke("StartPresentation", 1);
         //StartPresentation();
     }
-    
+    /// <summary>
+    /// Loads a 360 video from a url
+    /// </summary>
+    /// <param name="src">url of the 360 video</param>
+    /// <param name="volume">volume that the 360 video will be played</param>
+    /// <returns></returns>
     GameObject AddVideo360(string src, float volume=1f)
     {
         GameObject video = Instantiate(video360Prefab);
         video.GetComponent<Video360Controller>().LoadVideo360(src, volume:volume);
         return video;        
     }
-
+    /// <summary>
+    /// Sets a 360 video as initial
+    /// </summary>
+    /// <param name="video">video that will be assigned as initial</param>
     private void SetAsInitial(GameObject video)
     {
         initialScene = video;
         this.Entry += video.GetComponent<Video360Controller>().StartVideo360;
     }
-
+    /// <summary>
+    /// Starts the presentation
+    /// </summary>
     public void StartPresentation()
     {
         GameObject[] start_objects = GameObject.FindGameObjectsWithTag("StartPresentation");
@@ -72,6 +89,9 @@ public class MultimediaControllerScript : MonoBehaviour
         initialScene.SetActive(true);
         this.Entry();
     }
+    /// <summary>
+    /// Stops the presentation
+    /// </summary>
     public void StopPresentation()
     {
         this.End();
@@ -84,7 +104,10 @@ public class MultimediaControllerScript : MonoBehaviour
         }
     }
 
-
+    /// <summary>
+    /// Loads all the 360 videos and their media objects from a url to an xml file
+    /// </summary>
+    /// <param name="file_path">url of the xml file</param>
     public void LoadXmlFile(string file_path)
     {
         XmlDocument document = new XmlDocument();
@@ -166,7 +189,13 @@ public class MultimediaControllerScript : MonoBehaviour
             SetAsInitial(scene_objects[body.Attributes.GetNamedItem("entry").Value]);
         }
     }
-
+    /// <summary>
+    /// Add aditional media objects to a 360 video
+    /// </summary>
+    /// <param name="scene360node">Current scene 360 being read</param>
+    /// <param name="video360">360 video to which the media objects will be added</param>
+    /// <param name="scene_objects">List of all scene 360 objects</param>
+    /// <param name="styles">List of styles defined in the Head. Those styles may be reused by media objects</param>
     public void AddAdditionalMedia(XmlNode scene360node, GameObject video360, Dictionary<string, GameObject> scene_objects, Dictionary<string, XmlNode> styles)
     {
         foreach (XmlNode mediaNode in scene360node.ChildNodes)

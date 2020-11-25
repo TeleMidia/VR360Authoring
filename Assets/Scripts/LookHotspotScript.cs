@@ -1,13 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// Author: Paulo Renato Conceição Mendes
+/// Responsible for controlling when the camera is looking or not at the defined hotspots
+/// </summary>
 public class LookHotspotScript : MonoBehaviour
 {
-    // Start is called before the first frame update
+    //list of hotspot objects
     public GameObject[] hotspot_objects;
 
-    // Update is called once per frame
+    /// <summary>
+    /// Called once per frame, inherited from MonoBehaviour
+    /// At each time it checks for each hotspot wether it is being seen or not
+    /// </summary>
     void Update()
     {
         RaycastHit[] hits = Physics.RaycastAll(transform.position, transform.forward, 100);
@@ -23,7 +29,6 @@ public class LookHotspotScript : MonoBehaviour
                     {
                         Debug.Log("Chamou");
                         on_focus_object.GetComponent<MediaControllerAbstract>().InvokePlayStop();
-                        //Destroy(hit.collider.gameObject);
                     }
 
                     break;
