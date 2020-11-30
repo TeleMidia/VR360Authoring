@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 /// <summary>
-/// Author: Paulo Renato Conceição Mendes
-/// Responsible for controlling when the camera is looking or not at the defined hotspots
+/// Author: Paulo Renato Conceição Mendes.<br/>
+/// Responsible for controlling when the camera is looking or not at the defined hotspots.
 /// </summary>
 public class LookHotspotScript : MonoBehaviour
 {
@@ -11,8 +11,8 @@ public class LookHotspotScript : MonoBehaviour
     public GameObject[] hotspot_objects;
 
     /// <summary>
-    /// Called once per frame, inherited from MonoBehaviour
-    /// At each time it checks for each hotspot wether it is being seen or not
+    /// Called once per frame, inherited from MonoBehaviour.<br/>
+    /// At each time it checks for each hotspot wether it is being seen or not.
     /// </summary>
     void Update()
     {

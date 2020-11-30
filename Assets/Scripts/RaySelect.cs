@@ -2,8 +2,8 @@
  using System.Collections;
 using Valve.VR;
 /// <summary>
-/// Author: Paulo Renato Conceição Mendes
-/// Responsible for casting a ray/laser from the controller and checking if a selection is performed
+/// Author: Paulo Renato Conceição Mendes.<br/>
+/// Responsible for casting a ray/laser from the controller and checking if a selection is performed.
 /// </summary>
 public class RaySelect : MonoBehaviour
 {
@@ -11,7 +11,7 @@ public class RaySelect : MonoBehaviour
     private LineRenderer laserLineRenderer;
     // width of the laser
     public float laserWidth = 0.1f;
-    // maximum sie of the laser
+    // maximum size of the laser
     public float laserMaxLength = 10f;
     // a reference to the action
     public SteamVR_Action_Boolean SelectVideo;
@@ -20,7 +20,7 @@ public class RaySelect : MonoBehaviour
     // Start is called before the first frame update
 
     /// <summary>
-    /// Called when the gameobject starts, inherited from MonoBehaviour
+    /// Called when the gameobject starts, inherited from MonoBehaviour.
     /// </summary>
     void Start()
     {
@@ -30,8 +30,8 @@ public class RaySelect : MonoBehaviour
         SelectVideo.AddOnStateDownListener(TriggerDown, handType);
     }
     /// <summary>
-    /// Called once per frame, inherited from MonoBehaviour
-    /// At each time, casts a ray with the line renderer
+    /// Called once per frame, inherited from MonoBehaviour.<br/>
+    /// At each time, casts a ray with the line renderer.
     /// </summary>
     void Update()
     {
@@ -41,7 +41,7 @@ public class RaySelect : MonoBehaviour
 
     }
     /// <summary>
-    /// Shoots a laser from a position with a direction
+    /// Shoots a laser from a position with a direction.
     /// </summary>
     /// <param name="targetPosition">Initital position of the laser</param>
     /// <param name="direction">Direction of the laser</param>
@@ -68,7 +68,7 @@ public class RaySelect : MonoBehaviour
         laserLineRenderer.SetPosition(1, endPosition);
     }
     /// <summary>
-    /// If the trigger is down, verifies if something is selected
+    /// If the trigger is down, verifies if something is selected.
     /// </summary>
     /// <param name="fromAction">Action that called the method</param>
     /// <param name="fromSource">Controller that called the method</param>

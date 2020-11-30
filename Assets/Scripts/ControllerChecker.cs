@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Valve.VR;
 /// <summary>
-/// Author: Paulo Renato Conceição Mendes
+/// Author: Paulo Renato Conceição Mendes.<br/>
 /// Responsible for checking wether the immersives controllers are connected.
 /// </summary>
 public class ControllerChecker : MonoBehaviour

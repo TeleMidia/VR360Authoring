@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Video;
 /// <summary>
-/// Author: Paulo Renato Conceição Mendes
-/// This class is the script that controls the video360
+/// Author: Paulo Renato Conceição Mendes.<br/>
+///  This class is the script that controls the video360.
 /// </summary>
 public class Video360Controller : MonoBehaviour
 {
@@ -19,7 +19,7 @@ public class Video360Controller : MonoBehaviour
     //list of the media objects that are added to this interactive 360 video
     private List<GameObject> other_media;
     /// <summary>
-    /// Loads and prepares to play the 360 video
+    /// Loads and prepares to play the 360 video.
     /// </summary>
     /// <param name="file_path">Path of the 360 video</param>
     /// <param name="volume">volume of the 360 video</param>
@@ -35,7 +35,7 @@ public class Video360Controller : MonoBehaviour
         video360.SetDirectAudioVolume(volume: volume, trackIndex: 0);
     }
     /// <summary>
-    /// Starts the 360 video
+    /// Starts the 360 video.
     /// </summary>
     public void StartVideo360()
     {
@@ -45,7 +45,7 @@ public class Video360Controller : MonoBehaviour
     }
     
     /// <summary>
-    /// Stops the 360 video
+    /// Stops the 360 video.
     /// </summary>
     public void StopVideo360()
     {
@@ -55,7 +55,7 @@ public class Video360Controller : MonoBehaviour
         video360.Prepare();
     }
     /// <summary>
-    /// Stops the presentation the video finishes
+    /// Stops the presentation the video finishes.
     /// </summary>
     /// <param name="source">The video player that is playing the 360 video</param>
     void EndVideo360(VideoPlayer source)
@@ -63,7 +63,7 @@ public class Video360Controller : MonoBehaviour
         GameObject.FindGameObjectWithTag("GameController").GetComponent<MultimediaControllerScript>().StopPresentation();
     }
     /// <summary>
-    /// Starts the additional media objects that are added to this 360 video
+    /// Starts the additional media objects that are added to this 360 video.
     /// </summary>
     /// <param name="source">The video player that is playing the 360 video</param>
     void StartOtherMedia(VideoPlayer source)
@@ -74,7 +74,7 @@ public class Video360Controller : MonoBehaviour
         }
     }
     /// <summary>
-    /// Aborts the media objects when the video finishes
+    /// Aborts the media objects when the video finishes.
     /// </summary>
     /// <param name="source">The video player that is playing the 360 video</param>
     private void AbortOtherMedia(VideoPlayer source)
@@ -86,7 +86,7 @@ public class Video360Controller : MonoBehaviour
     }
 
     /// <summary>
-    /// Adds additional media objects to this 360 video
+    /// Adds additional media objects to this 360 video.
     /// </summary>
     /// <param name="id">id of the media object</param>
     /// <param name="mediaPrefab">prefab of the media object that will be added</param>
@@ -122,7 +122,7 @@ public class Video360Controller : MonoBehaviour
         return newMedia;
     }
     /// <summary>
-    /// Add subtitles to the current 360 video
+    /// Add subtitles to the current 360 video.
     /// </summary>
     /// <param name="id">id of the subtitles</param>
     /// <param name="mediaPrefab">Prefab of the text</param>

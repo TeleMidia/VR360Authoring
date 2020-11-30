@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Author: Paulo Renato Conceição Mendes
-/// This script is responsible for allowing the movement of the camera thorugh the mouse (when a HMD is not available)
+/// Author: Paulo Renato Conceição Mendes.<br/>
+/// This script is responsible for allowing the movement of the camera thorugh the mouse (when a HMD is not available).
 /// </summary>
 public class RotateScript : MonoBehaviour
 {
@@ -12,7 +12,7 @@ public class RotateScript : MonoBehaviour
     public float speed;
 
     /// <summary>
-    /// Called once per frame, inherited from MonoBehaviour
+    /// Called once per frame, inherited from MonoBehaviour.
     /// </summary>
     void Update()
     {

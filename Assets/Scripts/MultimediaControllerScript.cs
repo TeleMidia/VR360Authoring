@@ -3,8 +3,8 @@ using System.Linq;
 using System.Xml;
 using UnityEngine;
 /// <summary>
-/// Author: Paulo Renato Conceição Mendes
-/// Main controller of the project. It reads presentations and controls them
+/// Author: Paulo Renato Conceição Mendes.<br/>
+/// Main controller of the project. It reads presentations and controls them.
 /// </summary>
 public class MultimediaControllerScript : MonoBehaviour
 {
@@ -39,7 +39,7 @@ public class MultimediaControllerScript : MonoBehaviour
     private int globalid = 0;
 
     /// <summary>
-    /// Called when the gameobject starts, inherited from MonoBehaviour
+    /// Called when the gameobject starts, inherited from MonoBehaviour.
     /// </summary>
     void Start()
     {   
@@ -55,7 +55,7 @@ public class MultimediaControllerScript : MonoBehaviour
         //StartPresentation();
     }
     /// <summary>
-    /// Loads a 360 video from a url
+    /// Loads a 360 video from a url.
     /// </summary>
     /// <param name="src">url of the 360 video</param>
     /// <param name="volume">volume that the 360 video will be played</param>
@@ -67,7 +67,7 @@ public class MultimediaControllerScript : MonoBehaviour
         return video;        
     }
     /// <summary>
-    /// Sets a 360 video as initial
+    /// Sets a 360 video as initial.
     /// </summary>
     /// <param name="video">video that will be assigned as initial</param>
     private void SetAsInitial(GameObject video)
@@ -76,7 +76,7 @@ public class MultimediaControllerScript : MonoBehaviour
         this.Entry += video.GetComponent<Video360Controller>().StartVideo360;
     }
     /// <summary>
-    /// Starts the presentation
+    /// Starts the presentation.
     /// </summary>
     public void StartPresentation()
     {
@@ -90,7 +90,7 @@ public class MultimediaControllerScript : MonoBehaviour
         this.Entry();
     }
     /// <summary>
-    /// Stops the presentation
+    /// Stops the presentation.
     /// </summary>
     public void StopPresentation()
     {
@@ -105,7 +105,7 @@ public class MultimediaControllerScript : MonoBehaviour
     }
 
     /// <summary>
-    /// Loads all the 360 videos and their media objects from a url to an xml file
+    /// Loads all the 360 videos and their media objects from a url to an xml file.
     /// </summary>
     /// <param name="file_path">url of the xml file</param>
     public void LoadXmlFile(string file_path)
@@ -190,7 +190,7 @@ public class MultimediaControllerScript : MonoBehaviour
         }
     }
     /// <summary>
-    /// Add aditional media objects to a 360 video
+    /// Add aditional media objects to a 360 video.
     /// </summary>
     /// <param name="scene360node">Current scene 360 being read</param>
     /// <param name="video360">360 video to which the media objects will be added</param>

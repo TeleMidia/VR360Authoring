@@ -5,8 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 /// <summary>
-/// Author: Paulo Renato Conceição Mendes
-/// Basic controller for all media objects that are added to 360 videos
+/// Author: Paulo Renato Conceição Mendes.<br/>
+/// Basic controller for all media objects that are added to 360 videos.
 /// </summary>
 public abstract class MediaControllerAbstract: MonoBehaviour
 {
@@ -65,7 +65,7 @@ public abstract class MediaControllerAbstract: MonoBehaviour
         Invoke("StopMovement", duration);
     }
     /// <summary>
-    /// Activates the colliders and sets that the media object is playing
+    /// Activates the colliders and sets that the media object is playing.
     /// </summary>
     private void PlayMovement()
     {
@@ -73,7 +73,7 @@ public abstract class MediaControllerAbstract: MonoBehaviour
         if(GetComponent<Collider>()!=null) GetComponent<Collider>().enabled = true;
     }
     /// <summary>
-    /// Deactivates the colliders and sets that the media object is not playing
+    /// Deactivates the colliders and sets that the media object is not playing.
     /// </summary>
     private void StopMovement()
     {
@@ -81,7 +81,7 @@ public abstract class MediaControllerAbstract: MonoBehaviour
         this.isPlaying = false;
     }
     /// <summary>
-    /// Returns wether the media object is playing
+    /// Returns wether the media object is playing.
     /// </summary>
     public bool IsPlaying
     {
@@ -91,7 +91,7 @@ public abstract class MediaControllerAbstract: MonoBehaviour
         }
     }
     /// <summary>
-    /// Prepare the time that the media object will start given the start time
+    /// Prepare the time that the media object will start given the start time.
     /// </summary>
     public void PrepareAnchors()
     {
@@ -172,7 +172,7 @@ public abstract class MediaControllerAbstract: MonoBehaviour
 
     }
     /// <summary>
-    /// Abort the media and the anchors that make it play, if any
+    /// Abort the media and the anchors that make it play, if any.
     /// </summary>
     public void AbortMedia()
     {
@@ -181,19 +181,19 @@ public abstract class MediaControllerAbstract: MonoBehaviour
         CancelInvoke();
     }
     /// <summary>
-    /// Abstract method that should be implemented by any media object type
-    /// This method should configure the initial state of the components that are specific to the media object
+    /// Abstract method that should be implemented by any media object type.
+    ///  This method should configure the initial state of the components that are specific to the media object
     /// </summary>
     public abstract void Load();
     /// <summary>
-    /// Abstract method that should be implemented by any media object type
-    /// This method should configure how the components specific of the media object behave to make it stop
+    /// Abstract method that should be implemented by any media object type.
+    ///  This method should configure how the components specific of the media object behave to make it stop
     /// </summary>
     public abstract void StopMedia();
 
     /// <summary>
-    /// Abstract method that should be implemented by any media object type
-    /// This method should configure how the components specific of the media object behave to make it play
+    /// Abstract method that should be implemented by any media object type.
+    ///  This method should configure how the components specific of the media object behave to make it play
     /// </summary>
     public abstract void PlayMedia();   
 

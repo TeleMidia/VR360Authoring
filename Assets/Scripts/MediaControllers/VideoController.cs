@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Video;
 /// <summary>
-/// Author: Paulo Renato Conceição Mendes
-/// Inherits MediaControllerAbstract
-/// This class is the script that controls the video media object
+/// Author: Paulo Renato Conceição Mendes.<br/>
+/// Inherits MediaControllerAbstract. This class is the script that controls the video media object.
 /// </summary>
 public class VideoController : MediaControllerAbstract
 {
@@ -13,8 +12,8 @@ public class VideoController : MediaControllerAbstract
     private AudioSource audioSource;
 
     /// <summary>
-    /// Inherited from MediaControllerAbstract
-    /// loads the video on the video player from the url, prepare it and call the LoadVideo routine when the video is prepared
+    /// Inherited from MediaControllerAbstract.
+    /// It loads the video on the video player from the url, prepare it and call the LoadVideo routine when the video is prepared.
     /// </summary>
     public override void Load()
     {
@@ -30,8 +29,8 @@ public class VideoController : MediaControllerAbstract
     }
 
     /// <summary>
-    /// Called when the video file has been loaded and the video player is prepared
-    /// Additional configurations are made
+    /// Called when the video file has been loaded and the video player is prepared.
+    ///  Additional configurations are made.
     /// </summary>
     /// <param name="source">Video Player</param>
     public void LoadVideo(VideoPlayer source)
@@ -42,8 +41,8 @@ public class VideoController : MediaControllerAbstract
         this.transform.localScale = new Vector3(width, height, 1);
     }
     /// <summary>
-    /// Inherited from MediaControllerAbstract
-    /// Playing for the video consists in playing the videoPlayer and enabling its mesh renderer
+    /// Inherited from MediaControllerAbstract.
+    ///  Playing for the video consists in playing the videoPlayer and enabling its mesh renderer
     /// </summary>
     public override void PlayMedia()
     {
@@ -51,8 +50,8 @@ public class VideoController : MediaControllerAbstract
         GetComponent<MeshRenderer>().enabled = true;
     }
     /// <summary>
-    /// Inherited from MediaControllerAbstract
-    /// Stopping for the video consists in stopping the videoPlayer, prepare it to play again, and disabling its mesh renderer
+    /// Inherited from MediaControllerAbstract.
+    ///  Stopping for the video consists in stopping the videoPlayer, prepare it to play again, and disabling its mesh renderer
     /// </summary>
     public override void StopMedia()
     {

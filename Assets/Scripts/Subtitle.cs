@@ -7,15 +7,15 @@ using System.Globalization;
 using System.Text.RegularExpressions;
 using System.Threading;
 /// <summary>
-/// Author: Paulo Renato Conceição Mendes
-/// Defines a subtitle fragment, which is a block of text that appears at a certain time and disappears
+/// Author: Paulo Renato Conceição Mendes.<br/>
+/// Defines a subtitle fragment, which is a block of text that appears at a certain time and disappears.
 /// </summary>
 public class SubtitleFragment
 {
     public float begin, duration;
     public string text;
     /// <summary>
-    /// Constructor of the fragment
+    /// Constructor of the fragment.
     /// </summary>
     /// <param name="begin">time of begin in seconds</param>
     /// <param name="duration">duration in seconds</param>
@@ -27,7 +27,7 @@ public class SubtitleFragment
         this.text = text;
     }
     /// <summary>
-    /// Readable information about the object
+    /// Readable information about the object.
     /// </summary>
     /// <returns>string with information about the object</returns>
     public override string ToString()
@@ -36,13 +36,13 @@ public class SubtitleFragment
     }
 }
 /// <summary>
-/// Author: Paulo Renato Conceição Mendes
-/// This class reads a srt file and converts it to Subtitles Fragments
+/// Author: Paulo Renato Conceição Mendes.<br/>
+/// This class reads a srt file and converts it to Subtitles Fragments.
 /// </summary>
 public class SubtitleReader
 {
     /// <summary>
-    /// Reads a srt file and returns it as a list of subtitles fragments
+    /// Reads a srt file and returns it as a list of subtitles fragments.
     /// </summary>
     /// <param name="file_path">path of the srt file</param>
     /// <returns>list of subtitles fragments</returns>
