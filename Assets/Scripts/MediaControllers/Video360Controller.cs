@@ -8,15 +8,15 @@ using UnityEngine.Video;
 /// </summary>
 public class Video360Controller : MonoBehaviour
 {
-    //videoPlayer component that plays the video
+    ///videoPlayer component that plays the video
     private VideoPlayer video360;
-    //texture for 360 videos
+    ///texture for 360 videos
     public Texture Video360Texture;
-    //texture used when no 360 video is playing
+    ///texture used when no 360 video is playing
     public Texture TeleMidiaTexture;
-    //material used for 360 videos
+    ///material used for 360 videos
     public Material Material360;
-    //list of the media objects that are added to this interactive 360 video
+    ///list of the media objects that are added to this interactive 360 video
     private List<GameObject> other_media;
     /// <summary>
     /// Loads and prepares to play the 360 video.

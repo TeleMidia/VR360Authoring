@@ -7,17 +7,17 @@ using Valve.VR;
 /// </summary>
 public class RaySelect : MonoBehaviour
 {
-    //line renderer that draws ray
+    ///line renderer that draws ray
     private LineRenderer laserLineRenderer;
-    // width of the laser
+    /// width of the laser
     public float laserWidth = 0.1f;
-    // maximum size of the laser
+    /// maximum size of the laser
     public float laserMaxLength = 10f;
-    // a reference to the action
+    /// a reference to the action
     public SteamVR_Action_Boolean SelectVideo;
-    // a reference to the hand
+    /// a reference to the hand
     public SteamVR_Input_Sources handType;
-    // Start is called before the first frame update
+    /// Start is called before the first frame update
 
     /// <summary>
     /// Called when the gameobject starts, inherited from MonoBehaviour.

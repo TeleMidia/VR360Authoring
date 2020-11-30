@@ -7,7 +7,7 @@ using UnityEngine;
 /// </summary>
 public class LookHotspotScript : MonoBehaviour
 {
-    //list of hotspot objects
+    ///list of hotspot objects
     public GameObject[] hotspot_objects;
 
     /// <summary>

@@ -8,34 +8,46 @@ using UnityEngine;
 /// </summary>
 public class MultimediaControllerScript : MonoBehaviour
 {
-    //url of the presentation
+    ///url of the presentation
     public string presentation;
-    //handler used to handle events
+    ///handler used to handle events
     public delegate void MyHandler();
-    //prefab of 360 videos
+    ///prefab of 360 videos
     [Header("Video 360")]
     public GameObject video360Prefab;
-    //prefabs of previews
+    ///prefab of preview sphere
     [Header("Preview 360")]
-    public GameObject previewSphere, previewPlain;
-    //prefab of hotspot
+    public GameObject previewSphere;
+    ///prefab of preview plain
+    [Header("Preview 360")]
+    public GameObject previewPlain;
+    ///prefab of hotspot
     [Header("Hotspot 360")]
     public GameObject hotspotPrefab;
-    //prefab of mirror
+    ///prefab of mirror
     [Header("Mirror")]
     public GameObject mirrorPrefab;
-    //prefabs of image, audio, video and text
+    ///prefab of image
     [Header("Common Media")]
-    public GameObject imagePrefab, audioPrefab, videoPrefab, textPrefab;
-    //game object the when selected starts the presentation
+    public GameObject imagePrefab;
+    ///prefab of audio
+    [Header("Common Media")]
+    public GameObject audioPrefab;
+    ///prefab of video
+    [Header("Common Media")]    
+    public GameObject videoPrefab;
+    ///prefab of text
+    [Header("Common Media")]
+    public GameObject textPrefab;
+    ///game object the when selected starts the presentation
     public GameObject startPresentation;
-    //event that calls initial 360 video
+    ///event that calls initial 360 video
     private event MyHandler Entry;
-    //event that stops videos 360 when the application ends
+    ///event that stops videos 360 when the application ends
     private event MyHandler End;
-    //stores the initial 360 video
+    ///stores the initial 360 video
     private GameObject initialScene;
-    //controls the ids that will be assigned to media objects to which the user haven't assigned any id.
+    ///controls the ids that will be assigned to media objects to which the user haven't assigned any id.
     private int globalid = 0;
 
     /// <summary>

@@ -7,7 +7,7 @@ using UnityEngine;
 /// </summary>
 public class AudioController : MediaControllerAbstract
 {
-    //it is an audio source used to play the audio
+    ///it is an audio source used to play the audio
     private AudioSource audioContainer;
     /// <summary>
     /// Coroutine that loads the audio from the file path.

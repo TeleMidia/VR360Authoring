@@ -10,50 +10,58 @@ using UnityEngine;
 /// </summary>
 public abstract class MediaControllerAbstract: MonoBehaviour
 {
-    //start time and duration of the media object in seconds
-    public float start_time, duration;
-    //volume of the media object
+    ///start time of the media object in seconds
+    public float start_time;
+    ///duaration time of the media object in seconds
+    public float duration;
+    ///volume of the media object
     public float volume;
-    //polar coordinates of the media object
-    private float theta, phi, r;
-    //file path of the media object
+    ///vertical angle of the media object in degrees
+    private float theta;
+    ///horizontal angle of the media object in degrees
+    private float phi;
+    ///media object distance from the center
+    private float r;
+    ///file path of the media object
     public string file_path;
-    //text of the media object, if any
+    ///text of the media object, if any
     public string text;
-    //true if the media object executes in loop
+    ///true if the media object executes in loop
     public bool loop;
-    //true if the media object follows the camera (fixed to the user)
+    ///true if the media object follows the camera (fixed to the user)
     public bool follow_camera;
-    //main camera of the project
+    ///main camera of the project
     public GameObject mainCamera;
-    //presentation360 game object of the scene
+    ///presentation360 game object of the scene
     public GameObject presentation360;
-    //vector that defines the origin from which the rotations are calculated
+    ///vector that defines the origin from which the rotations are calculated
     private Vector3 origin;
-    //true if the mediaObject is playing
+    ///true if the mediaObject is playing
     private bool isPlaying;
-    //initial position of the media object
+    ///initial position of the media object
     private Vector3 start_pos;
-    //id of the current media object
+    ///id of the current media object
     public string id;
-    //id the of media object that will be played when the current is selected
+    ///id the of media object that will be played when the current is selected
     public string on_select_name;
-    //id the of media object that will be played when the current is on focus
+    ///id the of media object that will be played when the current is on focus
     public string on_focus_name;
-    //id the of media object that will be played when the current is out of focus
+    ///id the of media object that will be played when the current is out of focus
     public string during_out_of_focus_name;
-    //game object the of media object that will be played when the current is selected
+    ///game object the of media object that will be played when the current is selected
     public GameObject on_select_object;
-    //game object the of media object that will be played when the current is on focus
+    ///game object the of media object that will be played when the current is on focus
     public GameObject on_focus_object;
-    //game object the of media object that will be played when the current is out of focus
+    ///game object the of media object that will be played when the current is out of focus
     public GameObject during_out_of_focus_object;
-    //game object of the hotspot to which the current media object is pointed (in case of mirror)
+    ///game object of the hotspot to which the current media object is pointed (in case of mirror)
     public GameObject src_hotspot_object;
-    //game object that is father of the current game object
+    ///game object that is father of the current game object
     public GameObject father;
-    //initial and final time of the segment of the media that will be played
-    public float clipBegin, clipEnd;
+    ///initial time of the segment of the media that will be played
+    public float clipBegin;
+    ///final time of the segment of the media that will be played
+    public float clipEnd;
     /// <summary>
     /// Calls the play and invokes the stop of the media object (given its duration).
     /// </summary>

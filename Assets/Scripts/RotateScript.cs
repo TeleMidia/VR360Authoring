@@ -8,7 +8,9 @@ using UnityEngine;
 /// </summary>
 public class RotateScript : MonoBehaviour
 {
-    //speed of the rotation
+    /// <summary>
+    /// Speed of the rotation of the camera.
+    /// </summary>
     public float speed;
 
     /// <summary>

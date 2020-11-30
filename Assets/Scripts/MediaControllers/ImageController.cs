@@ -4,12 +4,12 @@ using System.IO;
 using UnityEngine;
 /// <summary>
 /// Author: Paulo Renato Conceição Mendes.<br/>
-/// Inherits MediaControllerAbstract. This class is the script that controls the image media object
+/// Inherits MediaControllerAbstract. This class is the script that controls the image media object.
 /// </summary>
 public class ImageController : MediaControllerAbstract
 {
     /// <summary>
-    /// Inherited from MediaControllerAbstract. Loads the image creating a material from a texture and assigning that material to the object mesh renderer
+    /// Inherited from MediaControllerAbstract. Loads the image creating a material from a texture and assigning that material to the object mesh renderer.
     /// </summary>
     public override void Load()
     {
@@ -26,14 +26,14 @@ public class ImageController : MediaControllerAbstract
         this.transform.localScale = new Vector3(width, height, 1);
     }
     /// <summary>
-    /// Inherited from MediaControllerAbstract. Playing for the image consists in enabling its MeshRenderer
+    /// Inherited from MediaControllerAbstract. Playing for the image consists in enabling its MeshRenderer.
     /// </summary>
     public override void PlayMedia()
     {
         GetComponent<MeshRenderer>().enabled = true;        
     }
     /// <summary>
-    /// Inherited from MediaControllerAbstract. Stopping for the image consists in disabling its MeshRenderer
+    /// Inherited from MediaControllerAbstract. Stopping for the image consists in disabling its MeshRenderer.
     /// </summary>
     public override void StopMedia()
     {

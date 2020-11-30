@@ -9,9 +9,9 @@ using UnityEngine.Video;
 /// </summary>
 public class PreviewController : MediaControllerAbstract
 {   
-    //time of the clipBegin. The time that the segment that is played in the preview starts 
+    ///time of the clipBegin. The time that the segment that is played in the preview starts 
     private float startpreview;
-    //time of the clipEnd. The time that the segment that is played in the preview ends 
+    ///time of the clipEnd. The time that the segment that is played in the preview ends 
     private float stoppreview;
 
     /// <summary>

@@ -12,7 +12,17 @@ using System.Threading;
 /// </summary>
 public class SubtitleFragment
 {
-    public float begin, duration;
+    /// <summary>
+    /// Time at which the fragment starts in seconds.
+    /// </summary>
+    public float begin;
+    /// <summary>
+    /// Duration of the fragment in seconds.
+    /// </summary>
+    public float duration;
+    /// <summary>
+    /// Text of the fragment.
+    /// </summary>
     public string text;
     /// <summary>
     /// Constructor of the fragment.

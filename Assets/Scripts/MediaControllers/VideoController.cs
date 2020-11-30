@@ -8,7 +8,9 @@ using UnityEngine.Video;
 /// </summary>
 public class VideoController : MediaControllerAbstract
 {
+    /// Video Player component that is used to play the video.
     private VideoPlayer videoPlayer;
+    /// Audio source that is used to stores and play the audio of the video.
     private AudioSource audioSource;
 
     /// <summary>
