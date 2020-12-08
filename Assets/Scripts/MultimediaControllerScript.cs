@@ -8,6 +8,8 @@ using UnityEngine;
 /// </summary>
 public class MultimediaControllerScript : MonoBehaviour
 {
+    ///controls if player is in test Mode. Only prefabs are loaded to be used in tests. 
+    public bool testMode;
     ///url of the presentation
     public string presentation;
     ///handler used to handle events
@@ -49,21 +51,24 @@ public class MultimediaControllerScript : MonoBehaviour
     private GameObject initialScene;
     ///controls the ids that will be assigned to media objects to which the user haven't assigned any id.
     private int globalid = 0;
+    
 
     /// <summary>
     /// Called when the gameobject starts, inherited from MonoBehaviour.
     /// </summary>
     void Start()
-    {   
-        LoadXmlFile(presentation);
-        GameObject[] videos360 = GameObject.FindGameObjectsWithTag("Video360");
-        foreach(GameObject video360 in videos360)
-        {
-            this.End += video360.GetComponent<Video360Controller>().StopVideo360;
-        }
-        StopPresentation();
+    {
+        if (!testMode) { 
+            LoadXmlFile(presentation);
+            GameObject[] videos360 = GameObject.FindGameObjectsWithTag("Video360");
+            foreach (GameObject video360 in videos360)
+            {
+                this.End += video360.GetComponent<Video360Controller>().StopVideo360;
+            }
+            StopPresentation();
 
-        Invoke("StartPresentation", 1);
+            Invoke("StartPresentation", 1);
+        }
         //StartPresentation();
     }
     /// <summary>
@@ -72,7 +77,7 @@ public class MultimediaControllerScript : MonoBehaviour
     /// <param name="src">url of the 360 video</param>
     /// <param name="volume">volume that the 360 video will be played</param>
     /// <returns></returns>
-    GameObject AddVideo360(string src, float volume=1f)
+    public GameObject AddVideo360(string src, float volume=1f)
     {
         GameObject video = Instantiate(video360Prefab);
         video.GetComponent<Video360Controller>().LoadVideo360(src, volume:volume);

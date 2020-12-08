@@ -67,26 +67,32 @@ public abstract class MediaControllerAbstract: MonoBehaviour
     /// </summary>
     public void InvokePlayStop()
     {
-        PlayMedia();
-        PlayMovement();
-        Invoke("StopMedia", duration);
-        Invoke("StopMovement", duration);
+        //PlayMedia();
+        SuperPlay();
+        //Invoke("StopMedia", duration);
+        Invoke("SuperStop", duration);
     }
     /// <summary>
     /// Activates the colliders and sets that the media object is playing.
     /// </summary>
-    private void PlayMovement()
+    private void SuperPlay()
     {
         this.isPlaying = true;
         if(GetComponent<Collider>()!=null) GetComponent<Collider>().enabled = true;
+        this.PlayMedia();
+
+        //Debug.Log(id+" played");
     }
     /// <summary>
     /// Deactivates the colliders and sets that the media object is not playing.
     /// </summary>
-    private void StopMovement()
+    private void SuperStop()
     {
         if (GetComponent<Collider>() != null) GetComponent<Collider>().enabled = false;
         this.isPlaying = false;
+        this.StopMedia();
+        //Debug.Log(id + " stoppped");
+
     }
     /// <summary>
     /// Returns wether the media object is playing.
@@ -184,7 +190,7 @@ public abstract class MediaControllerAbstract: MonoBehaviour
     /// </summary>
     public void AbortMedia()
     {
-        StopMovement();
+        SuperStop();
         StopMedia();
         CancelInvoke();
     }

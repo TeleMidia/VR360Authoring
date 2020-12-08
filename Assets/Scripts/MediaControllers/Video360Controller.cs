@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Video;
@@ -24,16 +25,20 @@ public class Video360Controller : MonoBehaviour
     /// <param name="file_path">Path of the 360 video</param>
     /// <param name="volume">volume of the 360 video</param>
     public void LoadVideo360(string file_path, float volume)
-    {
+    {        
         this.video360 = GetComponent<VideoPlayer>();
+
         video360.url = "file:///" + file_path;
         video360.Prepare();
+
+
         other_media = new List<GameObject>();
         video360.started += StartOtherMedia;
         video360.loopPointReached += AbortOtherMedia;
         video360.loopPointReached += EndVideo360;
-        video360.SetDirectAudioVolume(volume: volume, trackIndex: 0);
+        video360.SetDirectAudioVolume(volume: volume, trackIndex: 0);       
     }
+
     /// <summary>
     /// Starts the 360 video.
     /// </summary>

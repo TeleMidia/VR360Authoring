@@ -3,7 +3,16 @@ guid: eb3f36c852adc7449b711c78e3bac5d1
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - previewSphere: {instanceID: 0}
+  - previewPlain: {instanceID: 0}
+  - hotspotPrefab: {instanceID: 0}
+  - mirrorPrefab: {instanceID: 0}
+  - imagePrefab: {instanceID: 0}
+  - audioPrefab: {instanceID: 0}
+  - videoPrefab: {instanceID: 0}
+  - textPrefab: {instanceID: 0}
+  - startPresentation: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
