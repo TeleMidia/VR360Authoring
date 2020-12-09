@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Video;
 using System.Threading.Tasks;
-
+/// <summary>
+/// Author: Paulo Renato Conceição Mendes.<br/>
+/// This class performs the unit tests on the player.
+/// </summary>
 public class TestScript : MonoBehaviour
 {
     /// <summary>
@@ -12,7 +15,7 @@ public class TestScript : MonoBehaviour
     MultimediaControllerScript controller;
     private int waitTime = 1;
 
-    /// Start is called before the first frame update
+    /// Start is called before the first frame update. It starts the tests if the player is on test mode
     void Start()
     {
         this.controller = GameObject.FindGameObjectWithTag("GameController").GetComponent<MultimediaControllerScript>();
@@ -23,12 +26,15 @@ public class TestScript : MonoBehaviour
         }
     }
 
-
+    /// <summary>
+    /// This method runs the test modules
+    /// </summary>
+    /// <returns></returns>
     public IEnumerator RunTests()
     {
         Debug.Log("Tests beginning...");
 
-
+        
         ///Test if video is being loaded, started and stopped correctly
         yield return StartCoroutine(TestLoadStartStop360Video(@"D:\Movies\ipanema.mp4"));
         ///test additional media if it is starting and stopping at correct timing
@@ -37,7 +43,8 @@ public class TestScript : MonoBehaviour
         ///test if hotspot events are working: onFocus and duringOutOfFocus
         yield return StartCoroutine(TestHotSpot_OnFocus_DuringOutOfFocus(@"D:\Movies\ipanema.mp4",
             mediaPrefab: controller.imagePrefab, media1_path: @"C:\Users\paulo\Pictures\Imagem1.png", duration:3, media2_path: @"C:\Users\paulo\Pictures\qr-code.png"));
-
+        ///test if navigation is working: we should move from one video to another by selecting a preview
+        yield return TestNavigation(@"D:\Movies\ipanema.mp4", @"D:\Movies\video_aha.mp4", controller.previewPlain, 15);
 
         Debug.Log("Tests runned sucessfully!!");
     }
@@ -87,7 +94,15 @@ public class TestScript : MonoBehaviour
      
         Destroy(myVideo360);
     }
-
+    /// <summary>
+    /// Test additional media, especially if it is starting and stopping at correct timing
+    /// </summary>
+    /// <param name="video360_path">Path to 360 video</param>
+    /// <param name="mediaPrefab">Prefab of the media added to 360 video</param>
+    /// <param name="media_path">Path to the media</param>
+    /// <param name="begin">Begin time of the media</param>
+    /// <param name="duration">Duration of the media</param>
+    /// <returns></returns>
     public IEnumerator TestAdditionalMedia360Video(string video360_path, GameObject mediaPrefab, string media_path, float begin, float duration)
     {
         GameObject myVideo360 = controller.AddVideo360(video360_path);
@@ -115,7 +130,15 @@ public class TestScript : MonoBehaviour
         Destroy(myVideo360);
         Destroy(media);
     }
-
+    /// <summary>
+    /// Test if hotspot events are working: onFocus and duringOutOfFocus
+    /// </summary>
+    /// <param name="video360_path">Path to the 360 video</param>
+    /// <param name="mediaPrefab">Prefab of the media</param>
+    /// <param name="media1_path">Path to media1</param>
+    /// <param name="duration">duration of media1</param>
+    /// <param name="media2_path">Path to media2</param>
+    /// <returns></returns>
     public IEnumerator TestHotSpot_OnFocus_DuringOutOfFocus(string video360_path, GameObject mediaPrefab, string media1_path, float duration, string media2_path)
     {
         GameObject myVideo360 = controller.AddVideo360(video360_path);
@@ -157,6 +180,56 @@ public class TestScript : MonoBehaviour
         Destroy(media2);
         Destroy(myVideo360);
 
+    }
+    /// <summary>
+    /// Test if navigation is working: we should move from one video to another by selecting a preview and coming back to the first video
+    /// </summary>
+    /// <param name="video360_1_path">Path to the first video</param>
+    /// <param name="video360_2_path">Path to the second video</param>
+    /// <param name="previewPrefab">Prefab of preview object</param>
+    /// <param name="duration">duaration of the previews</param>
+    /// <returns></returns>
+    public IEnumerator TestNavigation(string video360_1_path, string video360_2_path, GameObject previewPrefab, float duration)
+    {
+        GameObject myVideo360_1 = controller.AddVideo360(video360_1_path);
+        GameObject myVideo360_2 = controller.AddVideo360(video360_2_path);
+
+        GameObject prev1 = myVideo360_1.GetComponent<Video360Controller>().AddMedia("prev1", previewPrefab, duration: duration);
+        GameObject prev2 = myVideo360_2.GetComponent<Video360Controller>().AddMedia("prev2", previewPrefab, duration: duration);
+
+        //on select prev1, we should navigate to video2
+        prev1.GetComponent<PreviewController>().on_select_object = myVideo360_2;
+        //on select prev2, we should navigate to video1
+        prev2.GetComponent<PreviewController>().on_select_object = myVideo360_1;
+
+        myVideo360_1.GetComponent<Video360Controller>().StartVideo360();
+        yield return new WaitForSeconds(waitTime*10);
+
+        //selecting previ1 and testing if we navigate to video myVideo360_2
+        prev1.GetComponent<PreviewController>().OnSelectAction();
+        yield return new WaitForSeconds(waitTime);
+
+        bool video1_stopped = !myVideo360_1.GetComponent<VideoPlayer>().isPlaying;
+        bool video2_started = myVideo360_2.GetComponent<VideoPlayer>().isPlaying;
+        bool navigated = video1_stopped && video2_started;
+        Debug.Assert(navigated, "Navigation to video 2 has not worked");
+
+        //selecting prev2 and testing if we navigate back to myVideo360_1
+        yield return new WaitForSeconds(waitTime * 10);
+
+        prev2.GetComponent<PreviewController>().OnSelectAction();
+        yield return new WaitForSeconds(waitTime);
+
+        bool video2_stopped = !myVideo360_2.GetComponent<VideoPlayer>().isPlaying;
+        bool video1_started = myVideo360_1.GetComponent<VideoPlayer>().isPlaying;
+        bool navigated_back = video2_stopped && video1_started;
+        Debug.Assert(navigated_back, "Navigation to video 1 has not worked");
+
+        myVideo360_1.GetComponent<Video360Controller>().StopVideo360();
+        Destroy(prev1);
+        Destroy(prev2);
+        Destroy(myVideo360_1);
+        Destroy(myVideo360_2);
     }
 
 }
