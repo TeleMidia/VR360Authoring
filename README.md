@@ -13,7 +13,7 @@ Orientador: Sérgio Colcher
 
 A documentação completa para a disciplina Projeto Final de Programação pode ser acessada aqui. Ela contém todos os detalhes de arquitetura, implementação, testes, documentação para o usuário, etc. Ao clicar na imagem abaixo, você será direcionado para o pdf da documentação.
 
-[![Projeto Final de Programação](projetofinal.jpg)](documentacao.pdf)
+[![Projeto Final de Programação](https://raw.githubusercontent.com/TeleMidia/VR360Authoring/master/projetofinal.png)](https://github.com/TeleMidia/VR360Authoring/blob/master/documentacao.pdf)
 ## References
 
 Our work is available on [IEEE Xplore](https://ieeexplore.ieee.org/document/9105958) and [Research Gate](https://www.researchgate.net/publication/342097903_AN_AUTHORING_MODEL_FOR_INTERACTIVE_360_VIDEOS).
