@@ -27,7 +27,7 @@ public class LookHotspotScript : MonoBehaviour
                     GameObject on_focus_object = hit.collider.gameObject.GetComponent<HotspotController>().on_focus_object;
                     if (on_focus_object != null && !on_focus_object.GetComponent<MediaControllerAbstract>().IsPlaying)
                     {
-                        Debug.Log("Chamou");
+                        //Debug.Log("Chamou");
                         on_focus_object.GetComponent<MediaControllerAbstract>().InvokePlayStop();
                     }
 
