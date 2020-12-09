@@ -6,7 +6,7 @@ It is being developed using Unity 3D (2019 LTS) and C#.
 
 Currently, our tool provides a player for playing interactive 360-degree videos following the model described in the paper "An Authoring Model for Interactive 360 videos" accepted for publication "In Proceedings of ICME 2020 Workshop: Tools for Creating XR Media Experiences, London, UK, 03 2020".
 
-## Projeto Final de Programação
+## Projeto Final de Programacao
 Aluno: Paulo Renato Conceição Mendes
 
 Matrícula: 1921162
