@@ -83,15 +83,6 @@ public abstract class MediaControllerAbstract: MonoBehaviour
 
         //Debug.Log(id+" played");
     }
-    /// <summary>
-    /// This method is called when this media is selected.
-    /// </summary>
-    public void OnSelectAction()
-    {
-        this.father.GetComponent<Video360Controller>().StopVideo360();
-        this.on_select_object.SetActive(true);
-        this.on_select_object.GetComponent<Video360Controller>().StartVideo360();
-    }
 
     /// <summary>
     /// Deactivates the colliders and sets that the media object is not playing.
@@ -103,6 +94,15 @@ public abstract class MediaControllerAbstract: MonoBehaviour
         this.StopMedia();
         //Debug.Log(id + " stoppped");
 
+    }
+    /// <summary>
+    /// This method is called when this media is selected.
+    /// </summary>
+    public void OnSelectMedia()
+    {
+        this.father.GetComponent<Video360Controller>().StopVideo360();
+        this.on_select_object.SetActive(true);
+        this.on_select_object.GetComponent<Video360Controller>().StartVideo360();
     }
     /// <summary>
     /// Returns wether the media object is playing.

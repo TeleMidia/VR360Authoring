@@ -81,7 +81,7 @@ public class RaySelect : MonoBehaviour
         {
             if (hit.collider.gameObject.CompareTag("TargetTransition"))
             {
-                hit.collider.gameObject.GetComponent<MediaControllerAbstract>().OnSelectAction();                
+                hit.collider.gameObject.GetComponent<MediaControllerAbstract>().OnSelectMedia();                
             }
 
             if (hit.collider.gameObject.CompareTag("StartPresentation"))

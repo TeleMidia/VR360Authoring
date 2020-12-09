@@ -206,7 +206,7 @@ public class TestScript : MonoBehaviour
         yield return new WaitForSeconds(waitTime*10);
 
         //selecting previ1 and testing if we navigate to video myVideo360_2
-        prev1.GetComponent<PreviewController>().OnSelectAction();
+        prev1.GetComponent<PreviewController>().OnSelectMedia();
         yield return new WaitForSeconds(waitTime);
 
         bool video1_stopped = !myVideo360_1.GetComponent<VideoPlayer>().isPlaying;
@@ -217,7 +217,7 @@ public class TestScript : MonoBehaviour
         //selecting prev2 and testing if we navigate back to myVideo360_1
         yield return new WaitForSeconds(waitTime * 10);
 
-        prev2.GetComponent<PreviewController>().OnSelectAction();
+        prev2.GetComponent<PreviewController>().OnSelectMedia();
         yield return new WaitForSeconds(waitTime);
 
         bool video2_stopped = !myVideo360_2.GetComponent<VideoPlayer>().isPlaying;
