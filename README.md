@@ -8,12 +8,16 @@ Currently, our tool provides a player for playing interactive 360-degree videos 
 
 ## Projeto Final de Programação
 Aluno: Paulo Renato Conceição Mendes
+
 Matrícula: 1921162
+
 Orientador: Sérgio Colcher
 
 A documentação completa para a disciplina Projeto Final de Programação pode ser acessada aqui. Ela contém todos os detalhes de arquitetura, implementação, testes, documentação para o usuário, etc. Ao clicar na imagem abaixo, você será direcionado para o pdf da documentação.
 
 [![Projeto Final de Programação](https://raw.githubusercontent.com/TeleMidia/VR360Authoring/master/projetofinal.png)](https://github.com/TeleMidia/VR360Authoring/blob/master/documentacao.pdf)
+
+O pdf também pode ser baixado diretamente clicando [aqui](https://raw.githubusercontent.com/TeleMidia/VR360Authoring/master/documentacao.pdf).
 ## References
 
 Our work is available on [IEEE Xplore](https://ieeexplore.ieee.org/document/9105958) and [Research Gate](https://www.researchgate.net/publication/342097903_AN_AUTHORING_MODEL_FOR_INTERACTIVE_360_VIDEOS).
