@@ -35,15 +35,15 @@ public class TestScript : MonoBehaviour
         Debug.Log("Tests beginning...");
 
         
-        ///Test if video is being loaded, started and stopped correctly
+        //Test if video is being loaded, started and stopped correctly
         yield return StartCoroutine(TestLoadStartStop360Video(@"D:\Movies\ipanema.mp4"));
-        ///test additional media if it is starting and stopping at correct timing
+        //Test additional media if it is starting and stopping at correct timing
         yield return StartCoroutine(TestAdditionalMedia360Video(video360_path: @"D:\Movies\ipanema.mp4", 
             mediaPrefab: controller.imagePrefab, media_path: @"C:\Users\paulo\Pictures\Imagem1.png", begin:1f, duration:5f));
-        ///test if hotspot events are working: onFocus and duringOutOfFocus
-        yield return StartCoroutine(TestHotSpot_OnFocus_DuringOutOfFocus(@"D:\Movies\ipanema.mp4",
+        //Test if hotspot events are working: onLookAt and duringNotLookingAt
+        yield return StartCoroutine(TestHotSpot_OnLookAt_DuringNotLookingAt(@"D:\Movies\ipanema.mp4",
             mediaPrefab: controller.imagePrefab, media1_path: @"C:\Users\paulo\Pictures\Imagem1.png", duration:3, media2_path: @"C:\Users\paulo\Pictures\qr-code.png"));
-        ///test if navigation is working: we should move from one video to another by selecting a preview
+        //Test if navigation is working: we should move from one video to another by selecting a preview
         yield return TestNavigation(@"D:\Movies\ipanema.mp4", @"D:\Movies\video_aha.mp4", controller.previewPlain, 15);
 
         Debug.Log("Tests runned sucessfully!!");
@@ -56,6 +56,7 @@ public class TestScript : MonoBehaviour
     /// <returns></returns>
     public IEnumerator TestLoadStartStop360Video(string video360_path)
     {
+        Debug.Log("Testing if video is being loaded, started and stopped correctly");
         //testin if video loaded
         GameObject myVideo360 = null;
         controller.AddVideo360(video360_path);
@@ -105,6 +106,7 @@ public class TestScript : MonoBehaviour
     /// <returns></returns>
     public IEnumerator TestAdditionalMedia360Video(string video360_path, GameObject mediaPrefab, string media_path, float begin, float duration)
     {
+        Debug.Log("Testing additional media, especially if it is starting and stopping at correct timing");
         GameObject myVideo360 = controller.AddVideo360(video360_path);
 
         //test if additional media is loaded
@@ -131,7 +133,7 @@ public class TestScript : MonoBehaviour
         Destroy(media);
     }
     /// <summary>
-    /// Test if hotspot events are working: onFocus and duringOutOfFocus
+    /// Test if hotspot events are working: onLookAt and duringNotLookingAt
     /// </summary>
     /// <param name="video360_path">Path to the 360 video</param>
     /// <param name="mediaPrefab">Prefab of the media</param>
@@ -139,8 +141,9 @@ public class TestScript : MonoBehaviour
     /// <param name="duration">duration of media1</param>
     /// <param name="media2_path">Path to media2</param>
     /// <returns></returns>
-    public IEnumerator TestHotSpot_OnFocus_DuringOutOfFocus(string video360_path, GameObject mediaPrefab, string media1_path, float duration, string media2_path)
+    public IEnumerator TestHotSpot_OnLookAt_DuringNotLookingAt(string video360_path, GameObject mediaPrefab, string media1_path, float duration, string media2_path)
     {
+        Debug.Log("Test if hotspot events are working: onLookAt and duringNotLookingAt");
         GameObject myVideo360 = controller.AddVideo360(video360_path);
 
         GameObject media1 = myVideo360.GetComponent<Video360Controller>().AddMedia("media1", mediaPrefab, duration: duration);
@@ -191,6 +194,7 @@ public class TestScript : MonoBehaviour
     /// <returns></returns>
     public IEnumerator TestNavigation(string video360_1_path, string video360_2_path, GameObject previewPrefab, float duration)
     {
+        Debug.Log("Test if navigation is working: we should move from one video to another by selecting a preview and coming back to the first video");
         GameObject myVideo360_1 = controller.AddVideo360(video360_1_path);
         GameObject myVideo360_2 = controller.AddVideo360(video360_2_path);
 
