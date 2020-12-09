@@ -2,10 +2,18 @@
 
 This project aims at providing an immersive authoring tool for composing interactive 360-degree videos.
 
-It is being developed using Unity 3D (2018.3.9f1) and C#. 
+It is being developed using Unity 3D (2019 LTS) and C#. 
 
 Currently, our tool provides a player for playing interactive 360-degree videos following the model described in the paper "An Authoring Model for Interactive 360 videos" accepted for publication "In Proceedings of ICME 2020 Workshop: Tools for Creating XR Media Experiences, London, UK, 03 2020".
 
+## Projeto Final de Programação
+Aluno: Paulo Renato Conceição Mendes
+Matrícula: 1921162
+Orientador: Sérgio Colcher
+
+A documentação completa para a disciplina Projeto Final de Programação pode ser acessada aqui. Ela contém todos os detalhes de arquitetura, implementação, testes, documentação para o usuário, etc. Ao clicar na imagem abaixo, você será direcionado para o pdf da documentação.
+
+[![Projeto Final de Programação](projetofinal.jpg)](documentacao.pdf)
 ## References
 
 Our work is available on [IEEE Xplore](https://ieeexplore.ieee.org/document/9105958) and [Research Gate](https://www.researchgate.net/publication/342097903_AN_AUTHORING_MODEL_FOR_INTERACTIVE_360_VIDEOS).
