@@ -10,6 +10,8 @@ using UnityEngine;
 /// </summary>
 public abstract class MediaControllerAbstract: MonoBehaviour
 {
+    ///aux variable that contains the current index of the dictionary of positions
+    private int current_index_pos;
     ///start time of the media object in seconds
     public float start_time;
     ///duaration time of the media object in seconds
@@ -73,7 +75,11 @@ public abstract class MediaControllerAbstract: MonoBehaviour
     {
         //PlayMedia();
         SuperPlay();
-        //Invoke("StopMedia", duration);
+        //changing positions over time
+        foreach (float key in this.timed_positions.Keys)
+        {
+            Invoke("IterateOverPositions", key);
+        }
         Invoke("SuperStop", duration);
     }
     /// <summary>
@@ -95,6 +101,7 @@ public abstract class MediaControllerAbstract: MonoBehaviour
     {
         if (GetComponent<Collider>() != null) GetComponent<Collider>().enabled = false;
         this.isPlaying = false;
+        this.current_index_pos = 0;
         this.StopMedia();
         //Debug.Log(id + " stoppped");
 
@@ -184,15 +191,13 @@ public abstract class MediaControllerAbstract: MonoBehaviour
             Utils.ReadTimedPositions(timedPositionsFile, out this.pos_frequency));        
 
         this.ChangePolarPos(new_pos: this.start_pos);
-
-        //only testing if positions were calculated
-
-        foreach(float key in timed_positions.Keys)
-        {
-            Debug.Log(timed_positions[key]);
-        }
     }
-
+    private void IterateOverPositions()
+    {
+        float currentKey = this.timed_positions.Keys.ToList()[current_index_pos];
+        ChangePolarPos(timed_positions[currentKey]);
+        this.current_index_pos++;
+    }
     /// <summary>
     /// Change the current position of the object
     /// </summary>

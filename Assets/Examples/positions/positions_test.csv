@@ -1,4 +1,4 @@
-fps_extraction:5
+fps_extraction:0.2
 time,lat,long
 
 5.0,0.0,-60.0
