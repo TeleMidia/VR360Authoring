@@ -31,14 +31,17 @@ public class Utils
     /// <param name="file_path">The path of the csv file</param>
     /// <param name="fps_used">The fps used to extract frames</param>
     /// <returns>A dictionary with the timed positions</returns>
-    public Dictionary<double, double[]> ReadTimedPositions(string file_path, out float fps_used)
+    public static Dictionary<float, float[]> ReadTimedPositions(string file_path, out float pos_frequency)
     {
-        Dictionary<double, double[]> timed_positions = new Dictionary<double, double[]>();
+        Dictionary<float, float[]> timed_positions = new Dictionary<float, float[]>();
+        pos_frequency = -1;
+
+        if (file_path == "") return timed_positions;
 
         using (var reader = new StreamReader(file_path))
         {
             //First Line: fps used in the frames extraction
-            fps_used = float.Parse(reader.ReadLine().Split(':')[1]);
+            pos_frequency = 1.0f/float.Parse(reader.ReadLine().Split(':')[1]);
             //Console.WriteLine("FPS used for extraction: "+fps_used);
             string headers = reader.ReadLine();
             //Console.WriteLine("Headers: "+headers);
@@ -50,15 +53,34 @@ public class Utils
                 {
                     string[] values = line.Split(',');
 
-                    double time = double.Parse(values[0], CultureInfo.InvariantCulture.NumberFormat);
-                    double lat = double.Parse(values[1], CultureInfo.InvariantCulture.NumberFormat);
-                    double lon = double.Parse(values[2], CultureInfo.InvariantCulture.NumberFormat);
+                    float time = float.Parse(values[0], CultureInfo.InvariantCulture.NumberFormat);
+                    float lat = float.Parse(values[1], CultureInfo.InvariantCulture.NumberFormat);
+                    float lon = float.Parse(values[2], CultureInfo.InvariantCulture.NumberFormat);
 
-                    timed_positions.Add(time, new double[] { lat, lon });
+                    timed_positions.Add(time, new float[] { lat, lon });
                 }
             }
         }
 
         return timed_positions;
+    }
+    /// <summary>
+    /// This function converts a dictionary of lat long positions into vector 3 positions.
+    /// </summary>
+    /// <param name="origin">The origin vector</param>
+    /// <param name="timedPositions">The dictionary of lat long positions</param>
+    /// <returns>Dictionary of vector3 positions indexed by time</returns>
+    public static Dictionary<float, Vector3> Vector3TimedPositions(Vector3 origin, Dictionary<float, float[]> timedPositions)
+    {
+        Dictionary<float, Vector3> vector3_timed_positions = new Dictionary<float, Vector3>();
+
+        foreach(float key in timedPositions.Keys){
+            float theta = timedPositions[key][0];
+            float phi = timedPositions[key][1];
+
+            vector3_timed_positions.Add(key, PolarToCartesian(origin:origin, theta:theta, phi:phi));
+        }
+
+        return vector3_timed_positions;
     }
 }

@@ -170,7 +170,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 820cb7c76f2b76d4aae7a62f33498e83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!21 &363706154
+--- !u!21 &1160891028
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -204,7 +204,7 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
---- !u!43 &959242217
+--- !u!43 &1278249724
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -382,12 +382,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 959242217}
+      objectReference: {fileID: 1278249724}
     - target: {fileID: 5593884901773212761, guid: 092f28146a7b9214c8e52c28feb34c74,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 363706154}
+      objectReference: {fileID: 1160891028}
     - target: {fileID: 5593884902031085532, guid: 092f28146a7b9214c8e52c28feb34c74,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -451,7 +451,7 @@ PrefabInstance:
     - target: {fileID: 5593884902390163573, guid: 092f28146a7b9214c8e52c28feb34c74,
         type: 3}
       propertyPath: presentation
-      value: Assets\Examples\concert.xml
+      value: C:\Users\paulo\Documents\master\VR360Authoring\Assets\Examples\positions_test.xml
       objectReference: {fileID: 0}
     - target: {fileID: 5593884902390163573, guid: 092f28146a7b9214c8e52c28feb34c74,
         type: 3}

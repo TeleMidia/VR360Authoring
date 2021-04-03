@@ -62,6 +62,10 @@ public abstract class MediaControllerAbstract: MonoBehaviour
     public float clipBegin;
     ///final time of the segment of the media that will be played
     public float clipEnd;
+    /// dictionary of the positions of the object over time
+    public Dictionary<float, Vector3> timed_positions;
+    /// pos frequency change
+    public float pos_frequency;
     /// <summary>
     /// Calls the play and invokes the stop of the media object (given its duration).
     /// </summary>
@@ -152,7 +156,7 @@ public abstract class MediaControllerAbstract: MonoBehaviour
                                 string file_path, float r, float theta, float phi, float volume, 
                                 bool loop, bool follow_camera, string text, 
                                 string on_select_name, string on_focus_name, string during_out_of_focus_name,
-                                float clipBegin, float clipEnd)
+                                float clipBegin, float clipEnd, string timedPositionsFile)
     {
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         presentation360 = GameObject.FindGameObjectWithTag("Presentation360");
@@ -174,26 +178,40 @@ public abstract class MediaControllerAbstract: MonoBehaviour
         this.father = father;
         this.clipBegin = clipBegin;
         this.clipEnd = clipEnd;
-        
         this.origin = new Vector3(0, 0, r);
-
         this.start_pos = Utils.PolarToCartesian(this.origin, theta, phi);
+        this.timed_positions = Utils.Vector3TimedPositions(this.origin,
+            Utils.ReadTimedPositions(timedPositionsFile, out this.pos_frequency));        
 
+        this.ChangePolarPos(new_pos: this.start_pos);
+
+        //only testing if positions were calculated
+
+        foreach(float key in timed_positions.Keys)
+        {
+            Debug.Log(timed_positions[key]);
+        }
+    }
+
+    /// <summary>
+    /// Change the current position of the object
+    /// </summary>
+    /// <param name="new_pos">The new position of the object</param>
+    private void ChangePolarPos(Vector3 new_pos)
+    {
         if (this.follow_camera)
         {
             this.transform.parent = mainCamera.transform;
-            this.transform.localPosition = this.start_pos;
+            this.transform.localPosition = new_pos;
             this.transform.LookAt(mainCamera.transform.position, mainCamera.transform.up);
         }
         else
         {
-            this.transform.localPosition = this.start_pos;
-            this.transform.LookAt(Vector3.zero,Vector3.up);
+            this.transform.localPosition = new_pos;
+            this.transform.LookAt(Vector3.zero, Vector3.up);
         }
-               
-        
-        this.transform.Rotate(new Vector3(0, 180, 0));
 
+        this.transform.Rotate(new Vector3(0, 180, 0));
     }
     /// <summary>
     /// Abort the media and the anchors that make it play, if any.

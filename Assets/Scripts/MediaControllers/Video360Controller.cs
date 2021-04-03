@@ -110,10 +110,12 @@ public class Video360Controller : MonoBehaviour
     /// <param name="on_focus_name">media object that will be played when the current is on focus</param>
     /// <param name="clipBegin">initial time of the segment of the media that will be played</param>
     /// <param name="clipEnd">final time of the segment of the media that will be played</param>
+    /// <param name="timedPositionsFile">file that contains the timed positions for the given object</param>
     /// <returns>The media object added</returns>
     public GameObject AddMedia(string id, GameObject mediaPrefab, float begin=0, float r=0, float theta=0, float phi=0, string file_path = "", 
                                float volume = 0, bool loop = false, float duration = float.MaxValue, bool follow_camera = false, string text = "", 
-                               string on_select_name = "", string during_out_of_focus_name="", string on_focus_name="", float clipBegin = 0, float clipEnd = 5)
+                               string on_select_name = "", string during_out_of_focus_name="", string on_focus_name="", float clipBegin = 0, float clipEnd = 5,
+                               string timedPositionsFile = "")
     {
         GameObject newMedia = Instantiate(mediaPrefab);
         newMedia.GetComponent<MediaControllerAbstract>().Configure(id:id, father:this.gameObject, start_time:begin, 
@@ -121,7 +123,7 @@ public class Video360Controller : MonoBehaviour
                                                                    phi:phi, volume:volume, loop:loop, follow_camera:follow_camera,
                                                                    text:text, on_select_name:on_select_name,
                                                                    clipBegin: clipBegin, clipEnd: clipEnd, on_focus_name:on_focus_name, 
-                                                                   during_out_of_focus_name: during_out_of_focus_name);        
+                                                                   during_out_of_focus_name: during_out_of_focus_name, timedPositionsFile: timedPositionsFile);        
         other_media.Add(newMedia);
 
         return newMedia;
@@ -136,14 +138,15 @@ public class Video360Controller : MonoBehaviour
     /// <param name="theta">vertical angle of the media object in degrees</param>
     /// <param name="phi">horizontal angle of the media object in degrees</param>
     /// <param name="on_select_name">media object that will be played when the current is selected</param>
-    public void AddSubtitle(string id, GameObject mediaPrefab, string file_path, float r=0, float theta=0, float phi=0, string on_select_name = "")
+    public void AddSubtitle(string id, GameObject mediaPrefab, string file_path, float r=0, float theta=0, float phi=0, string on_select_name = "",
+                               string timedPositionsFile = "")
     {
         SubtitleFragment[] subtitleFragments = SubtitleReader.ReadSubtitles(file_path);
         int i = 0;
         foreach(SubtitleFragment subtitleFragment in subtitleFragments)
         {
             AddMedia(id+"_"+(i++),mediaPrefab: mediaPrefab, begin: subtitleFragment.begin, duration: subtitleFragment.duration, text: subtitleFragment.text,
-                r:r, theta:theta, phi:phi, follow_camera:true, on_select_name: on_select_name);
+                r:r, theta:theta, phi:phi, follow_camera:true, on_select_name: on_select_name, timedPositionsFile:timedPositionsFile);
         }
     }
 }

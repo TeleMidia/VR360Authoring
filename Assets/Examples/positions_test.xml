@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<presentation360>
+
+  <body entry = "concert">
+    <scene360 id="concert" src="D:/Movies/360Video/video_aha.mp4" volume="1">
+      <text r="10" begin="0s" text="Subtitle" tpos="C:/Users/paulo/Documents/master/VR360Authoring/Assets/Examples/positions/positions_test.csv"/>    
+    </scene360>
+  </body>
+</presentation360>
