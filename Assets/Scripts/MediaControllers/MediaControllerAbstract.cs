@@ -192,6 +192,9 @@ public abstract class MediaControllerAbstract: MonoBehaviour
 
         this.ChangePolarPos(new_pos: this.start_pos);
     }
+    /// <summary>
+    /// Auxiliary function to iterate over positions over time.
+    /// </summary>
     private void IterateOverPositions()
     {
         float currentKey = this.timed_positions.Keys.ToList()[current_index_pos];
