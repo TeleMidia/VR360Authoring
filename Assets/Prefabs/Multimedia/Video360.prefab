@@ -49,7 +49,7 @@ VideoPlayer:
   m_TargetMaterialRenderer: {fileID: 0}
   m_TargetMaterialProperty: _MainTex
   m_RenderMode: 2
-  m_AspectRatio: 0
+  m_AspectRatio: 5
   m_DataSource: 1
   m_PlaybackSpeed: 1
   m_AudioOutputMode: 2
@@ -78,8 +78,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e8fad6e33ec2e04298433d48b0709d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  video360PreviewSphere: {fileID: 587266993325439868, guid: 6570e9b300bcfaa408f46a1c8348cfa4,
-    type: 3}
   Video360Texture: {fileID: 8400000, guid: 01db1222fef26f04ea20002f5baf602c, type: 2}
   TeleMidiaTexture: {fileID: 2800000, guid: 2b483a560b317fc40ae0ca4904dc6ba0, type: 3}
   Material360: {fileID: 2100000, guid: f2884e1c018989a43a1414288ccb597c, type: 2}
