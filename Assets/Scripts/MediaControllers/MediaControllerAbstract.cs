@@ -75,11 +75,6 @@ public abstract class MediaControllerAbstract: MonoBehaviour
     {
         //PlayMedia();
         SuperPlay();
-        //changing positions over time
-        foreach (float key in this.timed_positions.Keys)
-        {
-            Invoke("IterateOverPositions", key);
-        }
         Invoke("SuperStop", duration);
     }
     /// <summary>
@@ -136,6 +131,12 @@ public abstract class MediaControllerAbstract: MonoBehaviour
         }else if(this.start_time == 0)
         {
             InvokePlayStop();
+        }
+
+        //changing positions over time
+        foreach (float key in this.timed_positions.Keys)
+        {
+            Invoke("IterateOverPositions", key);
         }
     }
     /// <summary>
