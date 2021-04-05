@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.88399315, g: 0.88178736, b: 0.9246588, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -170,7 +170,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 820cb7c76f2b76d4aae7a62f33498e83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!21 &1118451492
+--- !u!21 &1484661100
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -204,7 +204,7 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
---- !u!43 &1989295819
+--- !u!43 &1855178450
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -382,12 +382,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 1989295819}
+      objectReference: {fileID: 1855178450}
     - target: {fileID: 5593884901773212761, guid: 092f28146a7b9214c8e52c28feb34c74,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 1118451492}
+      objectReference: {fileID: 1484661100}
     - target: {fileID: 5593884902031085532, guid: 092f28146a7b9214c8e52c28feb34c74,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -396,7 +396,7 @@ PrefabInstance:
     - target: {fileID: 5593884902031085532, guid: 092f28146a7b9214c8e52c28feb34c74,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -1.7
       objectReference: {fileID: 0}
     - target: {fileID: 5593884902031085532, guid: 092f28146a7b9214c8e52c28feb34c74,
         type: 3}
@@ -451,7 +451,7 @@ PrefabInstance:
     - target: {fileID: 5593884902390163573, guid: 092f28146a7b9214c8e52c28feb34c74,
         type: 3}
       propertyPath: presentation
-      value: C:\Users\paulo\Documents\master\VR360Authoring\Assets\Examples\navigation.xml
+      value: C:\Users\paulo\Documents\master\VR360Authoring\Assets\Examples\actors_pos.xml
       objectReference: {fileID: 0}
     - target: {fileID: 5593884902390163573, guid: 092f28146a7b9214c8e52c28feb34c74,
         type: 3}

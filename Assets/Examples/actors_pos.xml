@@ -6,10 +6,15 @@
     <scene360 id="concert" src="D:/Movies/360Video/omelete.mp4" volume="1">
       <text r="12" begin="0s" text="Érico Borgo" tpos="D:/Movies/360Video/omelete_actor_positions/actor_0.csv"/>
       <text r="12" begin="0s" text="Marcelo Hessel" tpos="D:/Movies/360Video/omelete_actor_positions/actor_1.csv"/>
-      <text r="12" begin="0s" text="Marcelo Forlani" tpos="D:/Movies/360Video/omelete_actor_positions/actor_2.csv"/>
-      <text r="12" begin="0s" text="Criptoniano" tpos="D:/Movies/360Video/omelete_actor_positions/actor_3.csv"/>
+      <text r="12" begin="0s" text="Marcelo Forlani" tpos="D:/Movies/360Video/omelete_actor_positions/actor_2.csv"/>      
       <text r="12" begin="0s" text="Thiago Romariz" tpos="D:/Movies/360Video/omelete_actor_positions/actor_5.csv"/>
 
+      <text r="12" begin="0s" duration="5s" text="Kriptoniano" tpos="D:/Movies/360Video/omelete_actor_positions/actor_3.csv"/>
+      <text r="12" begin="5s" duration="5s" text="Clark" tpos="D:/Movies/360Video/omelete_actor_positions/actor_3.csv"/>
+      <text r="12" begin="10s" duration="5s" text="Superman" tpos="D:/Movies/360Video/omelete_actor_positions/actor_3.csv"/>
+      <text r="12" begin="15s" text="Martha?" tpos="D:/Movies/360Video/omelete_actor_positions/actor_3.csv"/>
+  
+      
     </scene360>
   </body>
 </presentation360>

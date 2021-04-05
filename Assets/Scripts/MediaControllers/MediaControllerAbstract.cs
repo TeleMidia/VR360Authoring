@@ -23,7 +23,7 @@ public abstract class MediaControllerAbstract: MonoBehaviour
     ///horizontal angle of the media object in degrees
     private float phi;
     ///media object distance from the center
-    private float r;
+    public float r;
     ///file path of the media object
     public string file_path;
     ///text of the media object, if any
