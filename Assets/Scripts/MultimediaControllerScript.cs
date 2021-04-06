@@ -257,28 +257,28 @@ public class MultimediaControllerScript : MonoBehaviour
                 switch (mediaNode.Name)
                 {
                     case "image":
-                        mediaObject = video360.GetComponent<Video360Controller>().AddMedia(id, imagePrefab, begin: begin, duration:duration,
+                        mediaObject = video360.GetComponent<Video360Controller>().AddMedia(scene_objects, id, imagePrefab, begin: begin, duration:duration,
                             r: r, theta: theta, phi: phi, file_path:src, follow_camera:follow_camera,
                             on_select_name: on_select_name, timedPositionsFile: timedPositionsFile);
                         break;
                     case "audio":
-                        mediaObject = video360.GetComponent<Video360Controller>().AddMedia(id, audioPrefab, begin: begin, duration: duration,
+                        mediaObject = video360.GetComponent<Video360Controller>().AddMedia(scene_objects, id, audioPrefab, begin: begin, duration: duration,
                             r: r, theta: theta, phi: phi, file_path: src, follow_camera: follow_camera, 
                             volume:volume, loop:loop, timedPositionsFile: timedPositionsFile);
                         break;
                     case "video":
-                        mediaObject = video360.GetComponent<Video360Controller>().AddMedia(id, videoPrefab, begin: begin, duration: duration,
+                        mediaObject = video360.GetComponent<Video360Controller>().AddMedia(scene_objects, id, videoPrefab, begin: begin, duration: duration,
                             r: r, theta: theta, phi: phi, file_path: src, follow_camera: follow_camera,
                             volume: volume, loop: loop, on_select_name: on_select_name, timedPositionsFile: timedPositionsFile);
                         break;
                     case "text":
-                        mediaObject = video360.GetComponent<Video360Controller>().AddMedia(id, textPrefab, begin: begin, duration: duration,
+                        mediaObject = video360.GetComponent<Video360Controller>().AddMedia(scene_objects, id, textPrefab, begin: begin, duration: duration,
                             r: r, theta: theta, phi: phi, follow_camera: follow_camera, text:text.Replace("\\n","\n"),
                             on_select_name: on_select_name, timedPositionsFile: timedPositionsFile);
                         break;
                     case "subtitle":
-                        video360.GetComponent<Video360Controller>().AddSubtitle(id, textPrefab, file_path:src, r: r, theta: theta,
-                            phi: phi, on_select_name: on_select_name, timedPositionsFile: timedPositionsFile);
+                        video360.GetComponent<Video360Controller>().AddSubtitle(scene_objects, id, textPrefab, file_path:src, r: r, theta: theta,
+                           phi: phi, follow_camera:follow_camera, on_select_name: on_select_name, timedPositionsFile: timedPositionsFile);
                         break;
                     case "preview":
                         float clipBegin = media_attributes.TryGetValue("clipbegin", out aux) ? float.Parse(aux.Replace("s", "")) : 0;
@@ -286,25 +286,21 @@ public class MultimediaControllerScript : MonoBehaviour
 
                         string shape = media_attributes.TryGetValue("shape", out aux)? aux : "";
                         GameObject preview = shape.Equals("sphere")?previewSphere:previewPlain;
-                        mediaObject = video360.GetComponent<Video360Controller>().AddMedia(id, preview, begin: begin, duration: duration,
+                        mediaObject = video360.GetComponent<Video360Controller>().AddMedia(scene_objects, id, preview, begin: begin, duration: duration,
                             r: r, theta: theta, phi: phi, follow_camera: follow_camera, on_select_name: src, clipBegin: clipBegin, clipEnd:clipEnd, timedPositionsFile: timedPositionsFile);
                         break;
                     case "hotspot":
                         string duringNotLookingAt = media_attributes.TryGetValue("duringnotlookingat", out aux)? aux: "";
                         string onLookAt = media_attributes.TryGetValue("onlookat", out aux)? aux: "";
 
-                        mediaObject = video360.GetComponent<Video360Controller>().AddMedia(id, hotspotPrefab, begin:begin, duration:duration, r:r, theta:theta,
+                        mediaObject = video360.GetComponent<Video360Controller>().AddMedia(scene_objects, id, hotspotPrefab, begin:begin, duration:duration, r:r, theta:theta,
                             phi:phi, on_focus_name: onLookAt, during_out_of_focus_name: duringNotLookingAt, timedPositionsFile: timedPositionsFile);
                         break;
                     case "mirror":
-                        mediaObject = video360.GetComponent<Video360Controller>().AddMedia(id, mirrorPrefab, begin: begin, duration: duration, r: r, theta: theta,
+                        mediaObject = video360.GetComponent<Video360Controller>().AddMedia(scene_objects, id, mirrorPrefab, begin: begin, duration: duration, r: r, theta: theta,
                             phi: phi, on_select_name: on_select_name, follow_camera:follow_camera,file_path:src, timedPositionsFile: timedPositionsFile);
                         break;
                 } 
-                if(mediaObject != null)
-                {
-                    scene_objects.Add(id, mediaObject);
-                }
             }
         }
     }

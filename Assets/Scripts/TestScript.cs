@@ -14,6 +14,7 @@ public class TestScript : MonoBehaviour
     /// </summary>
     MultimediaControllerScript controller;
     private int waitTime = 1;
+    Dictionary<string, GameObject> scene_objects;
 
     /// Start is called before the first frame update. It starts the tests if the player is on test mode
     void Start()
@@ -34,17 +35,17 @@ public class TestScript : MonoBehaviour
     {
         Debug.Log("Tests beginning...");
 
-        
+        scene_objects = new Dictionary<string, GameObject>();
         //Test if video is being loaded, started and stopped correctly
-        yield return StartCoroutine(TestLoadStartStop360Video(@"D:\Movies\ipanema.mp4"));
+        yield return StartCoroutine(TestLoadStartStop360Video(@"D:\Movies\360Video\ipanema.mp4"));
         //Test additional media if it is starting and stopping at correct timing
-        yield return StartCoroutine(TestAdditionalMedia360Video(video360_path: @"D:\Movies\ipanema.mp4", 
+        yield return StartCoroutine(TestAdditionalMedia360Video(video360_path: @"D:\Movies\360Video\ipanema.mp4", 
             mediaPrefab: controller.imagePrefab, media_path: @"C:\Users\paulo\Pictures\Imagem1.png", begin:1f, duration:5f));
         //Test if hotspot events are working: onLookAt and duringNotLookingAt
-        yield return StartCoroutine(TestHotSpot_OnLookAt_DuringNotLookingAt(@"D:\Movies\ipanema.mp4",
+        yield return StartCoroutine(TestHotSpot_OnLookAt_DuringNotLookingAt(@"D:\Movies\360Video\ipanema.mp4",
             mediaPrefab: controller.imagePrefab, media1_path: @"C:\Users\paulo\Pictures\Imagem1.png", duration:3, media2_path: @"C:\Users\paulo\Pictures\qr-code.png"));
         //Test if navigation is working: we should move from one video to another by selecting a preview
-        yield return TestNavigation(@"D:\Movies\ipanema.mp4", @"D:\Movies\video_aha.mp4", controller.previewPlain, 15);
+        yield return TestNavigation(@"D:\Movies\360Video\ipanema.mp4", @"D:\Movies\360Video\video_aha.mp4", controller.previewPlain, 15);
 
         Debug.Log("Tests runned sucessfully!!");
     }
@@ -110,7 +111,7 @@ public class TestScript : MonoBehaviour
         GameObject myVideo360 = controller.AddVideo360(video360_path);
 
         //test if additional media is loaded
-        GameObject media = myVideo360.GetComponent<Video360Controller>().AddMedia("m1", mediaPrefab, file_path: media_path, begin: begin, duration: duration);
+        GameObject media = myVideo360.GetComponent<Video360Controller>().AddMedia(scene_objects, "m1", mediaPrefab, file_path: media_path, begin: begin, duration: duration);
         yield return new WaitForSeconds(waitTime);
 
         bool media_loaded = media.Equals(GameObject.Find(media.name));
@@ -146,9 +147,9 @@ public class TestScript : MonoBehaviour
         Debug.Log("Test if hotspot events are working: onLookAt and duringNotLookingAt");
         GameObject myVideo360 = controller.AddVideo360(video360_path);
 
-        GameObject media1 = myVideo360.GetComponent<Video360Controller>().AddMedia("media1", mediaPrefab, duration: duration);
-        GameObject media2 = myVideo360.GetComponent<Video360Controller>().AddMedia("media2", mediaPrefab);
-        GameObject hotspot = myVideo360.GetComponent<Video360Controller>().AddMedia("hot1", controller.hotspotPrefab, r:0.7f, phi:20, theta:0);
+        GameObject media1 = myVideo360.GetComponent<Video360Controller>().AddMedia(scene_objects, "media1", mediaPrefab, duration: duration);
+        GameObject media2 = myVideo360.GetComponent<Video360Controller>().AddMedia(scene_objects, "media2", mediaPrefab);
+        GameObject hotspot = myVideo360.GetComponent<Video360Controller>().AddMedia(scene_objects, "hot1", controller.hotspotPrefab, r:0.7f, phi:20, theta:0);
 
         // media1 should start when hotspot is on sight
         hotspot.GetComponent<HotspotController>().on_focus_object = media1;
@@ -198,8 +199,8 @@ public class TestScript : MonoBehaviour
         GameObject myVideo360_1 = controller.AddVideo360(video360_1_path);
         GameObject myVideo360_2 = controller.AddVideo360(video360_2_path);
 
-        GameObject prev1 = myVideo360_1.GetComponent<Video360Controller>().AddMedia("prev1", previewPrefab, duration: duration);
-        GameObject prev2 = myVideo360_2.GetComponent<Video360Controller>().AddMedia("prev2", previewPrefab, duration: duration);
+        GameObject prev1 = myVideo360_1.GetComponent<Video360Controller>().AddMedia(scene_objects, "prev1", previewPrefab, duration: duration);
+        GameObject prev2 = myVideo360_2.GetComponent<Video360Controller>().AddMedia(scene_objects, "prev2", previewPrefab, duration: duration);
 
         //on select prev1, we should navigate to video2
         prev1.GetComponent<PreviewController>().on_select_object = myVideo360_2;

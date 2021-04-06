@@ -93,6 +93,7 @@ public class Video360Controller : MonoBehaviour
     /// <summary>
     /// Adds additional media objects to this 360 video.
     /// </summary>
+    /// <param name="scene_objects">Dictionary of objects in the scene</param>
     /// <param name="id">id of the media object</param>
     /// <param name="mediaPrefab">prefab of the media object that will be added</param>
     /// <param name="begin">start time of the media object in seconds</param>
@@ -112,7 +113,7 @@ public class Video360Controller : MonoBehaviour
     /// <param name="clipEnd">final time of the segment of the media that will be played</param>
     /// <param name="timedPositionsFile">file that contains the timed positions for the given object</param>
     /// <returns>The media object added</returns>
-    public GameObject AddMedia(string id, GameObject mediaPrefab, float begin=0, float r=0, float theta=0, float phi=0, string file_path = "", 
+    public GameObject AddMedia(Dictionary<string, GameObject> scene_objects, string id, GameObject mediaPrefab, float begin=0, float r=0, float theta=0, float phi=0, string file_path = "", 
                                float volume = 0, bool loop = false, float duration = float.MaxValue, bool follow_camera = false, string text = "", 
                                string on_select_name = "", string during_out_of_focus_name="", string on_focus_name="", float clipBegin = 0, float clipEnd = 5,
                                string timedPositionsFile = "")
@@ -125,12 +126,14 @@ public class Video360Controller : MonoBehaviour
                                                                    clipBegin: clipBegin, clipEnd: clipEnd, on_focus_name:on_focus_name, 
                                                                    during_out_of_focus_name: during_out_of_focus_name, timedPositionsFile: timedPositionsFile);        
         other_media.Add(newMedia);
+        scene_objects.Add(id, newMedia);
 
         return newMedia;
     }
     /// <summary>
     /// Add subtitles to the current 360 video.
     /// </summary>
+    /// <param name="scene_objects">Dictionary of objects in the scene</param>
     /// <param name="id">id of the subtitles</param>
     /// <param name="mediaPrefab">Prefab of the text</param>
     /// <param name="file_path">path to the srt file</param>
@@ -138,15 +141,15 @@ public class Video360Controller : MonoBehaviour
     /// <param name="theta">vertical angle of the media object in degrees</param>
     /// <param name="phi">horizontal angle of the media object in degrees</param>
     /// <param name="on_select_name">media object that will be played when the current is selected</param>
-    public void AddSubtitle(string id, GameObject mediaPrefab, string file_path, float r=0, float theta=0, float phi=0, string on_select_name = "",
-                               string timedPositionsFile = "")
+    public void AddSubtitle(Dictionary<string, GameObject> scene_objects, string id, GameObject mediaPrefab, string file_path, float r=0, float theta=0, float phi=0, string on_select_name = "",
+                               string timedPositionsFile = "", bool follow_camera = false)
     {
         SubtitleFragment[] subtitleFragments = SubtitleReader.ReadSubtitles(file_path);
         int i = 0;
         foreach(SubtitleFragment subtitleFragment in subtitleFragments)
         {
-            AddMedia(id+"_"+(i++),mediaPrefab: mediaPrefab, begin: subtitleFragment.begin, duration: subtitleFragment.duration, text: subtitleFragment.text,
-                r:r, theta:theta, phi:phi, follow_camera:true, on_select_name: on_select_name, timedPositionsFile:timedPositionsFile);
+            AddMedia(scene_objects, id + "_"+(i++),mediaPrefab: mediaPrefab, begin: subtitleFragment.begin, duration: subtitleFragment.duration, text: subtitleFragment.text,
+                r:r, theta:theta, phi:phi, follow_camera: follow_camera, on_select_name: on_select_name, timedPositionsFile:timedPositionsFile);
         }
     }
 }

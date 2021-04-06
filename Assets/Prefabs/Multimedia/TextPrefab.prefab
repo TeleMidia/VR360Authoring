@@ -48,6 +48,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -59,6 +60,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -88,7 +90,7 @@ TextMesh:
   m_TabSize: 4
   m_FontSize: 0
   m_FontStyle: 0
-  m_RichText: 0
+  m_RichText: 1
   m_Font: {fileID: 12800000, guid: f1659956d77f85a42b37e98f232ddee1, type: 3}
   m_Color:
     serializedVersion: 2
@@ -108,22 +110,25 @@ MonoBehaviour:
   start_time: 0
   duration: 0
   volume: 0
+  r: 0
   file_path: 
   text: 
   loop: 0
   follow_camera: 0
   mainCamera: {fileID: 0}
+  presentation360: {fileID: 0}
+  id: 
   on_select_name: 
   on_focus_name: 
   during_out_of_focus_name: 
-  id: 
   on_select_object: {fileID: 0}
   on_focus_object: {fileID: 0}
   during_out_of_focus_object: {fileID: 0}
-  src_roi_object: {fileID: 0}
+  src_hotspot_object: {fileID: 0}
   father: {fileID: 0}
   clipBegin: 0
   clipEnd: 0
+  pos_frequency: 0
 --- !u!64 &7249148953557204888
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -134,7 +139,7 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 0
-  serializedVersion: 3
+  serializedVersion: 4
   m_Convex: 0
-  m_CookingOptions: 14
+  m_CookingOptions: 30
   m_Mesh: {fileID: 0}
