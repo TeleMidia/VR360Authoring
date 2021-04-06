@@ -144,8 +144,22 @@ MonoBehaviour:
   start_time: 0
   duration: 0
   volume: 0
+  r: 0
   file_path: 
   text: 
   loop: 0
   follow_camera: 0
   mainCamera: {fileID: 0}
+  presentation360: {fileID: 0}
+  id: 
+  on_select_name: 
+  on_focus_name: 
+  during_out_of_focus_name: 
+  on_select_object: {fileID: 0}
+  on_focus_object: {fileID: 0}
+  during_out_of_focus_object: {fileID: 0}
+  src_hotspot_object: {fileID: 0}
+  father: {fileID: 0}
+  clipBegin: 0
+  clipEnd: 0
+  pos_frequency: 0
