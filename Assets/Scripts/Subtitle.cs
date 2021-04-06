@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Globalization;
 using System.Text.RegularExpressions;
 using System.Threading;
+using UnityEngine;
 /// <summary>
 /// Author: Paulo Renato Conceição Mendes.<br/>
 /// Defines a subtitle fragment, which is a block of text that appears at a certain time and disappears.
@@ -59,32 +60,29 @@ public class SubtitleReader
     public static SubtitleFragment[] ReadSubtitles(string file_path)
     {
         string strTargetString = System.IO.File.ReadAllText(file_path);
+        var content = new Regex(@"[a-zA-Z0-9]+");
+        var pattern_sppliter = new Regex(@"\n(\s*\n)+");
 
-        string strReplacedString = Regex.Replace(strTargetString, @"(\n\s\n[0-9]+)", "\n");
-        strReplacedString = Regex.Replace(strReplacedString, @"(^[a-zA-Z0-9]*)1\s\n", "");
-
-        string[] splitString = Regex.Split(strReplacedString, @"\n\s\n");
-
-        Thread.CurrentThread.CurrentCulture = new CultureInfo("hr-HR");
+        string[] splitString = pattern_sppliter.Split(strTargetString).Where(s => s != String.Empty && content.IsMatch(s)).ToArray();
 
         SubtitleFragment[] subtitleFragments = new SubtitleFragment[splitString.Length];
 
         int i = 0;
-        foreach (string s in splitString)
+        foreach (string st in splitString)
         {
-            string first_line = s.Split('\n')[0];
+            string[] lines = Regex.Split(st, "\n");
 
-            string[] durations = Regex.Split(first_line, " --> ");
+            string[] durations = Regex.Split(lines[1], " --> ");
 
             TimeSpan t_start = TimeSpan.Parse(durations[0]);
             TimeSpan t_end = TimeSpan.Parse(durations[1]);
 
-            Console.WriteLine("Start: " + t_start.TotalSeconds + " Duration: " + (t_end.TotalSeconds - t_start.TotalSeconds));
+            //Debug.Log("Start: " + t_start.TotalSeconds + " Duration: " + (t_end.TotalSeconds - t_start.TotalSeconds));
 
             float begin = (float)t_start.TotalSeconds;
             float duration = (float)(t_end.TotalSeconds - t_start.TotalSeconds);
 
-            string text = s.Replace(first_line + "\n", "");
+            string text = string.Join(Environment.NewLine, lines.Skip(2)).Trim();
             text = text.Replace("<font color", "<color");
             text = text.Replace("</font>", "</color>");
             Console.WriteLine("Text:" + text);
