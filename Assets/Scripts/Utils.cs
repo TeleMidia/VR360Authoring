@@ -57,7 +57,8 @@ public class Utils
                     float lat = float.Parse(values[1], CultureInfo.InvariantCulture.NumberFormat);
                     float lon = float.Parse(values[2], CultureInfo.InvariantCulture.NumberFormat);
 
-                    timed_positions.Add(time, new float[] { lat, lon });
+                    if(!timed_positions.ContainsKey(time))
+                        timed_positions.Add(time, new float[] { lat, lon });
                 }
             }
         }
