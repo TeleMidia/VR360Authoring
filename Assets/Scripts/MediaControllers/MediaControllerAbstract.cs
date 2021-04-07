@@ -80,7 +80,7 @@ public abstract class MediaControllerAbstract: MonoBehaviour
     /// <summary>
     /// Activates the colliders and sets that the media object is playing.
     /// </summary>
-    private void SuperPlay()
+    public void SuperPlay()
     {
         this.isPlaying = true;
         if(GetComponent<Collider>()!=null) GetComponent<Collider>().enabled = true;
@@ -92,7 +92,7 @@ public abstract class MediaControllerAbstract: MonoBehaviour
     /// <summary>
     /// Deactivates the colliders and sets that the media object is not playing.
     /// </summary>
-    private void SuperStop()
+    public void SuperStop()
     {
         if (GetComponent<Collider>() != null) GetComponent<Collider>().enabled = false;
         this.isPlaying = false;

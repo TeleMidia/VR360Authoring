@@ -50,7 +50,7 @@ public class LookHotspotScript : MonoBehaviour
                         {
                             if (during_out_of_focus_object.GetComponent<MediaControllerAbstract>().IsPlaying)
                             {
-                                during_out_of_focus_object.GetComponent<MediaControllerAbstract>().AbortMedia();
+                                during_out_of_focus_object.GetComponent<MediaControllerAbstract>().SuperStop();
                             }
                             return;
                         }
