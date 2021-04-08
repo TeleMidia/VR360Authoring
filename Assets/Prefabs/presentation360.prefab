@@ -444,6 +444,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb3f36c852adc7449b711c78e3bac5d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testMode: 0
   presentation: C:\Users\paulo\Documents\master\VR360Authoring\Assets\Examples\navigation.xml
   video360Prefab: {fileID: 6704690845364181352, guid: db09a7b6df3eb2847a85b64b96c130b7,
     type: 3}
@@ -462,6 +463,8 @@ MonoBehaviour:
   videoPrefab: {fileID: 7489877019352574184, guid: 01f8226d73c712f4ebe3287925549293,
     type: 3}
   textPrefab: {fileID: 6104533548485137576, guid: fd07b29c665488a45a073e639a72066c,
+    type: 3}
+  subtitlePrefab: {fileID: 1880663192583529512, guid: 96996906bb3869d4bb5466f84c212f6b,
     type: 3}
   startPresentation: {fileID: 7318838494042600925, guid: b4e44785f19303f44908e9773af0e24b,
     type: 3}

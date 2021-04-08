@@ -41,6 +41,9 @@ public class MultimediaControllerScript : MonoBehaviour
     ///prefab of text
     [Header("Common Media")]
     public GameObject textPrefab;
+    ///prefab of subtitle
+    [Header("Common Media")]
+    public GameObject subtitlePrefab;
     ///game object the when selected starts the presentation
     public GameObject startPresentation;
     ///event that calls initial 360 video
@@ -277,8 +280,9 @@ public class MultimediaControllerScript : MonoBehaviour
                             on_select_name: on_select_name, timedPositionsFile: timedPositionsFile);
                         break;
                     case "subtitle":
-                        video360.GetComponent<Video360Controller>().AddSubtitle(scene_objects, id, textPrefab, file_path:src, r: r, theta: theta,
-                           phi: phi, follow_camera:follow_camera, on_select_name: on_select_name, timedPositionsFile: timedPositionsFile);
+                        mediaObject = video360.GetComponent<Video360Controller>().AddMedia(scene_objects, id, subtitlePrefab, begin: begin, duration: duration,
+                            r: r, theta: theta, phi: phi, file_path: src, follow_camera:follow_camera,
+                            on_select_name: on_select_name, timedPositionsFile: timedPositionsFile);
                         break;
                     case "preview":
                         float clipBegin = media_attributes.TryGetValue("clipbegin", out aux) ? float.Parse(aux.Replace("s", "")) : 0;

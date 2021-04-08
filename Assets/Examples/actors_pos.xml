@@ -3,7 +3,7 @@
 <presentation360>
 
   <head>
-    <style id="song_pos" r = "10" tpos="D:/Movies/360Video/omelete_actor_positions/actor_3.csv"/>
+    <style id="song_pos" tpos="D:/Movies/360Video/omelete_actor_positions/actor_3.csv" begin="0s"/>
   </head>
   <body entry = "concert">
     <scene360 id="concert" src="D:/Movies/360Video/omelete.mp4" volume="1">
@@ -12,8 +12,8 @@
       <text r="12" begin="0s" text="Marcelo Forlani" tpos="D:/Movies/360Video/omelete_actor_positions/actor_2.csv"/>      
       <text r="12" begin="0s" text="Thiago Romariz" tpos="D:/Movies/360Video/omelete_actor_positions/actor_5.csv"/>
       
-      <audio begin="0s" src="D:/Movies/queen.mp3" volume="1" style="song_pos"/>
-      <subtitle src="D:/Movies/Subtitles/color_bohemian_rhapsody.srt" style="song_pos"/>         
+      <audio src="D:/Movies/queen.mp3" volume="1" style="song_pos" r = "1"/>
+      <subtitle src="D:/Movies/Subtitles/color_bohemian_rhapsody.srt" style="song_pos" r = "10"/>         
     </scene360>
   </body>
 </presentation360>
