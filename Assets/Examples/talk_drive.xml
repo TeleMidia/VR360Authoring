@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<presentation360>
+  <head>
+    <style id ="actor_pos" tpos="D:/Movies/360Video/talk_actor_positions/actor_0.csv" begin="0s"/>
+  </head>
+  
+  <body entry = "talk">
+    <scene360 id="talk" src="D:/Movies/360Video/talk.mp4" volume="1">
+      <audio src ="D:/Movies/talk.mp3" begin ="0s" volume="1"/>
+
+      <subtitle src="D:/Movies/Subtitles/talk_drive.srt" style="actor_pos" r = "10"/>
+      <hotspot style ="actor_pos" duringNotLookingAt="subtitle_follow" r ="0,7"/>
+
+      <subtitle id="subtitle_follow" src="D:/Movies/Subtitles/talk_drive.srt"
+                begin ="0s"  theta="20" followCamera="true" r="10"/>
+
+    </scene360>
+  </body>
+</presentation360>
