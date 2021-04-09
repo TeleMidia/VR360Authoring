@@ -2,7 +2,7 @@
 
 <presentation360>
   <head>
-    <style id ="actor_pos" tpos="D:/Movies/360Video/talk_actor_positions/actor_0.csv" begin="0s"/>
+    <style id ="actor_pos" tpos="D:/Movies/360Video/talk_actor_positions/actor_0_bottom.csv" begin="0s"/>
   </head>
   
   <body entry = "talk">

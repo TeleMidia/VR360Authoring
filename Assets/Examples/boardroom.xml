@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<presentation360>
+  <head>
+    <style id ="actor_glasses" tpos="D:/Movies/360Video/boardroom_actor_positions/actor_0.csv" begin="0s"/>
+    <style id ="actor" tpos="D:/Movies/360Video/boardroom_actor_positions/actor_1.csv" begin="0s"/>
+  </head>
+  
+  <body entry = "boardroom">
+    <scene360 id="boardroom" src="D:/Movies/360Video/boardroom.mp4" volume="1">
+      
+      <subtitle src="D:/Movies/Subtitles/boardroom_glasses_color.srt" style="actor_glasses" r = "10"/>
+      <subtitle src="D:/Movies/Subtitles/boardroom_color.srt" style="actor" r = "10"/>
+
+
+      <hotspot style ="actor_glasses" duringNotLookingAt="subtitle_follow_glasses" r ="0,7"/>
+      <hotspot style ="actor" duringNotLookingAt="subtitle_follow" r ="0,7"/>
+
+      <subtitle id="subtitle_follow_glasses" src="D:/Movies/Subtitles/boardroom_glasses_color.srt"
+                begin ="0s"  theta="20" followCamera="true" r="10"/>
+      <subtitle id="subtitle_follow" src="D:/Movies/Subtitles/boardroom_color.srt"
+                begin ="0s"  theta="20" followCamera="true" r="10"/>
+
+    </scene360>
+  </body>
+</presentation360>
