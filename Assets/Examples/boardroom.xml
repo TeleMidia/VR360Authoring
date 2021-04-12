@@ -16,9 +16,9 @@
       <hotspot style ="actor_glasses" duringNotLookingAt="subtitle_follow_glasses" r ="0,7"/>
       <hotspot style ="actor" duringNotLookingAt="subtitle_follow" r ="0,7"/>
 
-      <subtitle id="subtitle_follow_glasses" src="D:/Movies/Subtitles/boardroom_glasses_color.srt"
+      <subtitle id="subtitle_follow_glasses" src="D:/Movies/Subtitles/boardroom_glasses_color.srt" prefix = "Dwight: "
                 begin ="0s"  theta="20" followCamera="true" r="10"/>
-      <subtitle id="subtitle_follow" src="D:/Movies/Subtitles/boardroom_color.srt"
+      <subtitle id="subtitle_follow" src="D:/Movies/Subtitles/boardroom_color.srt" prefix = "Michael: "
                 begin ="0s"  theta="20" followCamera="true" r="10"/>
 
     </scene360>

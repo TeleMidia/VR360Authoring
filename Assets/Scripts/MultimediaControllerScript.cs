@@ -255,6 +255,7 @@ public class MultimediaControllerScript : MonoBehaviour
                 float theta = media_attributes.TryGetValue("theta", out aux)? float.Parse(aux) : 0;
                 float phi = media_attributes.TryGetValue("phi", out aux)? float.Parse(aux) : 0;
                 string timedPositionsFile = media_attributes.TryGetValue("tpos", out aux) ? aux : "";
+                string prefix = media_attributes.TryGetValue("prefix", out aux) ? aux : "";
 
                 GameObject mediaObject = null;
                 switch (mediaNode.Name)
@@ -282,7 +283,7 @@ public class MultimediaControllerScript : MonoBehaviour
                     case "subtitle":
                         mediaObject = video360.GetComponent<Video360Controller>().AddMedia(scene_objects, id, subtitlePrefab, begin: begin, duration: duration,
                             r: r, theta: theta, phi: phi, file_path: src, follow_camera:follow_camera,
-                            on_select_name: on_select_name, timedPositionsFile: timedPositionsFile);
+                            on_select_name: on_select_name, timedPositionsFile: timedPositionsFile, prefix: prefix);
                         break;
                     case "preview":
                         float clipBegin = media_attributes.TryGetValue("clipbegin", out aux) ? float.Parse(aux.Replace("s", "")) : 0;

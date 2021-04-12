@@ -68,6 +68,8 @@ public abstract class MediaControllerAbstract: MonoBehaviour
     public Dictionary<float, Vector3> timed_positions;
     /// pos frequency change
     public float pos_frequency;
+    /// prefix used in subtitles
+    public string prefix;
     /// <summary>
     /// Calls the play and invokes the stop of the media object (given its duration).
     /// </summary>
@@ -160,11 +162,13 @@ public abstract class MediaControllerAbstract: MonoBehaviour
     /// <param name="during_out_of_focus_name">media object that will be played when the current is out of focus</param>
     /// <param name="clipBegin">initial time of the segment of the media that will be played</param>
     /// <param name="clipEnd">final time of the segment of the media that will be played</param>
+    /// <param name="timedPositionsFile">file that contains the timed positions for the given object</param>
+    /// <param name="prefix">prefix that comes before subtitles</param>
     public virtual void Configure(string id, GameObject father, float start_time, float duration, 
                                 string file_path, float r, float theta, float phi, float volume, 
                                 bool loop, bool follow_camera, string text, 
                                 string on_select_name, string on_focus_name, string during_out_of_focus_name,
-                                float clipBegin, float clipEnd, string timedPositionsFile)
+                                float clipBegin, float clipEnd, string timedPositionsFile, string prefix)
     {
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         presentation360 = GameObject.FindGameObjectWithTag("Presentation360");
@@ -186,6 +190,7 @@ public abstract class MediaControllerAbstract: MonoBehaviour
         this.father = father;
         this.clipBegin = clipBegin;
         this.clipEnd = clipEnd;
+        this.prefix = prefix;
         this.origin = new Vector3(0, 0, r);
         this.start_pos = Utils.PolarToCartesian(this.origin, theta, phi);
         this.timed_positions = Utils.Vector3TimedPositions(this.origin,

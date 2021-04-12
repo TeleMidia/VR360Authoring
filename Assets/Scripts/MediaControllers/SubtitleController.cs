@@ -65,7 +65,7 @@ class SubtitleController : MediaControllerAbstract
     {
         if(this.current_index < this.subtitleFragments.Length)
         {
-            this.textMesh.text = this.subtitleFragments[this.current_index++].text;
+            this.textMesh.text = this.prefix + this.subtitleFragments[this.current_index++].text;
         }
     }
     /// <summary>

@@ -112,11 +112,12 @@ public class Video360Controller : MonoBehaviour
     /// <param name="clipBegin">initial time of the segment of the media that will be played</param>
     /// <param name="clipEnd">final time of the segment of the media that will be played</param>
     /// <param name="timedPositionsFile">file that contains the timed positions for the given object</param>
+    /// <param name="prefix">prefix that comes before subtitles</param>
     /// <returns>The media object added</returns>
-    public GameObject AddMedia(Dictionary<string, GameObject> scene_objects, string id, GameObject mediaPrefab, float begin=0, float r=0, float theta=0, float phi=0, string file_path = "", 
-                               float volume = 0, bool loop = false, float duration = float.MaxValue, bool follow_camera = false, string text = "", 
-                               string on_select_name = "", string during_out_of_focus_name="", string on_focus_name="", float clipBegin = 0, float clipEnd = 5,
-                               string timedPositionsFile = "")
+    public GameObject AddMedia(Dictionary<string, GameObject> scene_objects, string id, GameObject mediaPrefab, float begin = 0, float r = 0, float theta = 0, float phi = 0, string file_path = "",
+                               float volume = 0, bool loop = false, float duration = float.MaxValue, bool follow_camera = false, string text = "",
+                               string on_select_name = "", string during_out_of_focus_name = "", string on_focus_name = "", float clipBegin = 0, float clipEnd = 5,
+                               string timedPositionsFile = "", string prefix = "")
     {
         GameObject newMedia = Instantiate(mediaPrefab);
         newMedia.GetComponent<MediaControllerAbstract>().Configure(id:id, father:this.gameObject, start_time:begin, 
@@ -124,7 +125,8 @@ public class Video360Controller : MonoBehaviour
                                                                    phi:phi, volume:volume, loop:loop, follow_camera:follow_camera,
                                                                    text:text, on_select_name:on_select_name,
                                                                    clipBegin: clipBegin, clipEnd: clipEnd, on_focus_name:on_focus_name, 
-                                                                   during_out_of_focus_name: during_out_of_focus_name, timedPositionsFile: timedPositionsFile);        
+                                                                   during_out_of_focus_name: during_out_of_focus_name, 
+                                                                   timedPositionsFile: timedPositionsFile, prefix: prefix);        
         other_media.Add(newMedia);
         scene_objects.Add(id, newMedia);
 
