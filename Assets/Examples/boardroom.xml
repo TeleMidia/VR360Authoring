@@ -10,8 +10,8 @@
   <body entry = "boardroom">
     <scene360 id="boardroom" src="D:/Movies/360Video/boardroom.mp4" volume="1">
       
-      <subtitle src="D:/Movies/Subtitles/boardroom_glasses_color.srt" style="actor_glasses" r = "10"/>
-      <subtitle src="D:/Movies/Subtitles/boardroom_color.srt" style="actor" r = "10"/>
+      <subtitle src="D:/Movies/Subtitles/boardroom_glasses_color.srt" style="actor_glasses" r = "10" theta="5"/>
+      <subtitle src="D:/Movies/Subtitles/boardroom_color.srt" style="actor" r = "10" theta="5"/>
 
 
       <hotspot style ="actor_glasses" duringNotLookingAt="subtitle_follow_glasses" r ="0,7"/>

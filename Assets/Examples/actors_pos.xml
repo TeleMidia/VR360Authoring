@@ -15,7 +15,7 @@
       -->
       <hotspot style ="song_pos" duringNotLookingAt="subtitle_follow" r ="0,7"/>      
       <audio src="D:/Movies/queen.mp3" volume="1" style="song_pos" r = "1"/>
-      <subtitle src="D:/Movies/Subtitles/color_bohemian_rhapsody.srt" style="song_pos" r = "10"/>
+      <subtitle src="D:/Movies/Subtitles/color_bohemian_rhapsody.srt" style="song_pos" r = "10" theta="10"/>
 
       <subtitle id="subtitle_follow" src="D:/Movies/Subtitles/color_bohemian_rhapsody.srt" 
                 begin ="0s"  theta="20" followCamera="true" r="10"/>

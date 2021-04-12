@@ -193,7 +193,7 @@ public abstract class MediaControllerAbstract: MonoBehaviour
         this.prefix = prefix;
         this.origin = new Vector3(0, 0, r);
         this.start_pos = Utils.PolarToCartesian(this.origin, theta, phi);
-        this.timed_positions = Utils.Vector3TimedPositions(this.origin,
+        this.timed_positions = Utils.Vector3TimedPositions(this.start_pos,
             Utils.ReadTimedPositions(timedPositionsFile, out this.pos_frequency));        
 
         this.ChangePolarPos(new_pos: this.start_pos);
