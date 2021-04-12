@@ -4,6 +4,7 @@
   <head>
     <style id ="actor_glasses" tpos="D:/Movies/360Video/boardroom_actor_positions/actor_0.csv" begin="0s"/>
     <style id ="actor" tpos="D:/Movies/360Video/boardroom_actor_positions/actor_1.csv" begin="0s"/>
+    <style id ="follow_style" begin ="0s"  theta="20" followCamera="true" r="10"/>
   </head>
   
   <body entry = "boardroom">
@@ -17,9 +18,9 @@
       <hotspot style ="actor" duringNotLookingAt="subtitle_follow" r ="0,7"/>
 
       <subtitle id="subtitle_follow_glasses" src="D:/Movies/Subtitles/boardroom_glasses_color.srt" prefix = "Dwight: "
-                begin ="0s"  theta="20" followCamera="true" r="10"/>
+                style ="follow_style"/>
       <subtitle id="subtitle_follow" src="D:/Movies/Subtitles/boardroom_color.srt" prefix = "Michael: "
-                begin ="0s"  theta="20" followCamera="true" r="10"/>
+                style ="follow_style"/>
 
     </scene360>
   </body>
