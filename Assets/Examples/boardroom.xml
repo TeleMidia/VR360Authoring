@@ -21,6 +21,7 @@
       <subtitle id="subtitle_follow" src="D:/Movies/Subtitles/boardroom_color.srt" prefix = "Michael: "
                 style ="follow_style"/>
 
+      <video id="vlibras" src="D:/Movies/libras.mp4" followCamera="true" r="40" theta="-15" phi="30" begin="5s"/>
     </scene360>
   </body>
 </presentation360>
