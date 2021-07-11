@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<presentation360>
+  <head>
+    <style id ="sty-actor1" tpos="actor1-positions.csv" begin="0s" r = "10"/>
+    <style id ="sty-actor2" tpos="actor2-positions.csv" begin="0s" r = "10"/>
+    <style id ="sty-follow" begin ="0s"  theta="20" followCamera="true" r="10"/>
+  </head>
+  
+  <body entry = "boardroom">
+    <scene360 id="boardroom" src="boardroom.mp4" volume="1">      
+      <subtitle style="sty-actor1" src="actor1.srt" theta="5"/>      
+      <subtitle style="sty-actor2" src="actor2.srt" theta="5"/>
+
+      <hotspot style ="sty-actor1" duringNotLookingAt="sub-follow-actor1"/>
+      <hotspot style ="sty-actor2" duringNotLookingAt="sub-follow-actor2"/>
+
+      <subtitle id="sub-follow-actor1" src="actor1.srt" prefix = "Dwight: " style ="sty-follow"/>
+      <subtitle id="sub-follow-actor2" src="actor2.srt" prefix = "Michael: " style ="sty-follow"/>
+    </scene360>
+  </body>
+</presentation360>

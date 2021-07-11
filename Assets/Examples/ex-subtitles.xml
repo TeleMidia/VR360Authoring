@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<presentation360>
+  <head>
+  </head>
+  <body entry = "boardroom">
+    <scene360 id="boardroom" src="boardroom.mp4" volume="1">   
+      <subtitle src="actor1.srt" r = "10" theta="5" tpos="actor1_positions.csv" begin="0s"/>      
+      <subtitle src="actor2.srt" r = "10" theta="5" tpos="actor2_positions.csv" begin="0s"/>
+    </scene360>
+  </body>
+</presentation360>
